@@ -20,8 +20,11 @@ namespace Mo\Core;
 defined( 'ABSPATH' ) || die();
 
 require_once( plugin_dir_path( __FILE__ ) . 'lib/vendor/autoload.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/helpers/helpers.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/helpers/twig.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/attach_style.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/helpers.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/images.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/svg.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/twig/twig_extensions.php' );
 
 // Init plugin instance.
 \add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );

@@ -9,12 +9,11 @@
 
 namespace Mo\Core\Twig;
 
-require_once( plugin_dir_path( __FILE__ ) . 'helpers.php' );
-require_once( plugin_dir_path( __FILE__ ) . '../functions/attach_style.php' );
-
 class Twig_Extensions {
 
 	use \Mo\Core\Helpers;
+	use \Mo\Core\Images;
+	use \Mo\Core\SVG;
 
 	/**
 	 * Constructor.
@@ -50,7 +49,12 @@ class Twig_Extensions {
 	*/
 	function add_twig_functions( $twig ) {
 		$twig->addFunction( new \Timber\Twig_Function( 'attach_style', '\Mo\Core\attach_style' ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'contain_image_sizes', array( $this, 'the_contain_image_sizes' ) ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'cover_image_sizes', array( $this, 'the_cover_image_sizes' ) ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'debug', array( $this, 'debug' ) ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'image_sizes', array( $this, 'the_image_sizes' ) ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'svg_icon', array( $this, 'the_svg_icon' ) ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'svg_img', array( $this, 'the_svg_img' ) ) );
 
 		return $twig;
 	}
