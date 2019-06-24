@@ -19,10 +19,10 @@ namespace Mo\Core;
 
 defined( 'ABSPATH' ) || die();
 
-define( 'MO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once( MO_PLUGIN_PATH . 'lib/vendor/autoload.php' );
-require_once( MO_PLUGIN_PATH . 'lib/glob_require.php' );
+require_once( PLUGIN_PATH . 'lib/vendor/autoload.php' );
+require_once( PLUGIN_PATH . 'lib/glob_require.php' );
 
 // Require subdirectories.
 glob_require( array( 'functions', 'twig', 'actions', 'filter' ) );
