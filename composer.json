@@ -1,0 +1,8 @@
+{
+  "config": {
+    "vendor-dir": "lib/vendor"
+  },
+  "require": {
+    "timber/timber": "^1.10"
+  }
+}
