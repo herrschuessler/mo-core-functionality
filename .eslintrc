@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "no-console": 0
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["eslint:recommended"],
+  "globals": {
+    "console": true,
+    "window": true,
+    "document": true,
+    "jQuery": true,
+    "$": true,
+    "require": true,
+    "module": true,
+    "navigator": true,
+    "__webpack_public_path__": true
+  }
+}

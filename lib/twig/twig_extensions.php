@@ -19,9 +19,9 @@ class Twig_Extensions {
 	 * Constructor.
 	 */
 	function __construct() {
-		add_filter( 'timber/twig', array( $this, 'init_twig_extension_stringloader' ) );
-		add_filter( 'timber/twig', array( $this, 'add_twig_filters' ) );
-		add_filter( 'timber/twig', array( $this, 'add_twig_functions' ) );
+		\add_filter( 'timber/twig', array( $this, 'init_twig_extension_stringloader' ) );
+		\add_filter( 'timber/twig', array( $this, 'add_twig_filters' ) );
+		\add_filter( 'timber/twig', array( $this, 'add_twig_functions' ) );
 	}
 
 	/*

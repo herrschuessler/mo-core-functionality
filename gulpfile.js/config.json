@@ -1,0 +1,22 @@
+{
+  "root": {
+    "node": "./node_modules",
+    "src": "./",
+    "build": "./assets"
+  },
+  "actions": {
+    "watch": ["js"],
+    "clean": ["js"]
+  },
+  "tasks": {
+
+    "js": {
+      "src": "src/js",
+      "dest": "js",
+      "babel": {
+        "browsers": ["> 0.5%", "last 2 versions", "Firefox ESR", "IE >= 11", "safari >= 7"]
+      },
+      "extensions": ["js","jsx"]
+    }
+  }
+}

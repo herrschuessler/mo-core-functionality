@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     0.1.0
+ * Version:     1.0.0
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * Text Domain: mo-core
@@ -19,12 +19,13 @@ namespace Mo\Core;
 
 defined( 'ABSPATH' ) || die();
 
-require_once( plugin_dir_path( __FILE__ ) . 'lib/vendor/autoload.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/attach_style.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/helpers.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/images.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/functions/svg.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'lib/twig/twig_extensions.php' );
+define( 'MO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
+require_once( MO_PLUGIN_PATH . 'lib/vendor/autoload.php' );
+require_once( MO_PLUGIN_PATH . 'lib/glob_require.php' );
+
+// Require subdirectories.
+glob_require( array( 'functions', 'twig', 'actions', 'filter' ) );
 
 // Init plugin instance.
 \add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );
@@ -38,7 +39,7 @@ class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '0.1.0';
+	const PLUGIN_VERSION = '1.0.0';
 	protected static $instance = null;
 
 	/**
@@ -58,8 +59,38 @@ class Core_Functionality {
 	 */
 	private function __construct() {
 
-		// Provide Timber
+		// Init Timber
 		new \Timber\Timber();
+
+		// Init Twig Extensions
 		new \Mo\Core\Twig\Twig_Extensions();
+
+		// Add action hooks
+		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
+
 	}
+
+	/**
+	 * Enqueue plugin assets if shortcode is present.
+	 */
+	public function enqueue_assets() {
+
+		// Enqueue plugin scripts.
+		\wp_enqueue_script( 'lazysizes', \plugins_url( '/assets/js/lazysizes.js', __FILE__ ), null, self::PLUGIN_VERSION, true );
+	}
+
+	/**
+	 * Add defer attribute to scripts.
+	 */
+	public function async_theme_scripts( $tag, $handle ) {
+		$scripts_to_defer = array( 'lazysizes' );
+		foreach ( $scripts_to_defer as $defer_script ) {
+			if ( $defer_script === $handle ) {
+				return str_replace( ' src', ' async src', $tag );
+			}
+		}
+		return $tag;
+	}
+
 }
