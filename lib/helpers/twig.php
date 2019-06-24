@@ -9,7 +9,8 @@
 
 namespace Mo\Core\Twig;
 
-require_once( 'helpers.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'helpers.php' );
+require_once( plugin_dir_path( __FILE__ ) . '../functions/attach_style.php' );
 
 class Twig_Extensions {
 
@@ -48,6 +49,7 @@ class Twig_Extensions {
 	* Add twig functions.
 	*/
 	function add_twig_functions( $twig ) {
+		$twig->addFunction( new \Timber\Twig_Function( 'attach_style', '\Mo\Core\attach_style' ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'debug', array( $this, 'debug' ) ) );
 
 		return $twig;

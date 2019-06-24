@@ -19,9 +19,9 @@ namespace Mo\Core;
 
 defined( 'ABSPATH' ) || die();
 
-require_once( 'lib/vendor/autoload.php' );
-require_once( 'lib/helpers/helpers.php' );
-require_once( 'lib/helpers/twig.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/vendor/autoload.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/helpers/helpers.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'lib/helpers/twig.php' );
 
 // Init plugin instance.
 \add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );
