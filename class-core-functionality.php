@@ -21,6 +21,7 @@ defined( 'ABSPATH' ) || die();
 
 require_once( 'lib/vendor/autoload.php' );
 require_once( 'lib/helpers/helpers.php' );
+require_once( 'lib/helpers/twig.php' );
 
 // Init plugin instance.
 \add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );
@@ -56,6 +57,6 @@ class Core_Functionality {
 
 		// Provide Timber
 		new \Timber\Timber();
-
+		new \Mo\Core\Twig\Twig_Extensions();
 	}
 }
