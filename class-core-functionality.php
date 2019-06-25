@@ -12,17 +12,23 @@
  * Version:     1.0.0
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
+ * License:     GNU General Public License v.2
  * Text Domain: mo-core
  */
 
 namespace Mo\Core;
 
+// Don't call this file directly.
 defined( 'ABSPATH' ) || die();
 
-define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+// Define absolute path to plugin root.
+define( 'Mo\Core\PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once( PLUGIN_PATH . 'lib/vendor/autoload.php' );
-require_once( PLUGIN_PATH . 'lib/glob_require.php' );
+// Require composer autoloader.
+require_once( \Mo\Core\PLUGIN_PATH . 'lib/vendor/autoload.php' );
+
+// Require globing function.
+require_once( \Mo\Core\PLUGIN_PATH . 'lib/glob_require.php' );
 
 // Require subdirectories.
 glob_require( array( 'functions', 'twig', 'actions', 'filter' ) );
