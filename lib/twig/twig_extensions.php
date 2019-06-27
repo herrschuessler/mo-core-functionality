@@ -27,7 +27,7 @@ class Twig_Extensions {
 	/*
 	* Init Twig_Extension_StringLoader.
 	*/
-	function init_twig_extension_stringloader( $twig ) {
+	public function init_twig_extension_stringloader( $twig ) {
 		$twig->addExtension( new \Twig_Extension_StringLoader() );
 
 		return $twig;
@@ -36,9 +36,9 @@ class Twig_Extensions {
 	/*
 	* Add twig filters.
 	*/
-	function add_twig_filters( $twig ) {
+	public function add_twig_filters( $twig ) {
 		$twig->addFilter( new \Twig_SimpleFilter( 'menu_item_classes', array( $this, 'menu_item_classes' ) ) );
-		$twig->addFilter( new \Twig_SimpleFilter( 'shuffle', array( $this, 'shuffle' ) ) );
+		$twig->addFilter( new \Twig_SimpleFilter( 'shuffle', array( $this, 'shuffle' ) ) ); // @todo Use native PHP function.
 		$twig->addFilter( new \Twig_SimpleFilter( 'the_content', array( $this, 'the_content' ) ) );
 
 		return $twig;
@@ -47,7 +47,7 @@ class Twig_Extensions {
 	/*
 	* Add twig functions.
 	*/
-	function add_twig_functions( $twig ) {
+	public function add_twig_functions( $twig ) {
 		$twig->addFunction( new \Timber\Twig_Function( 'attach_style', '\Mo\Core\attach_style' ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'contain_image_sizes', array( $this, 'the_contain_image_sizes' ) ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'cover_image_sizes', array( $this, 'the_cover_image_sizes' ) ) );
