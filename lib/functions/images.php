@@ -46,15 +46,15 @@ trait Images {
 
 		// Add image sizes
 		while ( $size <= $max && $size <= $image->width ) {
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $size . ', ' . round( $size * $ratio ) . ') }} ' . $size . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $size . ', ' . round( $size * $ratio ) . ')|towebp(70) }} ' . $size . 'w' );
+			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $size . ', ' . round( $size * $ratio ) . ') }} ' . $size . 'w' );
+			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $size . ', ' . round( $size * $ratio ) . ')|towebp(70) }} ' . $size . 'w' );
 			$size = $size + $increase;
 		}
 
 		// If last size was smaller than original image dimensions, add original image
 		if ( ( $size - $increase ) < $image->width && ( $size - $increase ) < $max ) {
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . round( $image->width * $ratio ) . ') }} ' . $image->width . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . round( $image->width * $ratio ) . ')|towebp(70) }} ' . $image->width . 'w' );
+			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $image->width . ', ' . round( $image->width * $ratio ) . ') }} ' . $image->width . 'w' );
+			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $image->width . ', ' . round( $image->width * $ratio ) . ')|towebp(70) }} ' . $image->width . 'w' );
 		}
 
 		return \Timber::compile_string(
@@ -69,7 +69,7 @@ trait Images {
             class="{{ class }} lazyload js-lazyload"
             alt="{{ image.alt }}"
             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-            data-src="{{ image.src|resize(max.w, max.h) }}"
+            data-src="{{ image.guid|resize(max.w, max.h) }}"
             data-sizes="auto"
             {{ fit }}>
         </picture>
