@@ -41,7 +41,7 @@ glob_require( array( 'functions', 'twig', 'actions', 'filter' ) );
  *
  * @var object|null $instance The plugin singleton.
  */
-class Core_Functionality {
+final class Core_Functionality {
 
 	use Helpers;
 

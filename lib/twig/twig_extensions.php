@@ -9,7 +9,7 @@
 
 namespace Mo\Core\Twig;
 
-class Twig_Extensions {
+final class Twig_Extensions {
 
 	use \Mo\Core\Helpers;
 	use \Mo\Core\Images;
