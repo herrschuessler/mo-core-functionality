@@ -43,7 +43,7 @@
     "run-sequence": "^2.2.1",
     "size-plugin": "^1.2.0",
     "strip-loader": "^0.1.2",
-    "webpack": "^4.35.3",
+    "webpack": "^4.36.0",
     "webpack-dev-middleware": "^3.7.0"
   },
   "private": true,
