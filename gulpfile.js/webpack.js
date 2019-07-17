@@ -69,7 +69,7 @@ module.exports = function() {
     stats: 'minimal'
   };
 
-  webpackConfig.mode = 'development';
+  webpackConfig.mode = 'production';
   webpackConfig.output.path = outputPath;
   webpackConfig.output.publicPath = publicPath;
   webpackConfig.plugins.push(
