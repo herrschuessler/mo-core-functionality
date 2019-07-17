@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
@@ -45,7 +45,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.0.0';
+	const PLUGIN_VERSION = '1.0.1';
 	protected static $instance = null;
 
 	/**
@@ -83,14 +83,14 @@ final class Core_Functionality {
 	public function enqueue_assets() {
 
 		// Enqueue plugin scripts.
-		\wp_enqueue_script( 'lazysizes', \plugins_url( '/assets/js/lazysizes.js', __FILE__ ), null, self::PLUGIN_VERSION, true );
+		\wp_enqueue_script( 'mo-images', \plugins_url( '/assets/js/images.js', __FILE__ ), null, self::PLUGIN_VERSION, true );
 	}
 
 	/**
 	 * Add defer attribute to scripts.
 	 */
 	public function async_theme_scripts( $tag, $handle ) {
-		$scripts_to_defer = array( 'lazysizes' );
+		$scripts_to_defer = array( 'mo-images' );
 		foreach ( $scripts_to_defer as $defer_script ) {
 			if ( $defer_script === $handle ) {
 				return str_replace( ' src', ' async src', $tag );

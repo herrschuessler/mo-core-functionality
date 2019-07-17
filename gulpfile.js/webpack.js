@@ -28,7 +28,7 @@ module.exports = function() {
       }
     },
     entry: {
-      lazysizes: ['./lazysizes.js']
+      images: ['./images.js']
     },
     output: {
       filename: '[name].js',
@@ -69,7 +69,7 @@ module.exports = function() {
     stats: 'minimal'
   };
 
-  webpackConfig.mode = 'production';
+  webpackConfig.mode = 'development';
   webpackConfig.output.path = outputPath;
   webpackConfig.output.publicPath = publicPath;
   webpackConfig.plugins.push(
