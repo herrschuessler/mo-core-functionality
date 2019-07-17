@@ -14,47 +14,61 @@ trait Images {
 	/*
 	* Build responsive image markup for use in twig templates.
 	*/
-	public function the_image_sizes( $image, $ratio = 1, $min = 300, $max = 900, $increase = 100, $class = '', $copyright = true, $fit = false, $link = false ) {
+	public function the_image_sizes( $image, $args = [] ) {
 
-		if ( empty( $image ) ) {
+		if ( empty( $image ) || gettype( $image ) !== 'object' || get_class( $image ) !== 'Timber\Image' || ! is_array( $args ) ) {
 			return false;
 		}
 
-		$ratio = floatval( $ratio );
-
-		$data['image'] = $image;
-		$data['class'] = $class;
-		$data['fit'] = '';
-		$data['copyright'] = get_field( 'copyright', $image );
-		$data['copyright_link'] = get_field( 'copyright_link', $image );
-		$data['sizes_source'] = [];
-		$data['sizes_webp'] = [];
-		$data['max'] = [
-			'w' => $max,
-			'h' => round( $max * $ratio ),
+		$defaults = [
+			'ratio'   => 1,
+			'min'     => 300,
+			'max'     => 900,
+			'steps'   => 100,
+			'classes' => null,
+			'style'   => null,
+			'fit'     => false,
+			'link'    => false,
 		];
-		$data['link'] = htmlentities( $link );
-		$size = $min;
 
-		if ( $fit == 'cover' ) {
+		$args = wp_parse_args( $args, $defaults );
+
+		$args['ratio'] = floatval( $args['ratio'] );
+
+		$data['image']          = $image;
+		$data['class']          = $args['classes'] ? esc_attr( $args['classes'] ) : '';
+		$data['style']          = $args['style'] ? esc_attr( $args['style'] ) : false;
+		$data['link']           = $args['link'] ? esc_attr( $args['link'] ) : false;
+		$data['fit']            = '';
+		$data['copyright']      = get_field( 'copyright', $image );
+		$data['copyright_link'] = get_field( 'copyright_link', $image );
+		$data['sizes_source']   = [];
+		$data['sizes_webp']     = [];
+		$data['max'] = [
+			'w' => $args['max'],
+			'h' => round( $args['max'] * $args['ratio'] ),
+		];
+		$size = $args['min'];
+
+		if ( $args['fit'] == 'cover' ) {
 			$data['class'] .= ' cover-img';
 			$data['fit'] = ' data-parent-fit="cover"';
-		} elseif ( $fit == 'contain' ) {
+		} elseif ( $args['fit'] == 'contain' ) {
 			$data['class'] .= ' contain-img';
 			$data['fit'] = ' data-parent-fit="contain"';
 		}
 
 		// Add image sizes
-		while ( $size <= $max && $size <= $image->width ) {
-			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $size . ', ' . round( $size * $ratio ) . ') }} ' . $size . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $size . ', ' . round( $size * $ratio ) . ')|towebp(70) }} ' . $size . 'w' );
-			$size = $size + $increase;
+		while ( $size <= $args['max'] && $size <= $image->width ) {
+			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $size . ', ' . round( $size * $args['ratio'] ) . ') }} ' . $size . 'w' );
+			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $size . ', ' . round( $size * $args['ratio'] ) . ')|towebp(70) }} ' . $size . 'w' );
+			$size = $size + $args['steps'];
 		}
 
 		// If last size was smaller than original image dimensions, add original image
-		if ( ( $size - $increase ) < $image->width && ( $size - $increase ) < $max ) {
-			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $image->width . ', ' . round( $image->width * $ratio ) . ') }} ' . $image->width . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $image->width . ', ' . round( $image->width * $ratio ) . ')|towebp(70) }} ' . $image->width . 'w' );
+		if ( ( $size - $args['steps'] ) < $image->width && ( $size - $args['steps'] ) < $args['max'] ) {
+			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $image->width . ', ' . round( $image->width * $args['ratio'] ) . ') }} ' . $image->width . 'w' );
+			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $image->width . ', ' . round( $image->width * $args['ratio'] ) . ')|towebp(70) }} ' . $image->width . 'w' );
 		}
 
 		return \Timber::compile_string(
@@ -63,10 +77,13 @@ trait Images {
         <a class="media-image__link" href="{{ link|e("esc_url") }}">
       {% endif %}
         <picture>
-          <source data-srcset="' . implode( ', ', $data['sizes_webp'] ) . '" type="image/webp">
+          {#<source data-srcset="' . implode( ', ', $data['sizes_webp'] ) . '" type="image/webp">#}
           <source data-srcset="' . implode( ', ', $data['sizes_source'] ) . '" type="image/jpeg">
           <img
-            class="{{ class }} lazyload js-lazyload"
+            class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
+            {% if style is not empty %}
+            style="{{ style }}"
+            {% endif %}
             alt="{{ image.alt }}"
             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
             data-src="{{ image.guid|resize(max.w, max.h) }}"
@@ -92,12 +109,14 @@ trait Images {
 		);
 	}
 
-	public function the_cover_image_sizes( $image, $ratio = 1, $min = 300, $max = 900, $increase = 100, $class = '', $copyright = true, $link = false ) {
-		return image_sizes( $image, $ratio, $min, $max, $increase, $class, $copyright, 'cover', $link );
+	public function the_cover_image_sizes( $image, $args ) {
+		$args['fit'] = 'cover';
+		return image_sizes( $image, $args );
 	}
 
-	public function the_contain_image_sizes( $image, $ratio = 1, $min = 300, $max = 900, $increase = 100, $class = '', $copyright = true, $link = false ) {
-		return image_sizes( $image, $ratio, $min, $max, $increase, $class, $copyright, 'contain', $link );
+	public function the_contain_image_sizes( $image, $args ) {
+		$args['fit'] = 'contain';
+		return image_sizes( $image, $args );
 	}
 
 }
