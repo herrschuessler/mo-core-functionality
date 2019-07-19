@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.3.0
+ * Version:     1.3.1
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
@@ -46,7 +46,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.3.0';
+	const PLUGIN_VERSION = '1.3.1';
 	protected static $instance = null;
 
 	/**
@@ -76,6 +76,10 @@ final class Core_Functionality {
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
 
+		// Action hooks for get_all_posts()
+		\add_action( 'save_post', array( $this, 'delete_all_posts_transient' ) );
+		\add_action( 'delete_post', array( $this, 'delete_all_posts_transient' ) );
+
 	}
 
 	/**
@@ -98,6 +102,64 @@ final class Core_Functionality {
 			}
 		}
 		return $tag;
+	}
+
+	/**
+	 * Get all posts of a specific $post_type (with transient caching) as Timber\Post.
+	 *
+	 * @param string $post_type The post type.
+	 * @param string $post_class The post class. Default is \Timber\Post.
+	 */
+	public static function get_all_posts( $post_type = false, $post_class = '\Timber\Post' ) {
+
+		if ( is_string( $post_type ) && is_string( $post_class ) ) {
+
+			$ids = get_transient( 'mocore_all_' . $post_type );
+			if ( ! $ids ) {
+				$query = new \WP_Query(
+					[
+						'post_type'       => $post_type,
+						'post_status'     => 'publish',
+						'posts_per_page'  => -1,
+						'fields'          => 'ids',
+					]
+				);
+					$ids = $query->posts;
+					set_transient( 'mocore_all_' . $post_type, $ids, MONTH_IN_SECONDS );
+			}
+
+			$posts = new \Timber\PostQuery(
+				[
+					'post_type' => $post_type,
+					'post__in'  => $ids,
+					'orderby'   => 'menu_order',
+					'order'     => 'ASC',
+				],
+				$post_class
+			);
+
+			return $posts;
+		}
+		return false;
+	}
+
+	/**
+	 * Delete transient cache from get_all_posts() on save / update / delete.
+	 *
+	 * @param int $post_id The post id
+	 */
+	public static function delete_all_posts_transient( $post_id ) {
+
+		if ( ! is_int( $post_id ) ) {
+			return;
+		}
+
+		$post_type = get_post_type( $post_id );
+
+		// Delete transient for specific post type.
+		if ( $post_type ) {
+			delete_transient( 'mocore_all_' . $post_type );
+		}
 	}
 
 }
