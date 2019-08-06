@@ -109,14 +109,16 @@ trait Images {
 		);
 	}
 
-	public function the_cover_image_sizes( $image, $args ) {
+	public function the_cover_image_sizes( $image, $args = [] ) {
+		$args = wp_parse_args( $args );
 		$args['fit'] = 'cover';
-		return image_sizes( $image, $args );
+		return $this->the_image_sizes( $image, $args );
 	}
 
-	public function the_contain_image_sizes( $image, $args ) {
+	public function the_contain_image_sizes( $image, $args = [] ) {
+		$args = wp_parse_args( $args );
 		$args['fit'] = 'contain';
-		return image_sizes( $image, $args );
+		return $this->the_image_sizes( $image, $args );
 	}
 
 }
