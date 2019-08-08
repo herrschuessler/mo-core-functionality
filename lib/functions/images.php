@@ -63,16 +63,16 @@ trait Images {
 		// Add image sizes
 		while ( $width <= $args['max'] && $width <= $image->width ) {
 			$height = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
-			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $width . ', ' . $height . ') }} ' . $width . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $width . ', ' . $height . ')|towebp(70) }} ' . $width . 'w' );
+			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $height . ') }} ' . $width . 'w' );
+			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $height . ')|towebp(70) }} ' . $width . 'w' );
 			$width = $width + $args['steps'];
 		}
 
 		// If last size was smaller than original image dimensions, add original image
 		if ( ( $width - $args['steps'] ) < $image->width && ( $width - $args['steps'] ) < $args['max'] ) {
 			$height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
-			array_push( $data['sizes_source'], '{{ image.guid|resize(' . $image->width . ', ' . $height . ') }} ' . $image->width . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.guid|resize(' . $image->width . ', ' . $height . ')|towebp(70) }} ' . $image->width . 'w' );
+			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $height . ') }} ' . $image->width . 'w' );
+			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $height . ')|towebp(70) }} ' . $image->width . 'w' );
 		}
 
 		return \Timber::compile_string(
@@ -90,7 +90,7 @@ trait Images {
       {% endif %}
       alt="{{ image.alt }}"
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-      data-src="{{ image.guid|resize(max.w, max.h) }}"
+      data-src="{{ image.src|resize(max.w, max.h) }}"
       data-sizes="auto"
       {{ fit }}>
     </picture>
