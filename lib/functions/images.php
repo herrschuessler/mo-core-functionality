@@ -90,7 +90,7 @@ trait Images {
       {% endif %}
       alt="{{ image.alt }}"
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-      data-src="{{ image.src|resize(max.w, max.h) }}"
+      data-src="' . end( $data['sizes_source'] ) . '"
       data-sizes="auto"
       {{ fit }}>
     </picture>
