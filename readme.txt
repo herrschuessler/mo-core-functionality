@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.2
