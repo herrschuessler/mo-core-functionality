@@ -22,19 +22,21 @@ function social_links( $data ) {
 
 	foreach ( $seo_data as $profile => $value ) {
 
-		switch ( $profile ) {
-			case 'facebook_site':
-			case 'instagram_url':
-			case 'linkedin_url':
-			case 'myspace_url':
-			case 'pinterest_url':
-			case 'youtube_url':
-			case 'wikipedia_url':
-				$social_links[ explode( '_', $profile )[0] ] = $value;
-				break;
-			case 'twitter_site':
-				$social_links[ explode( '_', $profile )[0] ] = 'https://twitter.com/' . $value . '/';
-				break;
+		if ( ! empty( $value ) ) {
+			switch ( $profile ) {
+				case 'facebook_site':
+				case 'instagram_url':
+				case 'linkedin_url':
+				case 'myspace_url':
+				case 'pinterest_url':
+				case 'youtube_url':
+				case 'wikipedia_url':
+					$social_links[ explode( '_', $profile )[0] ] = $value;
+					break;
+				case 'twitter_site':
+					$social_links[ explode( '_', $profile )[0] ] = 'https://twitter.com/' . $value . '/';
+					break;
+			}
 		}
 	}
 
