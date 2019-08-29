@@ -39,6 +39,7 @@ final class Twig_Extensions {
 	public function add_twig_filters( $twig ) {
 		$twig->addFilter( new \Twig_SimpleFilter( 'menu_item_classes', array( $this, 'menu_item_classes' ) ) );
 		$twig->addFilter( new \Twig_SimpleFilter( 'shuffle', array( $this, 'shuffle' ) ) ); // @todo Use native PHP function.
+		$twig->addFilter( new \Twig_SimpleFilter( 'tel_link', array( $this, 'tel_link' ) ) );
 		$twig->addFilter( new \Twig_SimpleFilter( 'the_content', array( $this, 'the_content' ) ) );
 
 		return $twig;
@@ -109,5 +110,25 @@ final class Twig_Extensions {
 		return \apply_filters( 'the_content', $content );
 	}
 
+	/**
+	 * Run phone number string through libphonenumber-for-php.
+	 *
+	 * @var string $tel_string A phone number string.
+	 * @return string A phone number suitable for tel links
+	 */
+	public function tel_link( $tel_string ) {
+		if ( is_string( $tel_string ) || is_int( $tel_string ) ) {
+			$tel_object = false;
+			$phone_util = \libphonenumber\PhoneNumberUtil::getInstance();
+			try {
+				$tel_object = $phone_util->parse( $tel_string, 'DE' );
+			} catch ( \libphonenumber\NumberParseException $e ) {
+			}
+			if ( $phone_util->isValidNumber( $tel_object ) ) {
+				$tel_string = $phone_util->format( $tel_object, \libphonenumber\PhoneNumberFormat::E164 );
+			}
+		}
+		return $tel_string;
+	}
 }
 

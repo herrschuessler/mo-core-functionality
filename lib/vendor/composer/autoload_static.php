@@ -12,6 +12,10 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
     );
 
     public static $prefixLengthsPsr4 = array (
+        'l' => 
+        array (
+            'libphonenumber\\' => 15,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -22,6 +26,10 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'G' => 
+        array (
+            'Giggsey\\Locale\\' => 15,
+        ),
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
@@ -29,6 +37,10 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
     );
 
     public static $prefixDirsPsr4 = array (
+        'libphonenumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -44,6 +56,10 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Giggsey\\Locale\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/locale/src',
         ),
         'Composer\\Installers\\' => 
         array (

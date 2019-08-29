@@ -3,6 +3,7 @@
     "vendor-dir": "lib/vendor"
   },
   "require": {
-    "timber/timber": "^1.10"
+    "timber/timber": "^1.10",
+    "giggsey/libphonenumber-for-php": "^8.10"
   }
 }
