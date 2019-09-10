@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.4.0
+ * Version:     1.5.0
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
@@ -46,7 +46,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.4.0';
+	const PLUGIN_VERSION = '1.5.0';
 	protected static $instance = null;
 
 	/**
@@ -79,6 +79,9 @@ final class Core_Functionality {
 		// Action hooks for get_all_posts()
 		\add_action( 'save_post', array( $this, 'delete_all_posts_transient' ) );
 		\add_action( 'delete_post', array( $this, 'delete_all_posts_transient' ) );
+
+		// Run custom action hooks
+		\do_action( 'mo_core_cleanup' );
 
 	}
 
