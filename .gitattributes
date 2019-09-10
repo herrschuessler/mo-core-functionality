@@ -5,7 +5,7 @@
 composer.json export-ignore
 composer.lock export-ignore
 package-lock.json export-ignore
-packages.json export-ignore
+package.json export-ignore
 /gulpfile.js export-ignore
 /node_modules export-ignore
 /src export-ignore
