@@ -1,13 +1,16 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.2
+Tested up to: 5.2.3
 Requires PHP: 7.0.0
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.6.0 =
+* Update Timber to 1.11.0
 
 = 1.5.0 =
 * Cleanup WordPress HTML by removing <head> links and styles. Can be disabled by unhooking mo_core_cleanup action.
