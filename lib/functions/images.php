@@ -50,7 +50,8 @@ trait Images {
 			'h' => $args['ratio'] ? round( $args['max'] * $args['ratio'] ) : 0,
 		];
 		$width = $args['min'];
-		$height = 0;
+		$originalRatio = $image->height / $image->width;
+		$resizeHeight = 0;
 
 		if ( $args['fit'] == 'cover' ) {
 			$data['class'] .= ' cover-img';
@@ -62,17 +63,19 @@ trait Images {
 
 		// Add image sizes
 		while ( $width <= $args['max'] && $width <= $image->width ) {
-			$height = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $height . ') }} ' . $width . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $height . ')|towebp(70) }} ' . $width . 'w' );
+			$resizeHeight = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
+			$height = $args['ratio'] ? round( $width * $args['ratio'] ) : round( $width * $originalRatio );
+			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resizeHeight . ') }} ' . $width . 'w ' . $height . 'h' );
+			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $width . 'w ' . $height . 'h' );
 			$width = $width + $args['steps'];
 		}
 
 		// If last size was smaller than original image dimensions, add original image
 		if ( ( $width - $args['steps'] ) < $image->width && ( $width - $args['steps'] ) < $args['max'] ) {
-			$height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $height . ') }} ' . $image->width . 'w' );
-			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $height . ')|towebp(70) }} ' . $image->width . 'w' );
+			$resizeHeight = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
+			$height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : $image->height;
+			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resizeHeight . ') }} ' . $image->width . 'w ' . $height . 'h' );
+			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $image->width . 'w ' . $height . 'h' );
 		}
 
 		return \Timber::compile_string(
