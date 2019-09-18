@@ -44,7 +44,14 @@ trait Images {
 		$data['copyright']      = get_field( 'copyright', $image );
 		$data['copyright_link'] = get_field( 'copyright_link', $image );
 		$data['sizes_source']   = [];
-		$data['sizes_webp']     = [];
+
+		// Check webp server support
+		if ( function_exists( 'imagewebp' ) ) {
+			$data['sizes_webp']     = [];
+		} else {
+			$data['sizes_webp']     = false;
+		}
+
 		$data['max'] = [
 			'w' => $args['max'],
 			'h' => $args['ratio'] ? round( $args['max'] * $args['ratio'] ) : 0,
@@ -66,16 +73,21 @@ trait Images {
 			$resizeHeight = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
 			$height = $args['ratio'] ? round( $width * $args['ratio'] ) : round( $width * $originalRatio );
 			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resizeHeight . ') }} ' . $width . 'w ' . $height . 'h' );
-			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $width . 'w ' . $height . 'h' );
+			if ( is_array( $data['sizes_webp'] ) ) {
+				  array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $width . 'w ' . $height . 'h' );
+			}
 			$width = $width + $args['steps'];
 		}
 
-		// If last size was smaller than original image dimensions, add original image
+		// If last size was smaller than original image dimensions and original image is smaller
+		// than max requested size, add original image
 		if ( ( $width - $args['steps'] ) < $image->width && ( $width - $args['steps'] ) < $args['max'] ) {
 			$resizeHeight = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
 			$height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : $image->height;
 			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resizeHeight . ') }} ' . $image->width . 'w ' . $height . 'h' );
-			array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $image->width . 'w ' . $height . 'h' );
+			if ( is_array( $data['sizes_webp'] ) ) {
+				  array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $image->width . 'w ' . $height . 'h' );
+			}
 		}
 
 		return \Timber::compile_string(
@@ -84,7 +96,9 @@ trait Images {
     <a class="media-image__link" href="{{ link|e("esc_url") }}">
     {% endif %}
     <picture>
-      <source data-srcset="' . implode( ', ', $data['sizes_webp'] ) . '" type="image/webp">
+      {% if sizes_webp is not empty %}
+        <source data-srcset="' . implode( ', ', $data['sizes_webp'] ) . '" type="image/webp">
+      {% endif %}
       <source data-srcset="' . implode( ', ', $data['sizes_source'] ) . '" type="image/jpeg">
       <img
       class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
