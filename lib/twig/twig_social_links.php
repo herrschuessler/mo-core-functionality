@@ -18,6 +18,11 @@ namespace Mo\Core\Twig;
  */
 function social_links( $data ) {
 	$seo_data = get_option( 'wpseo_social' );
+
+	if ( ! is_array( $seo_data ) ) {
+		return;
+	}
+
 	$social_links = [];
 
 	foreach ( $seo_data as $profile => $value ) {
