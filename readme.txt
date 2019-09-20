@@ -9,7 +9,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
-= 1.6.3 =
+= 1.6.5 =
+* Fix template error in image_sizes
+
+= 1.6.4 =
 * Fix image_sizes for missing webp-support
 
 = 1.6.3 =

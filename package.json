@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Mo WordPress Plugin Core Functionality",
   "engines": {
     "node": "10.0.0",

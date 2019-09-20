@@ -104,7 +104,7 @@ trait Images {
     {% endif %}
     <picture>
       {% if sizes_webp is not empty %}
-        <source data-srcset="{{ sizes_webp }" type="image/webp">
+        <source data-srcset="{{ sizes_webp }}" type="image/webp">
       {% endif %}
       <source data-srcset="{{ sizes_source }}" type="image/jpeg">
       <img
