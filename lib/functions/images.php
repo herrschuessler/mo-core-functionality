@@ -90,6 +90,13 @@ trait Images {
 			}
 		}
 
+		// Compile image sources
+		$data['fallback'] = \Timber::compile_string( end( $data['sizes_source'] ), $data );
+		$data['sizes_source'] = \Timber::compile_string( implode( ', ', $data['sizes_source'] ), $data );
+		if ( $data['sizes_webp'] ) {
+			$data['sizes_webp'] = \Timber::compile_string( implode( ', ', $data['sizes_webp'] ), $data );
+		}
+
 		return \Timber::compile_string(
 			'
     {% if link is not empty %}
@@ -97,9 +104,9 @@ trait Images {
     {% endif %}
     <picture>
       {% if sizes_webp is not empty %}
-        <source data-srcset="' . implode( ', ', $data['sizes_webp'] ) . '" type="image/webp">
+        <source data-srcset="{{ sizes_webp }" type="image/webp">
       {% endif %}
-      <source data-srcset="' . implode( ', ', $data['sizes_source'] ) . '" type="image/jpeg">
+      <source data-srcset="{{ sizes_source }}" type="image/jpeg">
       <img
       class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
       {% if style is not empty %}
@@ -107,7 +114,7 @@ trait Images {
       {% endif %}
       alt="{{ image.alt }}"
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-      data-src="' . end( $data['sizes_source'] ) . '"
+      data-src="{{ fallback }}"
       data-sizes="auto"
       {{ fit }}>
     </picture>
