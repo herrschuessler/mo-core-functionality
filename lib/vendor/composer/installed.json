@@ -238,17 +238,17 @@
     },
     {
         "name": "giggsey/libphonenumber-for-php",
-        "version": "8.10.20",
-        "version_normalized": "8.10.20.0",
+        "version": "8.10.21",
+        "version_normalized": "8.10.21.0",
         "source": {
             "type": "git",
             "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-            "reference": "aed1229bef97cd4abc6f67cbc064cf832d259327"
+            "reference": "04d0228908237931bc1d9c841e3380991055a7e6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/aed1229bef97cd4abc6f67cbc064cf832d259327",
-            "reference": "aed1229bef97cd4abc6f67cbc064cf832d259327",
+            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/04d0228908237931bc1d9c841e3380991055a7e6",
+            "reference": "04d0228908237931bc1d9c841e3380991055a7e6",
             "shasum": ""
         },
         "require": {
@@ -265,7 +265,7 @@
             "phpunit/phpunit": "^4.8.36|^5.0",
             "symfony/console": "^2.8|^3.0"
         },
-        "time": "2019-10-02T20:06:44+00:00",
+        "time": "2019-10-16T11:25:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -480,17 +480,17 @@
     },
     {
         "name": "timber/timber",
-        "version": "1.11.0",
-        "version_normalized": "1.11.0.0",
+        "version": "1.12.1",
+        "version_normalized": "1.12.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/timber/timber.git",
-            "reference": "a08370165c9240a33b977b037574181d3e1fa5a1"
+            "reference": "5dd3cbb3b06e1f68f9de4530d1de7ae129e91aac"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/timber/timber/zipball/a08370165c9240a33b977b037574181d3e1fa5a1",
-            "reference": "a08370165c9240a33b977b037574181d3e1fa5a1",
+            "url": "https://api.github.com/repos/timber/timber/zipball/5dd3cbb3b06e1f68f9de4530d1de7ae129e91aac",
+            "reference": "5dd3cbb3b06e1f68f9de4530d1de7ae129e91aac",
             "shasum": ""
         },
         "require": {
@@ -502,7 +502,7 @@
         },
         "require-dev": {
             "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-            "johnpbloch/wordpress": "4.*",
+            "johnpbloch/wordpress": "*",
             "phpunit/phpunit": "5.7.16|6.*",
             "squizlabs/php_codesniffer": "3.*",
             "wp-coding-standards/wpcs": "^2.0",
@@ -512,7 +512,7 @@
         "suggest": {
             "satooshi/php-coveralls": "1.0.* for code coverage"
         },
-        "time": "2019-09-14T21:26:27+00:00",
+        "time": "2019-10-20T14:32:56+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -547,17 +547,17 @@
     },
     {
         "name": "twig/twig",
-        "version": "v2.12.0",
-        "version_normalized": "2.12.0.0",
+        "version": "v2.12.1",
+        "version_normalized": "2.12.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "c7a85fd08348ca04b4d8f234f49583d9910906aa"
+            "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/c7a85fd08348ca04b4d8f234f49583d9910906aa",
-            "reference": "c7a85fd08348ca04b4d8f234f49583d9910906aa",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
+            "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
             "shasum": ""
         },
         "require": {
@@ -570,7 +570,7 @@
             "symfony/debug": "^3.4|^4.2",
             "symfony/phpunit-bridge": "^4.4@dev|^5.0"
         },
-        "time": "2019-10-05T16:42:38+00:00",
+        "time": "2019-10-17T07:34:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
