@@ -1,13 +1,16 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.2.3
+Tested up to: 5.2.4
 Requires PHP: 7.0.0
-Stable tag: 1.6.7
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.7.0 =
+* Add width and height attributes to responsive image source
 
 = 1.6.7 =
 * Update dependencies (incl. Timber 1.12.1)

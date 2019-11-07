@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.6.7",
+  "version": "1.7.0",
   "description": "Mo WordPress Plugin Core Functionality",
   "engines": {
     "node": "10.0.0",
@@ -15,7 +15,7 @@
     "lazysizes": "^5.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.0",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
@@ -23,7 +23,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
-    "core-js": "^3.3.6",
+    "core-js": "^3.4.0",
     "del": "^5.1.0",
     "eslint": "^6.6.0",
     "eslint-loader": "^3.0.2",
