@@ -76,6 +76,8 @@ trait Images {
 			if ( is_array( $data['sizes_webp'] ) ) {
 				  array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $width . 'w ' . $height . 'h' );
 			}
+			$data['width'] = $width;
+			$data['height'] = $height;
 			$width = $width + $args['steps'];
 		}
 
@@ -88,6 +90,8 @@ trait Images {
 			if ( is_array( $data['sizes_webp'] ) ) {
 				  array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resizeHeight . ')|towebp(70) }} ' . $image->width . 'w ' . $height . 'h' );
 			}
+			$data['width'] = $image->width;
+			$data['height'] = $height;
 		}
 
 		// Compile image sources
@@ -116,6 +120,8 @@ trait Images {
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       data-src="{{ fallback }}"
       data-sizes="auto"
+      width="{{ width }}"
+      height="{{ height }}"
       {{ fit }}>
     </picture>
     {% if link is not empty %}
