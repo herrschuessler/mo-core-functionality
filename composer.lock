@@ -239,16 +239,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.10.22",
+            "version": "8.10.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "f3a55dcb6fead9d4fb291c6dadda0564e5ae8d3f"
+                "reference": "e5643cc3e10b3e071632b23c973ec5fe20137a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/f3a55dcb6fead9d4fb291c6dadda0564e5ae8d3f",
-                "reference": "f3a55dcb6fead9d4fb291c6dadda0564e5ae8d3f",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/e5643cc3e10b3e071632b23c973ec5fe20137a56",
+                "reference": "e5643cc3e10b3e071632b23c973ec5fe20137a56",
                 "shasum": ""
             },
             "require": {
@@ -303,7 +303,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2019-10-30T11:52:30+00:00"
+            "time": "2019-11-13T09:59:46+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -473,16 +473,16 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.12.1",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "5dd3cbb3b06e1f68f9de4530d1de7ae129e91aac"
+                "reference": "38c689f6afdd708bc126acb49d7f3d99a526013c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/5dd3cbb3b06e1f68f9de4530d1de7ae129e91aac",
-                "reference": "5dd3cbb3b06e1f68f9de4530d1de7ae129e91aac",
+                "url": "https://api.github.com/repos/timber/timber/zipball/38c689f6afdd708bc126acb49d7f3d99a526013c",
+                "reference": "38c689f6afdd708bc126acb49d7f3d99a526013c",
                 "shasum": ""
             },
             "require": {
@@ -534,20 +534,20 @@
                 "timber",
                 "twig"
             ],
-            "time": "2019-10-20T14:32:56+00:00"
+            "time": "2019-11-19T19:23:07+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v2.12.1",
+            "version": "v2.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5"
+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
-                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
                 "shasum": ""
             },
             "require": {
@@ -601,7 +601,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-10-17T07:34:53+00:00"
+            "time": "2019-11-11T16:52:09+00:00"
         },
         {
             "name": "upstatement/routes",

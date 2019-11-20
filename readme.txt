@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.7.1 =
+* Update dependencies (incl. Timber 1.13.0)
+
 = 1.7.0 =
 * Add width and height attributes to responsive image source
 
