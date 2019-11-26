@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.8.0 =
+* Force different admin color schemes for DEV and LIVE sites
+
 = 1.7.1 =
 * Update dependencies (incl. Timber 1.13.0)
 
