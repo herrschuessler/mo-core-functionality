@@ -1,9 +1,15 @@
 <?php
 namespace Mo\Core\Action;
 
-define( 'DISABLE_NAG_NOTICES', true );
+/**
+ * Disable nag notices.
+ * Make sure they aren't already defined!
+ */
+if ( ! defined( 'DISABLE_NAG_NOTICES' ) ) {
+	define( 'DISABLE_NAG_NOTICES', true );
+}
 
-/*
+/**
  * Cleanup WordPress HTML.
  */
 function cleanup() {
@@ -22,10 +28,13 @@ function cleanup() {
 	\remove_action( 'rdf_header', 'the_generator' );
 	\remove_action( 'opml_head', 'the_generator' );
 	\remove_action( 'app_head', 'the_generator' );
+	\add_filter( 'the_generator', '__return_false' );
 
 	// Remove the next and previous post links.
 	\remove_action( 'wp_head', 'adjacent_posts_rel_link', 10 );
 	\remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
+	\remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+	\remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 
 	// Remove the shortlink url from header.
 	\remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
