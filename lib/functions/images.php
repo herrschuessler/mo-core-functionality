@@ -45,8 +45,8 @@ trait Images {
 		$data['copyright_link'] = get_field( 'copyright_link', $image );
 		$data['sizes_source']   = [];
 
-		// Check webp server support
-		if ( function_exists( 'imagewebp' ) ) {
+		// Add webp if server supports it and image is a jpeg
+		if ( function_exists( 'imagewebp' ) && $image->post_mime_type === 'image/jpeg' ) {
 			$data['sizes_webp']     = [];
 		} else {
 			$data['sizes_webp']     = false;

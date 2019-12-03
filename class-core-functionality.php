@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.8.0
+ * Version:     1.9.0
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
@@ -23,7 +23,9 @@ namespace Mo\Core;
 defined( 'ABSPATH' ) || die();
 
 // Define absolute path to plugin root.
-define( 'Mo\Core\PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'Mo\Core\PLUGIN_PATH' ) ) {
+	define( 'Mo\Core\PLUGIN_PATH', wp_normalize_path( plugin_dir_path( __FILE__ ) ) );
+}
 
 // Require composer autoloader.
 require_once( \Mo\Core\PLUGIN_PATH . 'lib/vendor/autoload.php' );
@@ -46,7 +48,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.8.0';
+	const PLUGIN_VERSION = '1.9.0';
 	protected static $instance = null;
 
 	/**
