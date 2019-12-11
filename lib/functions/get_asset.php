@@ -58,3 +58,15 @@ function get_js_asset( $file = null, $version = true ) {
 
 	return $path;
 }
+
+/**
+ * Get JS public_path
+ */
+function get_js_public_path() {
+
+	// use minified script if not in dev mode.
+	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$path = get_stylesheet_directory_uri() . '/assets/js/' . $folder;
+
+	return $path;
+}
