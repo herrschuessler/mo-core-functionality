@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.10.0
+ * Version:     1.11.0
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
@@ -28,27 +28,31 @@ if ( ! defined( 'Mo\Core\PLUGIN_PATH' ) ) {
 }
 
 // Require composer autoloader.
-require_once( \Mo\Core\PLUGIN_PATH . 'lib/vendor/autoload.php' );
+require_once \Mo\Core\PLUGIN_PATH . 'lib/vendor/autoload.php';
 
 // Require globing function.
-require_once( \Mo\Core\PLUGIN_PATH . 'lib/glob_require.php' );
+require_once \Mo\Core\PLUGIN_PATH . 'lib/require-folders.php';
 
 // Require subdirectories.
-glob_require( array( 'functions', 'twig', 'actions', 'filter' ) );
+require_folders( array( 'functions', 'twig', 'actions', 'filter', 'hooks' ) );
 
 // Init plugin instance.
 \add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );
 
 /**
  * Plugin code.
- *
- * @var object|null $instance The plugin singleton.
  */
 final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.10.0';
+	const PLUGIN_VERSION = '1.11.0';
+
+	/**
+	 * The plugin singleton.
+	 *
+	 * @var Core_Functionality Class instance.
+	 */
 	protected static $instance = null;
 
 	/**
@@ -68,21 +72,21 @@ final class Core_Functionality {
 	 */
 	private function __construct() {
 
-		// Init Timber
+		// Init Timber.
 		new \Timber\Timber();
 
-		// Init Twig Extensions
+		// Init Twig Extensions.
 		new \Mo\Core\Twig\Twig_Extensions();
 
-		// Add action hooks
+		// Add action hooks.
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
 
-		// Action hooks for get_all_posts()
+		// Action hooks for get_all_posts().
 		\add_action( 'save_post', array( $this, 'delete_all_posts_transient' ) );
 		\add_action( 'delete_post', array( $this, 'delete_all_posts_transient' ) );
 
-		// Run custom action hooks
+		// Run custom action hooks.
 		\do_action( 'mo_core_cleanup' );
 
 	}
@@ -98,6 +102,9 @@ final class Core_Functionality {
 
 	/**
 	 * Add defer attribute to scripts.
+	 *
+	 * @param string $tag The <script> tag for the enqueued script.
+	 * @param string $handle The script's registered handle.
 	 */
 	public function async_theme_scripts( $tag, $handle ) {
 		$scripts_to_defer = array( 'mo-images' );
@@ -123,14 +130,14 @@ final class Core_Functionality {
 			if ( ! $ids ) {
 				$query = new \WP_Query(
 					[
-						'post_type'       => $post_type,
-						'post_status'     => 'publish',
-						'posts_per_page'  => -1,
-						'fields'          => 'ids',
+						'post_type'      => $post_type,
+						'post_status'    => 'publish',
+						'posts_per_page' => -1,
+						'fields'         => 'ids',
 					]
 				);
-				  $ids = $query->posts;
-				  set_transient( 'mocore_all_' . $post_type, $ids, MONTH_IN_SECONDS );
+				$ids   = $query->posts;
+				set_transient( 'mocore_all_' . $post_type, $ids, MONTH_IN_SECONDS );
 			}
 
 			$posts = new \Timber\PostQuery(
@@ -151,7 +158,7 @@ final class Core_Functionality {
 	/**
 	 * Delete transient cache from get_all_posts() on save / update / delete.
 	 *
-	 * @param int $post_id The post id
+	 * @param int $post_id The post id.
 	 */
 	public static function delete_all_posts_transient( $post_id ) {
 
@@ -166,5 +173,4 @@ final class Core_Functionality {
 			delete_transient( 'mocore_all_' . $post_type );
 		}
 	}
-
 }

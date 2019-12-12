@@ -1,0 +1,91 @@
+<?php
+/**
+ * Get Asset URLs
+ *
+ * Functions return assets URLs depending on WP_ENV. If WP_ENV is
+ * set to development, an unminified dev asset will be returned, else
+ * the production asset will be used.
+ *
+ * @category   Plugin
+ * @package    WordPress
+ * @subpackage Mo\Core
+ * @author     Christoph Schüßler <schuessler@montagmorgens.com>
+ * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @since      1.11.0
+ */
+
+namespace Mo\Core;
+
+/**
+ * Get CSS asset path.
+ *
+ * @param array $file The file name.
+ * @param bool  $version Wether to append version.
+ */
+function get_css_asset( $file = null, $version = true ) {
+
+	if ( ! is_string( $file ) ) {
+		return false;
+	}
+
+	// Use minified style if not in dev mode.
+	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$path   = get_template_directory_uri() . '/assets/css/' . $folder . filter_var( $file, FILTER_SANITIZE_ENCODED );
+
+	// Append version.
+	if ( $version ) {
+		if ( is_string( $version ) ) {
+			// If $version is a string, use it as version number.
+			$version = esc_attr( $version );
+		} else {
+			// If $version is not a string, use theme version number as asset version.
+			$version = wp_get_theme()['Version'];
+		}
+		$path .= '?ver=' . $version;
+	}
+
+	return $path;
+}
+
+/**
+ * Get JS asset path.
+ *
+ * @param array $file The file name.
+ * @param bool  $version Wether to append version.
+ */
+function get_js_asset( $file = null, $version = true ) {
+
+	if ( ! is_string( $file ) ) {
+		return false;
+	}
+
+	// Use minified script if not in dev mode.
+	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$path   = get_template_directory_uri() . '/assets/js/' . $folder . filter_var( $file, FILTER_SANITIZE_ENCODED );
+
+	// Append version.
+	if ( $version ) {
+		if ( is_string( $version ) ) {
+			// If $version is a string, use it as version number.
+			$version = esc_attr( $version );
+		} else {
+			// If $version is not a string, use theme version number as asset version.
+			$version = wp_get_theme()['Version'];
+		}
+		$path .= '?ver=' . $version;
+	}
+
+	return $path;
+}
+
+/**
+ * Get JS public_path.
+ */
+function get_js_public_path() {
+
+	// use minified script if not in dev mode.
+	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$path   = get_stylesheet_directory_uri() . '/assets/js/' . $folder;
+
+	return $path;
+}

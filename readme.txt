@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.11.0 =
+* HTTP/2 Push enqueued assets
+
 = 1.10.0 =
 * Add function get_js_public_path
 
