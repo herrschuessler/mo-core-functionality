@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "name": "lib",
+      "path": "lib"
+    },
+    {
+      "name": "js",
+      "path": "src/js"
+    },
+    {
+      "name": "gulpfile.js",
+      "path": "gulpfile.js"
+    },
+    {
+      "name": "ASSETS",
+      "path": "assets"
+    },
+    {
+      "name": "ROOT",
+      "path": "."
+    }
+  ]
+}
