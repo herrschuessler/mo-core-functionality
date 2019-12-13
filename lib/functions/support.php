@@ -16,7 +16,7 @@ namespace Mo\Core;
  * Determine if a given string ends with a given substring.
  *
  * @param  string       $haystack The string.
- * @param  string|array $needles The substing(s).
+ * @param  string|array $needles The substring(s).
  * @return bool
  * @link   https://github.com/laravel/framework/blob/6.x/src/Illuminate/Support/Str.php
  */
