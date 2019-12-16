@@ -30,7 +30,7 @@ function get_css_asset( $file = null, $version = true ) {
 
 	// Use minified style if not in dev mode.
 	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
-	$path   = get_template_directory_uri() . '/assets/css/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
+	$path   = get_stylesheet_directory_uri() . '/assets/css/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
 
 	// Append version.
 	if ( $version ) {
@@ -61,7 +61,7 @@ function get_js_asset( $file = null, $version = true ) {
 
 	// Use minified script if not in dev mode.
 	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
-	$path   = get_template_directory_uri() . '/assets/js/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
+	$path   = get_stylesheet_directory_uri() . '/assets/js/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
 
 	// Append version.
 	if ( $version ) {
