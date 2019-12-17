@@ -45,6 +45,10 @@ sftp-config-alt.json
 node_modules
 *.node
 
+# VSCode             #
+######################
+*.code-workspace
+
 # Boilerplate        #
 ######################
 example-module.*
