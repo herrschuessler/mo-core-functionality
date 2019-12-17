@@ -50,5 +50,6 @@ function push_styles() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', '\Mo\Core\push_scripts', PHP_INT_MAX );
-add_action( 'wp_enqueue_scripts', '\Mo\Core\push_styles', PHP_INT_MAX );
+// @todo Make this work
+// add_action( 'wp_enqueue_scripts', '\Mo\Core\push_scripts', PHP_INT_MAX );
+// add_action( 'wp_enqueue_scripts', '\Mo\Core\push_styles', PHP_INT_MAX );
