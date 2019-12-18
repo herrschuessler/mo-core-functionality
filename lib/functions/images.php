@@ -3,8 +3,7 @@
  * Print image markup
  *
  * @category   Plugin
- * @package    WordPress
- * @subpackage Mo\Core
+ * @package    Mo\Core
  * @author     Christoph Schüßler <schuessler@montagmorgens.com>
  * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
  * @since      1.0.0

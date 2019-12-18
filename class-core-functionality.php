@@ -2,7 +2,7 @@
 /**
  * Core Functionality
  *
- * @package     Core_Functionality
+ * @package     Mo\Core
  * @author      MONTAGMORGENS GmbH
  * @copyright   2019 MONTAGMORGENS GmbH
  *

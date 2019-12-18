@@ -1,7 +1,17 @@
 <?php
+/**
+ * Grant editors access to menus
+ *
+ * @category   Plugin
+ * @package    Mo\Core
+ * @author     Christoph Schüßler <schuessler@montagmorgens.com>
+ * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @since      1.8.0
+ */
+
 namespace Mo\Core\Action;
 
-/*
+/**
  * Grant editors access to menus.
  */
 function grant_editor_menu_cap() {

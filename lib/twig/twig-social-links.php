@@ -4,9 +4,11 @@
  *
  * Adds social links from Yoast SEO plugin to timber context
  *
- * @package     Core_Functionality
- * @author      MONTAGMORGENS GmbH
- * @copyright   2019 MONTAGMORGENS GmbH
+ * @category   Plugin
+ * @package    Mo\Core
+ * @author     Christoph Schüßler <schuessler@montagmorgens.com>
+ * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @since      1.0.0
  */
 
 namespace Mo\Core\Twig;
@@ -14,7 +16,7 @@ namespace Mo\Core\Twig;
 /**
  * Setup global Timber context.
  *
- * @var array $data The timber context variables.
+ * @param array $data The timber context variables.
  */
 function social_links( $data ) {
 	$seo_data = get_option( 'wpseo_social' );

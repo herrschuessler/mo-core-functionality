@@ -5,8 +5,7 @@
  * Push all enqueued assets to browser over HTTP/2 pipeline.
  *
  * @category   Plugin
- * @package    WordPress
- * @subpackage Mo\Core
+ * @package    Mo\Core
  * @author     Tom J Nowell <contact@tomjn.com>
  * @link       https://gist.github.com/tomjn/7fe22a4ec20f2565004bd216e9d1f497 GitHub Gist
  * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
