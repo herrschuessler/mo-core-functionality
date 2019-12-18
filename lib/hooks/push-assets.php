@@ -22,12 +22,25 @@ namespace Mo\Core;
  */
 function get_dep_url( $dep ) {
 	global $wp_version;
-	$relative = str_replace( site_url(), '', $dep->src );
-	$ver      = $dep->ver;
+	$site_url = wp_parse_url( site_url() );
+	$dep_url  = wp_parse_url( $dep->src );
+
+	// Filter out external resources.
+	if ( array_key_exists( 'host', $dep_url ) && $dep_url['host'] !== $site_url['host'] ) {
+		return false;
+	}
+
+	// Filter out empty resources.
+	if ( ( array_key_exists( 'path', $dep_url ) && empty( $dep_url['path'] ) ) || ! array_key_exists( 'path', $dep_url ) ) {
+		return false;
+	}
+
+	// Add version.
+	$ver = $dep->ver;
 	if ( false === $ver ) {
 		$ver = $wp_version;
 	}
-	return $relative . '?ver=' . $ver;
+	return $dep_url['path'] . '?ver=' . $ver;
 }
 
 /**
@@ -36,7 +49,10 @@ function get_dep_url( $dep ) {
 function push_scripts() {
 	global $wp_scripts, $wp_styles;
 	foreach ( $wp_scripts->queue as $handle ) {
-		header( 'Link: <' . get_dep_url( $wp_scripts->registered[ $handle ] ) . '>; rel=preload; as=script', false );
+		$url = get_dep_url( $wp_scripts->registered[ $handle ] );
+		if ( $url && ! headers_sent() ) {
+			header( 'Link: <' . $url . '>; rel=preload; as=script', false );
+		}
 	}
 }
 
@@ -46,10 +62,12 @@ function push_scripts() {
 function push_styles() {
 	global $wp_styles;
 	foreach ( $wp_styles->queue as $handle ) {
-		header( 'Link: <' . get_dep_url( $wp_styles->registered[ $handle ] ) . '>; rel=preload; as=style', false );
+		$url = get_dep_url( $wp_styles->registered[ $handle ] );
+		if ( $url && ! headers_sent() ) {
+			header( 'Link: <' . $url . '>; rel=preload; as=style', false );
+		}
 	}
 }
 
-// @todo Make this work
-// add_action( 'wp_enqueue_scripts', '\Mo\Core\push_scripts', PHP_INT_MAX );
-// add_action( 'wp_enqueue_scripts', '\Mo\Core\push_styles', PHP_INT_MAX );
+add_action( 'wp_enqueue_scripts', '\Mo\Core\push_scripts', PHP_INT_MAX );
+add_action( 'wp_enqueue_scripts', '\Mo\Core\push_styles', PHP_INT_MAX );
