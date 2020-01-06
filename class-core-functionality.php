@@ -2,9 +2,11 @@
 /**
  * Core Functionality
  *
- * @package     Mo\Core
- * @author      MONTAGMORGENS GmbH
- * @copyright   2019 MONTAGMORGENS GmbH
+ * @category   Plugin
+ * @package    Mo\Core
+ * @author     Christoph Schüßler <schuessler@montagmorgens.com>
+ * @license    https://www.gnu.org/licenses/gpl-2.0.txt GNU/GPLv2
+ * @since      1.0.0
  *
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
@@ -13,6 +15,7 @@
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: mo-core
  * GitHub Plugin URI: montagmorgens/mo-core-functionality
  */

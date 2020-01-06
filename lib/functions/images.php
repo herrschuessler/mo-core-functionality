@@ -5,7 +5,7 @@
  * @category   Plugin
  * @package    Mo\Core
  * @author     Christoph Schüßler <schuessler@montagmorgens.com>
- * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @license    https://www.gnu.org/licenses/gpl-2.0.txt GNU/GPLv2
  * @since      1.0.0
  */
 
