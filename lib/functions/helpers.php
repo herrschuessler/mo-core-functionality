@@ -11,6 +11,8 @@
 
 namespace Mo\Core;
 
+use \Mo\Core\Core_Functionality as Core;
+
 trait Helpers {
 
 	/**
@@ -30,7 +32,7 @@ trait Helpers {
 			\add_action(
 				'admin_notices',
 				function() use ( $result ) {
-					if ( ! defined( 'WP_ENV' ) || WP_ENV !== 'development' ) {
+					if ( ! Core::is_dev() ) {
 						return;
 					}
 					echo '<div class="notice notice-info is-dismissible"><pre class="debug">';
@@ -58,7 +60,7 @@ trait Helpers {
 			\add_action(
 				'admin_notices',
 				function() use ( $message, $title, $type ) {
-					if ( ! defined( 'WP_ENV' ) || WP_ENV !== 'development' || ! is_string( $message ) || ! is_string( $type ) ) {
+					if ( ! Core::is_dev() || ! is_string( $message ) || ! is_string( $type ) ) {
 						return;
 					}
 					printf( '<div class="notice notice-%s">', esc_attr( $type ) );

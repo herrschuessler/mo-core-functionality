@@ -15,6 +15,8 @@
 
 namespace Mo\Core;
 
+use \Mo\Core\Core_Functionality as Core;
+
 /**
  * Get CSS asset path.
  *
@@ -28,7 +30,7 @@ function get_css_asset( $file = null, $version = true ) {
 	}
 
 	// Use minified style if not in dev mode.
-	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$folder = Core::is_dev() ? 'dev/' : 'dist/';
 	$path   = get_stylesheet_directory_uri() . '/assets/css/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
 
 	// Append version.
@@ -59,7 +61,7 @@ function get_js_asset( $file = null, $version = true ) {
 	}
 
 	// Use minified script if not in dev mode.
-	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$folder = Core::is_dev() ? 'dev/' : 'dist/';
 	$path   = get_stylesheet_directory_uri() . '/assets/js/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
 
 	// Append version.
@@ -83,7 +85,7 @@ function get_js_asset( $file = null, $version = true ) {
 function get_js_public_path() {
 
 	// use minified script if not in dev mode.
-	$folder = ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ? 'dev/' : 'dist/';
+	$folder = Core::is_dev() ? 'dev/' : 'dist/';
 	$path   = get_stylesheet_directory_uri() . '/assets/js/' . $folder;
 
 	return $path;

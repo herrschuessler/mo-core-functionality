@@ -11,6 +11,8 @@
 
 namespace Mo\Core\Action;
 
+use \Mo\Core\Core_Functionality as Core;
+
 /**
  * Set admmin color scheme to 'ectoplasm' on DEV installs, 'fresh' on live sites.
  *
@@ -18,7 +20,7 @@ namespace Mo\Core\Action;
  * @return string The new color scheme.
  */
 function set_dev_color_scheme( $color_scheme ) {
-	if ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) {
+	if ( Core::is_dev() ) {
 		return 'ectoplasm';
 	}
 	return 'fresh';

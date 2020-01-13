@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.3.0
+Tested up to: 5.3.2
 Requires PHP: 7.0.0
-Stable tag: 1.11.2
+Stable tag: 1.12.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.12.0 =
+* Update Timber to 1.14.0
+* Allow development environment to be set by either WP_ENV or WP_MO_ENV
 
 = 1.11.2 =
 * Enable fixed HTTP/2 Push of enqueued assets
