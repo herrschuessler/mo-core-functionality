@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name: MONTAGMORGENS Core Functionality
  * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.13.1
+ * Version:     1.13.2
  * Author:      MONTAGMORGENS GmbH
  * Author URI:  https://www.montagmorgens.com/
  * License:     GNU General Public License v.2
@@ -49,7 +49,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.13.1';
+	const PLUGIN_VERSION = '1.13.2';
 
 	/**
 	 * The plugin singleton.

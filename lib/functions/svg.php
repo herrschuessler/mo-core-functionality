@@ -29,7 +29,7 @@ trait SVG {
 			return false;
 		}
 
-		$data['icon'] = filter_var( get_template_directory_uri() . '/assets/svg-sprite/' . $set . '.svg#' . $icon, FILTER_SANITIZE_URL );
+		$data['icon'] = filter_var( get_stylesheet_directory_uri() . '/assets/svg-sprite/' . $set . '.svg#' . $icon, FILTER_SANITIZE_URL );
 
 		// The CSS classes.
 		$classes = is_array( $classes ) ? join( ' ', $classes ) : $classes;
@@ -89,7 +89,7 @@ trait SVG {
 			return false;
 		}
 
-		$data['src'] = filter_var( get_template_directory_uri() . '/assets/images/' . $icon . '.svg', FILTER_SANITIZE_URL );
+		$data['src'] = filter_var( get_stylesheet_directory_uri() . '/assets/images/' . $icon . '.svg', FILTER_SANITIZE_URL );
 
 		// The CSS classes.
 		$classes = is_array( $classes ) ? join( ' ', $classes ) : $classes;
