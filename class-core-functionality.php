@@ -33,11 +33,20 @@ if ( ! defined( 'Mo\Core\PLUGIN_PATH' ) ) {
 // Require composer autoloader.
 require_once \Mo\Core\PLUGIN_PATH . 'lib/vendor/autoload.php';
 
-// Require globing function.
-require_once \Mo\Core\PLUGIN_PATH . 'lib/require-folders.php';
+// Require functions.
+require_once \Mo\Core\PLUGIN_PATH . 'lib/functions/attach-style.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/functions/get-asset.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/functions/support.php';
 
-// Require subdirectories.
-require_folders( array( 'functions', 'twig', 'actions', 'filter', 'hooks' ) );
+// Require hooked functions.
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/acf.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/cleanup.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/grant-editor-menu-cap.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/grant-editor-privacy-cap.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/push-assets.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/set-dev-color-scheme.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/twig-social-links.php';
+
 
 // Init plugin instance.
 \add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );
@@ -79,7 +88,7 @@ final class Core_Functionality {
 		new \Timber\Timber();
 
 		// Init Twig Extensions.
-		new \Mo\Core\Twig\Twig_Extensions();
+		new \Mo\Core\Twig_Extensions();
 
 		// Add action hooks.
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );

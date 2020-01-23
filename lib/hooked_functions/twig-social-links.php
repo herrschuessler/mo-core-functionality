@@ -50,4 +50,5 @@ function social_links( $data ) {
 	$data['social_links'] = $social_links;
 	return $data;
 }
+
 add_filter( 'timber_context', 'Mo\Core\Twig\social_links' );

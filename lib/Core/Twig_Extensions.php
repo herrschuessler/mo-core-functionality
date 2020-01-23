@@ -9,7 +9,7 @@
  * @since      1.0.0
  */
 
-namespace Mo\Core\Twig;
+namespace Mo\Core;
 
 /**
  * Extends Twig.
@@ -18,7 +18,7 @@ final class Twig_Extensions {
 
 	use \Mo\Core\Helpers;
 	use \Mo\Core\Images;
-	use \Mo\Core\SVG;
+	use \Mo\Core\Svg;
 
 	/**
 	 * Constructor.

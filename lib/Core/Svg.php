@@ -11,7 +11,7 @@
 
 namespace Mo\Core;
 
-trait SVG {
+trait Svg {
 
 	/**
 	 * Print SVG icon markup.

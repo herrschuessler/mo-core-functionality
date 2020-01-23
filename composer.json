@@ -1,9 +1,18 @@
 {
+  "name": "mo/core-functionality",
+  "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
+  "license": "GPL-2.0-or-later",
   "config": {
-    "vendor-dir": "lib/vendor"
+    "vendor-dir": "lib/vendor",
+    "optimize-autoloader": true
   },
   "require": {
     "timber/timber": "^1.10",
     "giggsey/libphonenumber-for-php": "^8.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mo\\Core\\": "lib/Core/"
+    }
   }
 }

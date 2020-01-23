@@ -1,14 +1,14 @@
 {
   "name": "mo-core-functionality",
   "version": "1.13.2",
-  "description": "Mo WordPress Plugin Core Functionality",
+  "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
     "node": "10.0.0",
     "npm": "6.0.0"
   },
   "scripts": {
     "dev": "NODE_ENV=development gulp --require @babel/register",
-    "build": "NODE_ENV=production gulp --require @babel/register",
+    "build": "NODE_ENV=production gulp --require @babel/register && composer dump-autoload",
     "build-js": "NODE_ENV=production gulp js --require @babel/register"
   },
   "dependencies": {
