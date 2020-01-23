@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.15.0 =
+* Prepare for Twig 3
+
 = 1.14.0 =
 * Use PSR4 composer autoloading and direct inclusion of required files
 

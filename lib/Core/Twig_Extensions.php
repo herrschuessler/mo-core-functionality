@@ -36,7 +36,7 @@ final class Twig_Extensions {
 	 * @return object The Twig instance.
 	 */
 	public function init_twig_extension_stringloader( $twig ) {
-		$twig->addExtension( new \Twig_Extension_StringLoader() );
+		$twig->addExtension( new \Twig\Extension\StringLoaderExtension() );
 
 		return $twig;
 	}
@@ -48,10 +48,10 @@ final class Twig_Extensions {
 	 * @return object The Twig instance.
 	 */
 	public function add_twig_filters( $twig ) {
-		$twig->addFilter( new \Twig_SimpleFilter( 'menu_item_classes', array( $this, 'menu_item_classes' ) ) );
-		$twig->addFilter( new \Twig_SimpleFilter( 'shuffle', array( $this, 'shuffle' ) ) ); // @todo Use native PHP function.
-		$twig->addFilter( new \Twig_SimpleFilter( 'tel_link', array( $this, 'tel_link' ) ) );
-		$twig->addFilter( new \Twig_SimpleFilter( 'the_content', array( $this, 'the_content' ) ) );
+		$twig->addFilter( new \Twig\TwigFilter( 'menu_item_classes', array( $this, 'menu_item_classes' ) ) );
+		$twig->addFilter( new \Twig\TwigFilter( 'shuffle', array( $this, 'shuffle' ) ) ); // @todo Use native PHP function.
+		$twig->addFilter( new \Twig\TwigFilter( 'tel_link', array( $this, 'tel_link' ) ) );
+		$twig->addFilter( new \Twig\TwigFilter( 'the_content', array( $this, 'the_content' ) ) );
 
 		return $twig;
 	}

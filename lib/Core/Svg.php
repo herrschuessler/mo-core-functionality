@@ -56,7 +56,7 @@ trait Svg {
 
 		return \Timber::compile_string(
 			'
-			{% spaceless %}
+			{% apply spaceless %}
 			<svg role="{{ role }}"{% if classes %} class="{{ classes }}"{% endif %}>
 
 			{% if title %}
@@ -69,7 +69,7 @@ trait Svg {
 
 			<use xlink:href="{{ icon }}"></use>
 			</svg>
-			{% endspaceless %}
+			{% endapply %}
 			',
 			$data
 		);
