@@ -32,7 +32,7 @@ trait Helpers {
 	 *
 	 * @param mixed $var The variable to be inspected.
 	 */
-	public function debug( $var ) {
+	public static function debug( $var ) {
 		ob_start();
 		// phpcs:disable
 		var_dump( $var );
@@ -66,7 +66,7 @@ trait Helpers {
 	 * @param string|false $title The message title.
 	 * @param string|null  $type The message type (error, warning or success).
 	 */
-	public function admin_message( $message, $title = false, $type = 'info' ) {
+	public static function admin_message( $message, $title = false, $type = 'info' ) {
 		if ( \is_admin() ) {
 			\add_action(
 				'admin_notices',
@@ -92,8 +92,8 @@ trait Helpers {
 	 * @param string       $message The message to print.
 	 * @param string|false $title The message title.
 	 */
-	public function admin_error_message( $message, $title = false ) {
-		$this->admin_message( $message, $title, $type = 'error' );
+	public static function admin_error_message( $message, $title = false ) {
+		self::admin_message( $message, $title, $type = 'error' );
 	}
 
 	/**
@@ -102,8 +102,8 @@ trait Helpers {
 	 * @param string       $message The message to print.
 	 * @param string|false $title The message title.
 	 */
-	public function admin_warning_message( $message, $title = false ) {
-		$this->admin_message( $message, $title, $type = 'warning' );
+	public static function admin_warning_message( $message, $title = false ) {
+		self::admin_message( $message, $title, $type = 'warning' );
 	}
 
 	/**
@@ -112,7 +112,7 @@ trait Helpers {
 	 * @param string       $message The message to print.
 	 * @param string|false $title The message title.
 	 */
-	public function admin_success_message( $message, $title = false ) {
-		$this->admin_message( $message, $title, $type = 'success' );
+	public static function admin_success_message( $message, $title = false ) {
+		self::admin_message( $message, $title, $type = 'success' );
 	}
 }
