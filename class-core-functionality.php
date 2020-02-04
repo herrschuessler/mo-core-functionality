@@ -185,17 +185,4 @@ final class Core_Functionality {
 			delete_transient( 'mocore_all_' . $post_type );
 		}
 	}
-
-	/**
-	 * We provide two environments: 'development' and 'production'.
-	 * The development environment can be set by defining either WP_ENV or WP_MO_ENV as 'development'.
-	 */
-	public static function is_dev() {
-
-		if ( ( defined( 'WP_MO_ENV' ) && WP_MO_ENV === 'development' ) || ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ) {
-			return true;
-		}
-
-		return false;
-	}
 }

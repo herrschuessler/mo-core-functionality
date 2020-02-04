@@ -11,9 +11,20 @@
 
 namespace Mo\Core;
 
-use \Mo\Core\Core_Functionality as Core;
-
 trait Helpers {
+
+	/**
+	 * We provide two environments: 'development' and 'production'.
+	 * The development environment can be set by defining either WP_ENV or WP_MO_ENV as 'development'.
+	 */
+	public static function is_dev() {
+
+		if ( ( defined( 'WP_MO_ENV' ) && WP_MO_ENV === 'development' ) || ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ) {
+			return true;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Prints debug data. If called from the WP Admin, output will be printed to
@@ -32,7 +43,7 @@ trait Helpers {
 			\add_action(
 				'admin_notices',
 				function() use ( $result ) {
-					if ( ! Core::is_dev() ) {
+					if ( ! self::is_dev() ) {
 						return;
 					}
 					echo '<div class="notice notice-info is-dismissible"><pre class="debug">';
@@ -60,7 +71,7 @@ trait Helpers {
 			\add_action(
 				'admin_notices',
 				function() use ( $message, $title, $type ) {
-					if ( ! Core::is_dev() || ! is_string( $message ) || ! is_string( $type ) ) {
+					if ( ! self::is_dev() || ! is_string( $message ) || ! is_string( $type ) ) {
 						return;
 					}
 					printf( '<div class="notice notice-%s">', esc_attr( $type ) );
