@@ -9,14 +9,16 @@
  * @since      1.0.0
  *
  * @wordpress-plugin
- * Plugin Name: MONTAGMORGENS Core Functionality
- * Description: Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:     1.14.0
- * Author:      MONTAGMORGENS GmbH
- * Author URI:  https://www.montagmorgens.com/
- * License:     GNU General Public License v.2
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: mo-core
+ * Plugin Name:       MONTAGMORGENS Core Functionality
+ * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
+ * Version:           1.17.0
+ * Requires at least: 5.0.0
+ * Requires PHP:      7.0
+ * Author:            MONTAGMORGENS GmbH
+ * Author URI:        https://www.montagmorgens.com/
+ * License:           GNU General Public License v.2
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       mo-core
  * GitHub Plugin URI: montagmorgens/mo-core-functionality
  */
 
@@ -58,7 +60,14 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.14.0';
+	const PLUGIN_VERSION = '1.17.0';
+
+	/**
+	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
+	 *
+	 * @var string Plugin slug.
+	 */
+	private $slug = 'mo-core-functionality/class-core-functionality.php';
 
 	/**
 	 * The plugin singleton.
@@ -94,6 +103,11 @@ final class Core_Functionality {
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
 
+		// Whitelabel hooks.
+		if ( defined( 'MO_CORE_WHITELABEL' ) && MO_CORE_WHITELABEL === true ) {
+			\add_action( 'all_plugins', array( $this, 'filter_plugin_info' ) );
+		}
+
 		// Action hooks for get_all_posts().
 		\add_action( 'save_post', array( $this, 'delete_all_posts_transient' ) );
 		\add_action( 'delete_post', array( $this, 'delete_all_posts_transient' ) );
@@ -101,6 +115,38 @@ final class Core_Functionality {
 		// Run custom action hooks.
 		\do_action( 'mo_core_cleanup' );
 
+	}
+
+	/**
+	 * Whitelabel plugin info.
+	 *
+	 * To activate whitelableing of this plugin, the following constants should be defined
+	 * in wp-config.php:
+	 *
+	 * define( 'MO_CORE_WHITELABEL', true );
+	 * define( 'MO_CORE_WHITELABEL_THEME', 'Name of our theme' ); // optional
+	 *
+	 * @param array $plugins Installed plugins.
+	 */
+	public function filter_plugin_info( $plugins ) {
+		if ( ! isset( $plugins[ $this->slug ] ) ) {
+				return $plugins;
+		}
+
+		$theme_name = 'Theme';
+
+		if ( defined( 'MO_CORE_WHITELABEL_THEME' ) && is_string( MO_CORE_WHITELABEL_THEME ) ) {
+			$theme_name = MO_CORE_WHITELABEL_THEME;
+		}
+
+		$plugins[ $this->slug ]['Name']        = sprintf( '%s Core Functionality', $theme_name );
+		$plugins[ $this->slug ]['Title']       = sprintf( '%s Core Functionality', $theme_name );
+		$plugins[ $this->slug ]['Description'] = sprintf( 'Dieses Plugin stellt die benötigten Grund-Funktionen für das WordPress-Theme %s zur Verfügung.', '<em>' . $theme_name . '</em>' );
+		$plugins[ $this->slug ]['Author']      = '';
+		$plugins[ $this->slug ]['AuthorURI']   = '';
+		$plugins[ $this->slug ]['AuthorName']  = '';
+
+		return $plugins;
 	}
 
 	/**
@@ -184,19 +230,6 @@ final class Core_Functionality {
 		if ( $post_type ) {
 			delete_transient( 'mocore_all_' . $post_type );
 		}
-	}
-
-	/**
-	 * We provide two environments: 'development' and 'production'.
-	 * The development environment can be set by defining either WP_ENV or WP_MO_ENV as 'development'.
-	 */
-	public static function is_dev() {
-
-		if ( ( defined( 'WP_MO_ENV' ) && WP_MO_ENV === 'development' ) || ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ) {
-			return true;
-		}
-
-		return false;
 	}
 }
 
