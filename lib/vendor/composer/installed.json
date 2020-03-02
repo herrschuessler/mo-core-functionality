@@ -241,17 +241,17 @@
     },
     {
         "name": "giggsey/libphonenumber-for-php",
-        "version": "8.11.4",
-        "version_normalized": "8.11.4.0",
+        "version": "8.11.5",
+        "version_normalized": "8.11.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-            "reference": "d429c468fdc8d7b68aefc6f5a2cb7fee0cc26ee9"
+            "reference": "095dc721e8a090124b69005b14c1aeec93141c86"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/d429c468fdc8d7b68aefc6f5a2cb7fee0cc26ee9",
-            "reference": "d429c468fdc8d7b68aefc6f5a2cb7fee0cc26ee9",
+            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/095dc721e8a090124b69005b14c1aeec93141c86",
+            "reference": "095dc721e8a090124b69005b14c1aeec93141c86",
             "shasum": ""
         },
         "require": {
@@ -268,7 +268,7 @@
             "phpunit/phpunit": "^4.8.36|^5.0",
             "symfony/console": "^2.8|^3.0"
         },
-        "time": "2020-02-12T11:21:37+00:00",
+        "time": "2020-03-02T09:12:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -483,17 +483,17 @@
     },
     {
         "name": "timber/timber",
-        "version": "1.15.0",
-        "version_normalized": "1.15.0.0",
+        "version": "1.15.1",
+        "version_normalized": "1.15.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/timber/timber.git",
-            "reference": "03861c56fd94d9293b462e9bc5805db288993068"
+            "reference": "bbc8bf7ea8718d3be18fd596e594dbda17e85e13"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/timber/timber/zipball/03861c56fd94d9293b462e9bc5805db288993068",
-            "reference": "03861c56fd94d9293b462e9bc5805db288993068",
+            "url": "https://api.github.com/repos/timber/timber/zipball/bbc8bf7ea8718d3be18fd596e594dbda17e85e13",
+            "reference": "bbc8bf7ea8718d3be18fd596e594dbda17e85e13",
             "shasum": ""
         },
         "require": {
@@ -515,7 +515,7 @@
         "suggest": {
             "satooshi/php-coveralls": "1.0.* for code coverage"
         },
-        "time": "2020-02-10T21:19:04+00:00",
+        "time": "2020-02-27T02:08:18+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
