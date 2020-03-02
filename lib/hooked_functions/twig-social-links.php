@@ -23,7 +23,7 @@ function social_links( $data ) {
 
 	$social_links = [];
 
-	if ( ! is_array( $seo_data ) ) {
+	if ( is_array( $seo_data ) ) {
 		foreach ( $seo_data as $profile => $value ) {
 			if ( ! empty( $value ) ) {
 				switch ( $profile ) {
