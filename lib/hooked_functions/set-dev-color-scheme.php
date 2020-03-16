@@ -1,6 +1,6 @@
 <?php
 /**
- * Force admmin color scheme
+ * Force admin color scheme in DEV MODE
  *
  * @category   Plugin
  * @package    Mo\Core
@@ -14,7 +14,7 @@ namespace Mo\Core\Action;
 use \Mo\Core\Core_Functionality as Core;
 
 /**
- * Set admmin color scheme to 'ectoplasm' on DEV installs, 'fresh' on live sites.
+ * Set admin color scheme to 'ectoplasm' on DEV installs, 'fresh' on live sites.
  *
  * @param string $color_scheme The current color scheme.
  * @return string The new color scheme.
