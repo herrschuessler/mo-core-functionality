@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1308072559"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-422928030"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1308072559" class="accordion-body collapse in">
+            <div id="namespace-422928030" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1244899806"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-967465531"></a>
                                 <a href="../namespaces/Mo.html" style="margin-left: 30px; padding-left: 0">Mo</a>
             </div>
-            <div id="namespace-1244899806" class="accordion-body collapse ">
+            <div id="namespace-967465531" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-129070077"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1234720613"></a>
                                 <a href="../namespaces/Mo.Core.html" style="margin-left: 30px; padding-left: 0">Core</a>
             </div>
-            <div id="namespace-129070077" class="accordion-body collapse ">
+            <div id="namespace-1234720613" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
@@ -173,7 +173,7 @@
             <div class="accordion-heading">
                                 <a href="../namespaces/Mo.Core.Action.html" style="margin-left: 30px; padding-left: 0">Action</a>
             </div>
-            <div id="namespace-1333004546" class="accordion-body collapse ">
+            <div id="namespace-1972600060" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -189,7 +189,7 @@
             <div class="accordion-heading">
                                 <a href="../namespaces/Mo.Core.Twig.html" style="margin-left: 30px; padding-left: 0">Twig</a>
             </div>
-            <div id="namespace-10529417" class="accordion-body collapse ">
+            <div id="namespace-718410574" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -267,6 +267,7 @@
                                                                     <a href="../classes/Mo.Core.Helpers.html#method_admin_warning_message" class="">admin_warning_message()</a><br />
                                                                     <a href="../classes/Mo.Core.Helpers.html#method_admin_success_message" class="">admin_success_message()</a><br />
                                                                     <a href="../classes/Mo.Core.Core_Functionality.html#method_get_instance" class="">get_instance()</a><br />
+                                                                    <a href="../classes/Mo.Core.Core_Functionality.html#method_plugin_action_links" class="">plugin_action_links()</a><br />
                                                                     <a href="../classes/Mo.Core.Core_Functionality.html#method_filter_plugin_info" class="">filter_plugin_info()</a><br />
                                                                     <a href="../classes/Mo.Core.Core_Functionality.html#method_enqueue_assets" class="">enqueue_assets()</a><br />
                                                                     <a href="../classes/Mo.Core.Core_Functionality.html#method_async_theme_scripts" class="">async_theme_scripts()</a><br />
@@ -698,6 +699,59 @@ admin_notices.</em></p>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
+            <a id="method_plugin_action_links" name="method_plugin_action_links" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">plugin_action_links()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">plugin_action_links(array  <span class="argument">$actions</span>, string  <span class="argument">$plugin_file</span>, array  <span class="argument">$plugin_data</span>, string  <span class="argument">$context</span>) : array</pre>
+                <p><em>Return the plugin action links.  This will only be called if the plugin
+is active.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$actions </td>
+                                <td><p>associative array of action names to anchor tags.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$plugin_file </td>
+                                <td><p>plugin file name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$plugin_data </td>
+                                <td><p>associative array of plugin data from the plugin file headers.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$context </td>
+                                <td><p>plugin status context, ie 'all', 'active', 'inactive', 'recently_active'.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>associative array of plugin action links.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
             <a id="method_filter_plugin_info" name="method_filter_plugin_info" class="anchor"></a>
             <article class="method">
                 <h3 class="public ">filter_plugin_info()</h3>
@@ -949,7 +1003,7 @@ define( 'MO_CORE_WHITELABEL_THEME', 'Name of our theme' ); // optional</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 26th, 2020 at 14:15.
+                    on May 5th, 2020 at 06:57.
                 </section>
             </section>
         </section>

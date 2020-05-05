@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.18.2
+ * Version:           1.19.0
  * Requires at least: 5.0.0
  * Requires PHP:      7.0
  * Author:            MONTAGMORGENS GmbH
@@ -61,7 +61,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.18.2';
+	const PLUGIN_VERSION = '1.19.0';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -104,6 +104,11 @@ final class Core_Functionality {
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
 
+		// Admin hooks.
+		if ( is_admin() ) {
+			add_filter( 'plugin_action_links_' . $this->slug, array( $this, 'plugin_action_links' ), 10, 4 );
+		}
+
 		// Whitelabel hooks.
 		if ( defined( 'MO_CORE_WHITELABEL' ) && MO_CORE_WHITELABEL === true ) {
 			\add_action( 'all_plugins', array( $this, 'filter_plugin_info' ) );
@@ -116,6 +121,21 @@ final class Core_Functionality {
 		// Run custom action hooks.
 		\do_action( 'mo_core_cleanup' );
 
+	}
+
+	/**
+	 * Return the plugin action links.  This will only be called if the plugin
+	 * is active.
+	 *
+	 * @param array  $actions associative array of action names to anchor tags.
+	 * @param string $plugin_file plugin file name.
+	 * @param array  $plugin_data associative array of plugin data from the plugin file headers.
+	 * @param string $context plugin status context, ie 'all', 'active', 'inactive', 'recently_active'.
+	 *
+	 * @return array associative array of plugin action links.
+	 */
+	public function plugin_action_links( $actions, $plugin_file, $plugin_data, $context ) {
+		return array_merge( [ 'documentation' => '<a href="' . plugin_dir_url( __FILE__ ) . 'doc/">' . __( 'Documentation' ) . '</a>' ], $actions );
 	}
 
 	/**
