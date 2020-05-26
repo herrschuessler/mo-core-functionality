@@ -11,9 +11,9 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.19.0
+ * Version:           1.19.1
  * Requires at least: 5.0.0
- * Requires PHP:      7.0
+ * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
  * Author URI:        https://www.montagmorgens.com/
  * License:           GNU General Public License v.2
@@ -61,7 +61,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.19.0';
+	const PLUGIN_VERSION = '1.19.1';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -135,7 +135,7 @@ final class Core_Functionality {
 	 * @return array associative array of plugin action links.
 	 */
 	public function plugin_action_links( $actions, $plugin_file, $plugin_data, $context ) {
-		return array_merge( [ 'documentation' => '<a href="' . plugin_dir_url( __FILE__ ) . 'doc/">' . __( 'Documentation' ) . '</a>' ], $actions );
+		return array_merge( [ 'documentation' => '<a href="' . plugin_dir_url( __FILE__ ) . 'doc/namespaces/Mo.Core.html">' . __( 'Documentation' ) . '</a>' ], $actions );
 	}
 
 	/**

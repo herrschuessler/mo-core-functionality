@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
     "node": "12.0.0",
@@ -12,7 +12,7 @@
     "build-js": "NODE_ENV=production gulp js"
   },
   "dependencies": {
-    "lazysizes": "^5.2.0"
+    "lazysizes": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
