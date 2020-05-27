@@ -8,7 +8,6 @@ package-lock.json export-ignore
 package.json export-ignore
 phpdoc.dist.xml export-ignore
 size-plugin.json export-ignore
-/doc export-ignore
 /gulpfile.js export-ignore
 /node_modules export-ignore
 /src export-ignore
