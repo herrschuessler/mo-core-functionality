@@ -29,7 +29,7 @@ trait Svg {
 			return false;
 		}
 
-		$data['icon'] = filter_var( get_stylesheet_directory_uri() . '/assets/svg-sprite/' . $set . '.svg#' . $icon, FILTER_SANITIZE_URL );
+		$data['icon'] = filter_var( get_stylesheet_directory_uri() . '/assets/svg-sprite/' . $set . '.svg?v=' . rawurlencode( wp_get_theme()['Version'] ) . '#' . $icon, FILTER_SANITIZE_URL );
 
 		// The CSS classes.
 		$classes = is_array( $classes ) ? join( ' ', $classes ) : $classes;
