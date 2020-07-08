@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.19.2",
+  "version": "1.20.0",
   "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
     "node": "12.0.0",

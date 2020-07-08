@@ -3,11 +3,16 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.4.1
 Requires PHP: 7.2.0
-Stable tag: 1.19.2
+Stable tag: 1.20.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.20.0 =
+* Cleanup ads in WP admin
+* Handle SVG images in the_image_sizes()
+* Add Twig function get_image_placeholder_height()
 
 = 1.19.2 =
 * Update dependencies

@@ -34,7 +34,6 @@ trait Images {
 		if ( empty( $image ) || gettype( $image ) !== 'object' || get_class( $image ) !== 'Timber\Image' || ! is_array( $args ) ) {
 			return false;
 		}
-
 		$defaults = [
 			'ratio'   => null,
 			'min'     => 300,
@@ -60,6 +59,56 @@ trait Images {
 		$data['copyright_link'] = get_field( 'copyright_link', $image );
 		$data['sizes_source']   = [];
 
+		// Handle SVGs.
+		if ( 'image/svg+xml' === $image->post_mime_type ) {
+
+			// Parse SVG width and height from viewbox attribute.
+			$svg = file_get_contents( $image->file_loc );
+			if ( $svg ) {
+				$svg      = new \SimpleXMLElement( $svg );
+				$view_box = explode( ' ', (string) $svg->attributes()->viewBox );
+				if ( isset( $view_box[2] ) && isset( $view_box[3] ) ) {
+					$data['width']  = $view_box[2];
+					$data['height'] = $args['ratio'] ? round( $view_box[2] * $args['ratio'] ) : $view_box[3];
+				}
+			}
+			return \Timber::compile_string(
+				'
+				{% if link is not empty %}
+				<a class="media-image__link" href="{{ link|e("esc_url") }}">
+				{% endif %}
+				<img
+				class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
+				{% if style is not empty %}
+				style="{{ style }}"
+				{% endif %}
+				alt="{{ image.alt }}"
+				src="{{ image.src }}"
+				{% if width and height %}
+				width="{{ width }}"
+				height="{{ height }}"
+				{% endif %}
+				{{ fit }}>
+				{% if link is not empty %}
+				</a>
+				{% endif %}
+				{% if copyright %}
+				<footer class="media-image__footer">
+				<small class="copyright">
+				{% if copyright_link %}
+					<a class="copyright__link" href="{{ copyright_link|e("esc_url") }}">{{ copyright }}</a>
+				{% else %}
+					{{ copyright }}
+				{% endif %}
+				</small>
+				</footer>
+				{% endif %}
+			',
+				$data
+			);
+		}
+
+		// Handle bitmap images.
 		// Add webp if server supports it and image is a jpeg.
 		if ( function_exists( 'imagewebp' ) && 'image/jpeg' === $image->post_mime_type ) {
 			$data['sizes_webp'] = [];
@@ -181,6 +230,34 @@ trait Images {
 		$args        = wp_parse_args( $args );
 		$args['fit'] = 'contain';
 		return $this->the_image_sizes( $image, $args );
+	}
+
+	/**
+	 * Get height in percentage for image placeholders.
+	 *
+	 * @param Timber\Image $image The image object.
+	 */
+	public function get_image_placeholder_height( $image ) {
+		if ( empty( $image ) || gettype( $image ) !== 'object' || get_class( $image ) !== 'Timber\Image' ) {
+			return false;
+		}
+
+		// Handle SVG.
+		if ( 'image/svg+xml' === $image->post_mime_type ) {
+
+			// Parse SVG width and height from viewbox attribute.
+			$svg = file_get_contents( $image->file_loc );
+			if ( $svg ) {
+				$svg      = new \SimpleXMLElement( $svg );
+				$view_box = explode( ' ', (string) $svg->attributes()->viewBox );
+				if ( isset( $view_box[2] ) && isset( $view_box[3] ) ) {
+					return ( (float) $view_box[3] / (float) $view_box[2] * 100 ) . '%';
+				}
+			}
+		} else {
+			return ( $image->height / $image->width * 100 ) . '%';
+		}
+		return false;
 	}
 }
 

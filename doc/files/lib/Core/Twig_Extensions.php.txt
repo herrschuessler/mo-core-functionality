@@ -71,6 +71,7 @@ final class Twig_Extensions {
 		$twig->addFunction( new \Timber\Twig_Function( 'svg_icon', array( $this, 'the_svg_icon' ) ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'svg_img', array( $this, 'the_svg_img' ) ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'get_all_posts', '\Mo\Core\Core_Functionality::get_all_posts' ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'get_image_placeholder_height', array( $this, 'get_image_placeholder_height' ) ) );
 
 		return $twig;
 	}

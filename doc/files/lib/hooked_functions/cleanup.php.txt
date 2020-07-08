@@ -22,7 +22,7 @@ if ( ! defined( 'DISABLE_NAG_NOTICES' ) ) {
 /**
  * Cleanup WordPress HTML.
  */
-function cleanup() {
+function cleanup_markup() {
 	// Remove really simple discovery link.
 	\remove_action( 'wp_head', 'rsd_link' );
 
@@ -79,5 +79,5 @@ function cleanup() {
 
 }
 
-\add_action( 'mo_core_cleanup', '\Mo\Core\Action\cleanup' );
+\add_action( 'mo_core_cleanup', '\Mo\Core\Action\cleanup_markup' );
 
