@@ -244,17 +244,17 @@
     },
     {
         "name": "giggsey/libphonenumber-for-php",
-        "version": "8.12.5",
-        "version_normalized": "8.12.5.0",
+        "version": "8.12.7",
+        "version_normalized": "8.12.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-            "reference": "476a40b044a953725d5abb75fcbfa1303fd429a2"
+            "reference": "3ca7b9a09fc2b00a508875ac2c52ef5c19ef2c4c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/476a40b044a953725d5abb75fcbfa1303fd429a2",
-            "reference": "476a40b044a953725d5abb75fcbfa1303fd429a2",
+            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/3ca7b9a09fc2b00a508875ac2c52ef5c19ef2c4c",
+            "reference": "3ca7b9a09fc2b00a508875ac2c52ef5c19ef2c4c",
             "shasum": ""
         },
         "require": {
@@ -271,7 +271,7 @@
             "phpunit/phpunit": "^4.8.36|^5.0",
             "symfony/console": "^2.8|^3.0"
         },
-        "time": "2020-06-03T08:58:23+00:00",
+        "time": "2020-07-02T12:08:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -314,17 +314,17 @@
     },
     {
         "name": "giggsey/locale",
-        "version": "1.8",
-        "version_normalized": "1.8.0.0",
+        "version": "1.9",
+        "version_normalized": "1.9.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/giggsey/Locale.git",
-            "reference": "85a1b251bad11c986fec2a051b10d4b80a5caa1b"
+            "reference": "b07f1eace8072ccc61445ad8fbd493ff9d783043"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/giggsey/Locale/zipball/85a1b251bad11c986fec2a051b10d4b80a5caa1b",
-            "reference": "85a1b251bad11c986fec2a051b10d4b80a5caa1b",
+            "url": "https://api.github.com/repos/giggsey/Locale/zipball/b07f1eace8072ccc61445ad8fbd493ff9d783043",
+            "reference": "b07f1eace8072ccc61445ad8fbd493ff9d783043",
             "shasum": ""
         },
         "require": {
@@ -342,7 +342,7 @@
             "symfony/finder": "^2.8|^3.0|^4.0",
             "symfony/process": "^2.8|^3.0|^4.0"
         },
-        "time": "2019-10-09T18:53:14+00:00",
+        "time": "2020-07-07T11:16:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -365,17 +365,17 @@
     },
     {
         "name": "symfony/polyfill-ctype",
-        "version": "v1.17.0",
-        "version_normalized": "1.17.0.0",
+        "version": "v1.17.1",
+        "version_normalized": "1.17.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-ctype.git",
-            "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
+            "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
-            "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
+            "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
             "shasum": ""
         },
         "require": {
@@ -384,11 +384,15 @@
         "suggest": {
             "ext-ctype": "For best performance"
         },
-        "time": "2020-05-12T16:14:59+00:00",
+        "time": "2020-06-06T08:46:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "1.17-dev"
+            },
+            "thanks": {
+                "name": "symfony/polyfill",
+                "url": "https://github.com/symfony/polyfill"
             }
         },
         "installation-source": "dist",
@@ -425,17 +429,17 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.17.0",
-        "version_normalized": "1.17.0.0",
+        "version": "v1.17.1",
+        "version_normalized": "1.17.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
+            "reference": "7110338d81ce1cbc3e273136e4574663627037a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
-            "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7110338d81ce1cbc3e273136e4574663627037a7",
+            "reference": "7110338d81ce1cbc3e273136e4574663627037a7",
             "shasum": ""
         },
         "require": {
@@ -444,11 +448,15 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2020-05-12T16:47:27+00:00",
+        "time": "2020-06-06T08:46:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "1.17-dev"
+            },
+            "thanks": {
+                "name": "symfony/polyfill",
+                "url": "https://github.com/symfony/polyfill"
             }
         },
         "installation-source": "dist",
@@ -553,33 +561,33 @@
     },
     {
         "name": "twig/twig",
-        "version": "v2.12.5",
-        "version_normalized": "2.12.5.0",
+        "version": "v2.13.0",
+        "version_normalized": "2.13.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "18772e0190734944277ee97a02a9a6c6555fcd94"
+            "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/18772e0190734944277ee97a02a9a6c6555fcd94",
-            "reference": "18772e0190734944277ee97a02a9a6c6555fcd94",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/46a612ba1bbf6ee1c58acabacd868212ff8a2911",
+            "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911",
             "shasum": ""
         },
         "require": {
-            "php": "^7.0",
+            "php": ">=7.1.3",
             "symfony/polyfill-ctype": "^1.8",
             "symfony/polyfill-mbstring": "^1.3"
         },
         "require-dev": {
             "psr/container": "^1.0",
-            "symfony/phpunit-bridge": "^4.4|^5.0"
+            "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
         },
-        "time": "2020-02-11T15:31:23+00:00",
+        "time": "2020-07-05T13:08:05+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.12-dev"
+                "dev-master": "2.13-dev"
             }
         },
         "installation-source": "dist",
