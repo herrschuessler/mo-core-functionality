@@ -5,18 +5,53 @@
     "build": "./assets"
   },
   "actions": {
-    "watch": ["js"],
-    "clean": ["js"]
+    "watch": [
+      "css",
+      "js"
+    ],
+    "clean": [
+      "css",
+      "js"
+    ]
   },
   "tasks": {
-
+    "css": {
+      "src": "src/css",
+      "dest": "css",
+      "cssnano": {
+        "autoprefixer": {
+          "overrideBrowserslist": "> 0.5% in DE, last 2 versions, not IE > 0, not dead"
+        },
+        "zindex": false,
+        "reduceIdents": false,
+        "mergeIdents": false,
+        "discardUnused": false,
+        "discardComments": {
+          "removeAll": true
+        }
+      },
+      "extensions": [
+        "sass",
+        "scss",
+        "css"
+      ]
+    },
     "js": {
       "src": "src/js",
       "dest": "js",
       "babel": {
-        "browsers": ["> 0.5%", "last 2 versions", "Firefox ESR", "IE >= 11", "safari >= 7"]
+        "browsers": [
+          "> 0.5%",
+          "last 2 versions",
+          "Firefox ESR",
+          "IE >= 11",
+          "safari >= 7"
+        ]
       },
-      "extensions": ["js","jsx"]
+      "extensions": [
+        "js",
+        "jsx"
+      ]
     }
   }
 }

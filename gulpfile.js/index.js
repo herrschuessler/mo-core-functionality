@@ -9,7 +9,7 @@ requireDir( './tasks', { recurse: true } )
 // Asset Task runs all assets but JS
 gulp.task(
   'assets',
-  gulp.parallel( 'js' )
+  gulp.parallel( 'js', 'css' )
 );
 
 // Build Task
