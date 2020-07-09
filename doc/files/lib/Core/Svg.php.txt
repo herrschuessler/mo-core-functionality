@@ -14,7 +14,7 @@ namespace Mo\Core;
 trait Svg {
 
 	/**
-	 * Print SVG icon markup.
+	 * Print SVG icon markup from image sprite.
 	 *
 	 * @param string       $icon The icon name in the SVG sprite map.
 	 * @param string/array $classes CSS class names (optional).
@@ -76,7 +76,7 @@ trait Svg {
 	}
 
 	/**
-	 * Print SVG image markup.
+	 * Print SVG image markup from image sprite.
 	 *
 	 * @param string       $icon The icon name in the SVG sprite map.
 	 * @param string/array $classes CSS class names (optional).
@@ -113,6 +113,26 @@ trait Svg {
 			'<img src="{{ src }}" class="{{ classes ? classes ~ " js-inline-svg" : "js-inline-svg" }}"{% if alt %} alt="{{ alt }}"{% endif %} role="{{ role }}">',
 			$data
 		);
+	}
+
+	/**
+	 * Get SVG file and return SVG markup.
+	 *
+	 * @param Timber\Image $image The image object.
+	 */
+	public function get_svg_content( $image ) {
+		if ( empty( $image ) || gettype( $image ) !== 'object' || get_class( $image ) !== 'Timber\Image' || 'image/svg+xml' !== $image->post_mime_type ) {
+			return false;
+		}
+
+		// Parse SVG ans strip namespace declaration.
+		$svg = file_get_contents( $image->file_loc );
+		if ( $svg ) {
+			$svg = new \SimpleXMLElement( $svg );
+			$dom = dom_import_simplexml( $svg );
+			return $dom->ownerDocument->saveXML( $dom->ownerDocument->documentElement );
+		}
+		return false;
 	}
 }
 
