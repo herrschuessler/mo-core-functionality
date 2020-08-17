@@ -121,7 +121,7 @@ trait Images {
 			'h' => $args['ratio'] ? round( $args['max'] * $args['ratio'] ) : 0,
 		];
 		$width          = $args['min'];
-		$original_ratio = $image->height / $image->width;
+		$original_ratio = $image->width > 0 ? $image->height / $image->width : 0;
 		$resize_height  = 0;
 
 		// Object fitting.

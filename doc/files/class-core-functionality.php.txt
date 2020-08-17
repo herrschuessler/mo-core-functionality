@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.21.0
+ * Version:           1.21.3
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -61,7 +61,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.21.0';
+	const PLUGIN_VERSION = '1.21.3';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -107,7 +107,7 @@ final class Core_Functionality {
 		// Admin hooks.
 		if ( is_admin() ) {
 			\add_filter( 'plugin_action_links_' . $this->slug, array( $this, 'plugin_action_links' ), 10, 4 );
-			\add_action( 'mo_core_cleanup', array( $this, 'cleanup_admin' ) );
+			\add_action( 'admin_init', array( $this, 'cleanup_admin' ) );
 		}
 
 		// Whitelabel hooks.
@@ -260,7 +260,7 @@ final class Core_Functionality {
 	public static function cleanup_admin() {
 
 		// iThemes Security.
-		if ( is_plugin_active( 'better-wp-security/better-wp-security.php' ) ) {
+		if ( \is_plugin_active( 'better-wp-security/better-wp-security.php' ) ) {
 			add_action(
 				'admin_enqueue_scripts',
 				function( $hook ) {
@@ -272,7 +272,7 @@ final class Core_Functionality {
 		}
 
 		// Yoast SEO.
-		if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+		if ( \is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
 			add_action(
 				'admin_enqueue_scripts',
 				function( $hook ) {
@@ -284,7 +284,7 @@ final class Core_Functionality {
 		}
 
 		// Google Analytics Germanized.
-		if ( is_plugin_active( 'ga-germanized/ga-germanized.php' ) ) {
+		if ( \is_plugin_active( 'ga-germanized/ga-germanized.php' ) ) {
 			add_action(
 				'admin_enqueue_scripts',
 				function( $hook ) {
