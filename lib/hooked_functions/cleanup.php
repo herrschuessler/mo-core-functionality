@@ -76,7 +76,21 @@ function cleanup_markup() {
 			}
 		);
 	}
-
 }
 
 \add_action( 'mo_core_cleanup', '\Mo\Core\Action\cleanup_markup' );
+
+/**
+ * Remove unused assets.
+ */
+function cleanup_assets() {
+	/*
+	 * Remove unneccesary WPML admin bar stylesheet
+	 * @see https://wpml.org/forums/topic/the-admin-bar-style-css-file-from-wpml-translation-management-is-loaded-even-if-im-not-logged-in/
+	 */
+	if ( ! is_user_logged_in() ) {
+		wp_dequeue_style( 'wpml-tm-admin-bar' );
+	}
+}
+
+\add_action( 'wp_print_styles', '\Mo\Core\Action\cleanup_assets' );

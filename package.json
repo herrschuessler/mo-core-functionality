@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.21.4",
+  "version": "1.21.5",
   "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
     "node": "12.0.0",
@@ -16,7 +16,7 @@
     "lazysizes": "^5.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.4",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.11.0",
     "ajv": "^6.12.4",
