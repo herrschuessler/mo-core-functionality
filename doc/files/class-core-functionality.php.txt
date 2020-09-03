@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.21.3
+ * Version:           1.22.1
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -61,7 +61,7 @@ final class Core_Functionality {
 
 	use Helpers;
 
-	const PLUGIN_VERSION = '1.21.3';
+	const PLUGIN_VERSION = '1.22.1';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -103,6 +103,7 @@ final class Core_Functionality {
 		// Add action hooks.
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
+		\add_filter( 'site_status_tests', array( $this, 'add_env_test' ) );
 
 		// Admin hooks.
 		if ( is_admin() ) {
@@ -194,6 +195,50 @@ final class Core_Functionality {
 			}
 		}
 		return $tag;
+	}
+
+	/**
+	 * Add test for development env to site-health.
+	 *
+	 * @param array $tests The site-health tests.
+	 * @since 1.22.1
+	 */
+	public function add_env_test( $tests ) {
+		$tests['direct']['mo_env'] = [
+			'label' => __( 'WordPress development environment test', 'mo-core' ),
+			'test'  => array( $this, 'env_test' ),
+		];
+		return $tests;
+	}
+
+	/**
+	 * The site-health test for development env adds a recommendation to turn off revelopment mode.
+	 *
+	 * @since 1.22.1
+	 */
+	public function env_test() {
+		$result = array(
+			'label'       => __( 'Die Entwicklungsumgebung ist deaktiviert', 'mo-core' ),
+			'status'      => 'good',
+			'badge'       => array(
+				'label' => __( 'Performance' ),
+				'color' => 'blue',
+			),
+			'description' => sprintf(
+				'<p>%s</p><p>%s</p>',
+				__( 'Wenn die Entwicklungsumgebung aktiviert ist, erzeugt das Theme ggf. Output, der in Produktionsumgebungen nicht empfohlen wird.', 'mo-core' ),
+				__( 'Die Entwicklungsumgebung ist aktiv, wenn die PHP-Konstantent <code>WP_ENVIRONMENT_TYPE</code>, <code>WP_ENV</code> oder <code>WP_MO_ENV</code> in der <code>wp-config.php</code> auf <code>\'development\'</code> gesetzt sind.', 'mo-core' )
+			),
+			'actions'     => '',
+			'test'        => 'mo_env',
+		);
+
+		if ( $this->is_dev() ) {
+			$result['status'] = 'recommended';
+			$result['label']  = __( 'Die Entwicklungsumgebung sollte deaktiviert werden', 'mo-core' );
+		}
+
+		return $result;
 	}
 
 	/**

@@ -15,10 +15,18 @@ trait Helpers {
 
 	/**
 	 * We provide two environments: 'development' and 'production'.
-	 * The development environment can be set by defining either WP_ENV or WP_MO_ENV as 'development'.
+	 * The development environment can be set by defining either WP_ENVIRONMENT_TYPE, WP_ENV or WP_MO_ENV as 'development'.
 	 */
 	public static function is_dev() {
 
+		// New in WP 5.5.
+		if ( function_exists( 'wp_get_environment_type' ) ) {
+			if ( wp_get_environment_type() === 'development' ) {
+				return true;
+			}
+		}
+
+		// Check for our own constants.
 		if ( ( defined( 'WP_MO_ENV' ) && WP_MO_ENV === 'development' ) || ( defined( 'WP_ENV' ) && WP_ENV === 'development' ) ) {
 			return true;
 		}
