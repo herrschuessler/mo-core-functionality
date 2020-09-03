@@ -245,16 +245,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.12.8",
+            "version": "8.12.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "5a6e4e730de52f55882d2db27016e2916f8791e9"
+                "reference": "674b79ae3362409d08e550cb196d982485a76225"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/5a6e4e730de52f55882d2db27016e2916f8791e9",
-                "reference": "5a6e4e730de52f55882d2db27016e2916f8791e9",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/674b79ae3362409d08e550cb196d982485a76225",
+                "reference": "674b79ae3362409d08e550cb196d982485a76225",
                 "shasum": ""
             },
             "require": {
@@ -309,7 +309,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2020-08-13T17:48:08+00:00"
+            "time": "2020-08-31T09:51:44+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -487,16 +487,16 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.18.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "91675ac0da36750f91bc7f1ed0489096b3d939ba"
+                "reference": "c728380526273107ce29fcf816209776e47ae6c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/91675ac0da36750f91bc7f1ed0489096b3d939ba",
-                "reference": "91675ac0da36750f91bc7f1ed0489096b3d939ba",
+                "url": "https://api.github.com/repos/timber/timber/zipball/c728380526273107ce29fcf816209776e47ae6c1",
+                "reference": "c728380526273107ce29fcf816209776e47ae6c1",
                 "shasum": ""
             },
             "require": {
@@ -548,7 +548,7 @@
                 "timber",
                 "twig"
             ],
-            "time": "2020-08-16T23:49:25+00:00"
+            "time": "2020-08-26T00:20:46+00:00"
         },
         {
             "name": "twig/twig",
