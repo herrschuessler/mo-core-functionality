@@ -52,7 +52,7 @@ require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/twig-social-links.php'
 
 
 // Init plugin instance.
-\add_action( 'plugins_loaded', array( '\Mo\Core\Core_Functionality', 'get_instance' ) );
+\add_action( 'plugins_loaded', [ '\Mo\Core\Core_Functionality', 'get_instance' ] );
 
 /**
  * Plugin code.
@@ -101,24 +101,24 @@ final class Core_Functionality {
 		new \Mo\Core\Twig_Extensions();
 
 		// Add action hooks.
-		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		\add_filter( 'script_loader_tag', array( $this, 'async_theme_scripts' ), 10, 2 );
-		\add_filter( 'site_status_tests', array( $this, 'add_env_test' ) );
+		\add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+		\add_filter( 'script_loader_tag', [ $this, 'async_theme_scripts' ], 10, 2 );
+		\add_filter( 'site_status_tests', [ $this, 'add_env_test' ] );
 
 		// Admin hooks.
 		if ( is_admin() ) {
-			\add_filter( 'plugin_action_links_' . $this->slug, array( $this, 'plugin_action_links' ), 10, 4 );
-			\add_action( 'admin_init', array( $this, 'cleanup_admin' ) );
+			\add_filter( 'plugin_action_links_' . $this->slug, [ $this, 'plugin_action_links' ], 10, 4 );
+			\add_action( 'admin_init', [ $this, 'cleanup_admin' ] );
 		}
 
 		// Whitelabel hooks.
 		if ( defined( 'MO_CORE_WHITELABEL' ) && MO_CORE_WHITELABEL === true ) {
-			\add_action( 'all_plugins', array( $this, 'filter_plugin_info' ) );
+			\add_action( 'all_plugins', [ $this, 'filter_plugin_info' ] );
 		}
 
 		// Action hooks for get_all_posts().
-		\add_action( 'save_post', array( $this, 'delete_all_posts_transient' ) );
-		\add_action( 'delete_post', array( $this, 'delete_all_posts_transient' ) );
+		\add_action( 'save_post', [ $this, 'delete_all_posts_transient' ] );
+		\add_action( 'delete_post', [ $this, 'delete_all_posts_transient' ] );
 
 		// Run custom action hooks.
 		\do_action( 'mo_core_cleanup' );
@@ -188,7 +188,7 @@ final class Core_Functionality {
 	 * @param string $handle The script's registered handle.
 	 */
 	public function async_theme_scripts( $tag, $handle ) {
-		$scripts_to_defer = array( 'mo-images' );
+		$scripts_to_defer = [ 'mo-images' ];
 		foreach ( $scripts_to_defer as $defer_script ) {
 			if ( $defer_script === $handle ) {
 				return str_replace( ' src', ' async src', $tag );
@@ -206,7 +206,7 @@ final class Core_Functionality {
 	public function add_env_test( $tests ) {
 		$tests['direct']['mo_env'] = [
 			'label' => __( 'WordPress development environment test', 'mo-core' ),
-			'test'  => array( $this, 'env_test' ),
+			'test'  => [ $this, 'env_test' ],
 		];
 		return $tests;
 	}
@@ -217,13 +217,13 @@ final class Core_Functionality {
 	 * @since 1.22.1
 	 */
 	public function env_test() {
-		$result = array(
+		$result = [
 			'label'       => __( 'Die Entwicklungsumgebung ist deaktiviert', 'mo-core' ),
 			'status'      => 'good',
-			'badge'       => array(
+			'badge'       => [
 				'label' => __( 'Performance' ),
 				'color' => 'blue',
-			),
+			],
 			'description' => sprintf(
 				'<p>%s</p><p>%s</p>',
 				__( 'Wenn die Entwicklungsumgebung aktiviert ist, erzeugt das Theme ggf. Output, der in Produktionsumgebungen nicht empfohlen wird.', 'mo-core' ),
@@ -231,7 +231,7 @@ final class Core_Functionality {
 			),
 			'actions'     => '',
 			'test'        => 'mo_env',
-		);
+		];
 
 		if ( $this->is_dev() ) {
 			$result['status'] = 'recommended';
