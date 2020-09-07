@@ -52,6 +52,15 @@
         "js",
         "jsx"
       ]
+    },
+    "pot": {
+      "src": [
+        "views/**/*.twig",
+        "**/*.php"
+      ],
+      "dest": "languages",
+      "domain": "mo-core",
+      "package": "MONTAGMORGENS WordPress Core Functionality Plugin"
     }
   }
 }

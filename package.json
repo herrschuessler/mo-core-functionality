@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.22.1",
+  "version": "1.23.0",
   "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
     "node": "12.0.0",
@@ -10,7 +10,8 @@
     "dev": "NODE_ENV=development gulp",
     "build": "NODE_ENV=production gulp build && composer dump-autoload",
     "build-css": "NODE_ENV=production gulp css",
-    "build-js": "NODE_ENV=production gulp js"
+    "build-js": "NODE_ENV=production gulp js",
+    "pot": "gulp pot"
   },
   "dependencies": {
     "lazysizes": "^5.2.2"
@@ -37,6 +38,7 @@
     "gulp-sass": "^4.1.0",
     "gulp-touch-fd": "^2.0.0",
     "gulp-watch": "^5.0.0",
+    "gulp-wp-pot": "^1.3.2",
     "merge": "^1.2.1",
     "merge-stream": "^2.0.0",
     "postcss-import": "^12.0.1",

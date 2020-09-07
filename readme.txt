@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.5.1
 Requires PHP: 7.2.0
-Stable tag: 1.22.1
+Stable tag: 1.23.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.23.0 =
+* Add youtube_embed() Twig function.
 
 = 1.22.1 =
 * Add test for development env to site-health.

@@ -53,7 +53,7 @@ function cleanup_markup() {
 	// Remove WordPress generator version.
 	\remove_action( 'wp_head', 'wp_generator' );
 	if ( array_key_exists( 'sitepress', $GLOBALS ) ) {
-		\remove_action( 'wp_head', array( $GLOBALS['sitepress'], 'meta_generator_tag' ) );
+		\remove_action( 'wp_head', [ $GLOBALS['sitepress'], 'meta_generator_tag' ] );
 	}
 
 	// Remove the annoying:

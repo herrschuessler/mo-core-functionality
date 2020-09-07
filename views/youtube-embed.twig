@@ -1,0 +1,67 @@
+{% if youtube_id %}
+  <!doctype html>
+  <html>
+
+    <head>
+      <meta name="robots" content="noindex">
+
+      <script type="text/javascript" async src="{{ script }}"></script>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        html,
+        body {
+          height: 100%;
+          font-size: 64px;
+        }
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+        .link {
+          display: block;
+          position: relative;
+        }
+        .play-button {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin: -0.5em 0 0 -0.5em;
+        }
+        .play-button svg {
+          width: 1em;
+          height: 1em;
+          display: block;
+        }
+        .play-button__bg {
+          transition: all 0.1s;
+        }
+        .link:hover .play-button__bg {
+          fill: red;
+          opacity: 1;
+        }
+      </style>
+    </head>
+
+    <body>
+      <a class="link" title="{{ __( 'Play video', 'mo-core' ) }}" href="{{ 'https://www.youtube-nocookie.com/embed/%s?autoplay=1'|format(youtube_id)|e('esc_url') }}">
+        {% if image.src %}
+          {{ image_sizes( image, {ratio: (9/16), max: 2000 } ) }}
+        {% else %}
+          <img loading="lazy" src="{{ youtube_image }}">
+        {% endif %}
+        <div class="play-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="74" height="50" viewbox="0 0 74 50">
+            <g fill="none">
+              <path class="play-button__bg" fill="#000" d="M70.802 4.818c-1.98-3.509-4.129-4.154-8.504-4.4C57.927.123 46.936 0 37.414 0c-9.54 0-20.536.123-24.902.414-4.367.25-6.52.89-8.518 4.404C1.954 8.323.904 14.36.904 24.986v.037c0 10.582 1.05 16.663 3.09 20.132 1.998 3.509 4.147 4.145 8.513 4.44 4.371.255 15.367.405 24.907.405 9.522 0 20.513-.15 24.888-.4 4.376-.295 6.525-.932 8.505-4.44 2.058-3.47 3.098-9.55 3.098-20.133v-.036c0-10.632-1.04-16.668-3.103-20.173z" opacity=".6"/>
+              <path class="play-button__fg" fill="#FFF" d="M29 36.5V13.167l20 11.666z"/>
+            </g>
+          </svg>
+        </div>
+      </a>
+    </body>
+  </html>
+{% endif %}

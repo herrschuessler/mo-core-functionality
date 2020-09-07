@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.22.1
+ * Version:           1.23.0
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -19,6 +19,7 @@
  * License:           GNU General Public License v.2
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       mo-core
+ * Domain Path:       /languages
  * GitHub Plugin URI: montagmorgens/mo-core-functionality
  */
 
@@ -30,6 +31,11 @@ defined( 'ABSPATH' ) || die();
 // Define absolute path to plugin root.
 if ( ! defined( 'Mo\Core\PLUGIN_PATH' ) ) {
 	define( 'Mo\Core\PLUGIN_PATH', wp_normalize_path( plugin_dir_path( __FILE__ ) ) );
+}
+
+// Define URL path to plugin root.
+if ( ! defined( 'Mo\Core\PLUGIN_URL' ) ) {
+	define( 'Mo\Core\PLUGIN_URL', wp_normalize_path( plugin_dir_url( __FILE__ ) ) );
 }
 
 // Require composer autoloader.
@@ -50,7 +56,6 @@ require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/set-dev-color-scheme.p
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/set-dev-title-icon.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/twig-social-links.php';
 
-
 // Init plugin instance.
 \add_action( 'plugins_loaded', [ '\Mo\Core\Core_Functionality', 'get_instance' ] );
 
@@ -60,8 +65,9 @@ require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/twig-social-links.php'
 final class Core_Functionality {
 
 	use Helpers;
+	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.22.1';
+	const PLUGIN_VERSION = '1.23.0';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -104,6 +110,9 @@ final class Core_Functionality {
 		\add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 		\add_filter( 'script_loader_tag', [ $this, 'async_theme_scripts' ], 10, 2 );
 		\add_filter( 'site_status_tests', [ $this, 'add_env_test' ] );
+		\add_action( 'init', [ $this, 'load_textdomain' ] );
+		\add_action( 'init', [ $this, 'add_youtube_embed_endpoint' ] );
+		\add_action( 'template_redirect', [ $this, 'load_youtube_embed_template' ] );
 
 		// Admin hooks.
 		if ( is_admin() ) {
@@ -123,6 +132,13 @@ final class Core_Functionality {
 		// Run custom action hooks.
 		\do_action( 'mo_core_cleanup' );
 
+	}
+
+	/**
+	 * Load text domain.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'mo-core', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**

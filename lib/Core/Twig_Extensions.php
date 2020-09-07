@@ -19,6 +19,7 @@ final class Twig_Extensions {
 	use \Mo\Core\Helpers;
 	use \Mo\Core\Images;
 	use \Mo\Core\Svg;
+	use \Mo\Core\Youtube_Embed;
 
 	/**
 	 * Constructor.
@@ -70,6 +71,7 @@ final class Twig_Extensions {
 		$twig->addFunction( new \Timber\Twig_Function( 'image_sizes', [ $this, 'the_image_sizes' ] ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'svg_icon', [ $this, 'the_svg_icon' ] ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'svg_img', [ $this, 'the_svg_img' ] ) );
+		$twig->addFunction( new \Timber\Twig_Function( 'youtube_embed', [ $this, 'the_youtube_embed' ] ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'get_all_posts', '\Mo\Core\Core_Functionality::get_all_posts' ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'get_image_placeholder_height', [ $this, 'get_image_placeholder_height' ] ) );
 		$twig->addFunction( new \Timber\Twig_Function( 'get_svg_content', [ $this, 'get_svg_content' ] ) );
