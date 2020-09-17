@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.5.1
 Requires PHP: 7.2.0
-Stable tag: 1.23.0
+Stable tag: 1.24.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.24.0 =
+* Allow changing of WebP quality by setting MO_WEBP_QUALITY
 
 = 1.23.0 =
 * Add youtube_embed() Twig function.
@@ -163,3 +166,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 = 1.0.0 =
 * Initial release
+
+== Description ==
+
+### Image quality settings
+
+The default WebP image quality of 70 can ben changed by setting the constant `MO_WEBP_QUALITY` to any integer value between 0 and 100.
