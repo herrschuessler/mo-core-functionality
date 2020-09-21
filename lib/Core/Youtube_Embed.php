@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements a performant and secure YouTube Video Embed
+ * Implements a performant and secure YouTube video embed
  *
  * @category   Plugin
  * @package    Mo\Core
@@ -21,7 +21,7 @@ trait Youtube_Embed {
 	protected static $youtube_embed_endpoint = 'mo-youtube-embed';
 
 	/**
-	 * Print SVG icon markup from image sprite.
+	 * Print video embed markup for YouTube videos.
 	 *
 	 * @param string     $youtube_id The youtube ID.
 	 * @param string/int $image_id The ID of the image to use as cover image.

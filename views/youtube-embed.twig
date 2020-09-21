@@ -47,7 +47,7 @@
     </head>
 
     <body>
-      <a class="link" title="{{ __( 'Play video', 'mo-core' ) }}" href="{{ 'https://www.youtube-nocookie.com/embed/%s?autoplay=1'|format(youtube_id)|e('esc_url') }}">
+      <a class="link" title="{{ __( 'Play video', 'mo-core' ) }}" href="{{ 'https://www.youtube-nocookie.com/embed/%s?autoplay=1&iv_load_policy=3&rel=0&showinfo=0'|format(youtube_id)|e('esc_url') }}">
         {% if image.src %}
           {{ image_sizes( image, {ratio: (9/16), max: 2000 } ) }}
         {% else %}
