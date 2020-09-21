@@ -172,6 +172,45 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
+### Twig functions
+
+#### `attach_style( string stylesheet_name )`
+
+Prints an inline stylesheet link to a theme stylesheet in `assets/css/{dev|dist}/` for modular CSS code.
+
+An explanation of the purpose can be found in [Jake Archibalds blog post “The future of loading CSS”](https://jakearchibald.com/2016/link-in-body/).
+
+#### `debug( mixed var )`
+Prints a formated dump of a variable.
+
+#### `image_sizes( Timber\Image image, array args )`
+
+```PHP
+// Default args
+$args = [
+	'ratio'   => null, // Apsect ratio ot the image to generate, null or 0 means no cropping
+	'min'     => 300, // Minimal image size to generate
+	'max'     => 900, // Maximum image size to generate
+	'steps'   => 100, // Increase in image size for each step
+	'classes' => null, // CSS class names
+	'style'   => null, // Inline style
+	'fit'     => false, // object-fitting, can also be 'cover' or 'contain'
+	'link'    => false, // Wrap image in link
+];
+```
+
+Prints a picture element with various image sizes and formats, includes lazy-loading via [lazysizes](https://github.com/aFarkas/lazysizes).
+
+You can also use `cover_image_sizes( Timber\Image image, array args )` or `contain_image_sizes( Timber\Image image, array args )` to user object-fitting methods (include CSS in theme stylesheet).
+
+#### `youtube_embed( string youtube_id, int image_id = false )`
+
+Prints a responsive 16:9 iframe element with either a video preview image loaded from YouTube servers or a WordPress image, if passed an optional image id.
+
+On the image, there's a YouTube-style play button. When the user clicks the image or button, the iframe source will be swapped for the actual YouTube player.
+
+**Notice**: Permalink rules have to be flushed once after plugin activation to make this work.
+
 ### Image quality settings
 
-The default WebP image quality of 70 can ben changed by setting the constant `MO_WEBP_QUALITY` to any integer value between 0 and 100.
+The default WebP image quality of 85 can be changed by setting the constant `MO_WEBP_QUALITY` to any integer value between 0 and 100.
