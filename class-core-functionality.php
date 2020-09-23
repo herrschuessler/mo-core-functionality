@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.24.1
+ * Version:           1.25.0
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -67,7 +67,7 @@ final class Core_Functionality {
 	use Helpers;
 	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.24.1';
+	const PLUGIN_VERSION = '1.25.0';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -129,7 +129,6 @@ final class Core_Functionality {
 		// Admin hooks.
 		if ( is_admin() ) {
 			\add_filter( 'plugin_action_links_' . $this->slug, [ $this, 'plugin_action_links' ], 10, 4 );
-			\add_action( 'admin_init', [ $this, 'cleanup_admin' ] );
 		}
 
 		// Whitelabel hooks.
@@ -327,46 +326,4 @@ final class Core_Functionality {
 		}
 	}
 
-	/**
-	 * Hide other plugins promo and advertisement crap in WP Admin.
-	 */
-	public static function cleanup_admin() {
-
-		// iThemes Security.
-		if ( \is_plugin_active( 'better-wp-security/better-wp-security.php' ) ) {
-			add_action(
-				'admin_enqueue_scripts',
-				function( $hook ) {
-					if ( strpos( $hook, 'itsec' ) ) {
-						\wp_enqueue_style( 'mo-plugin-itsec-cleanup', \plugins_url( '/assets/css/plugin-itsec-cleanup.css', __FILE__ ), null, self::PLUGIN_VERSION );
-					}
-				}
-			);
-		}
-
-		// Yoast SEO.
-		if ( \is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-			add_action(
-				'admin_enqueue_scripts',
-				function( $hook ) {
-					if ( strpos( $hook, 'wpseo' ) ) {
-						\wp_enqueue_style( 'mo-plugin-wpseo-cleanup', \plugins_url( '/assets/css/plugin-wpseo-cleanup.css', __FILE__ ), null, self::PLUGIN_VERSION );
-					}
-				}
-			);
-		}
-
-		// Google Analytics Germanized.
-		if ( \is_plugin_active( 'ga-germanized/ga-germanized.php' ) ) {
-			add_action(
-				'admin_enqueue_scripts',
-				function( $hook ) {
-					if ( strpos( $hook, 'ga-germanized' ) ) {
-						\wp_enqueue_style( 'mo-plugin-ga-germanized-cleanup', \plugins_url( '/assets/css/plugin-ga-germanized-cleanup.css', __FILE__ ), null, self::PLUGIN_VERSION );
-					}
-				}
-			);
-		}
-
-	}
 }
