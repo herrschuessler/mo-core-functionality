@@ -111,7 +111,8 @@
             "cache",
             "extension",
             "twig"
-        ]
+        ],
+        "abandoned": "twig/cache-extension"
     },
     {
         "name": "composer/installers",
@@ -244,17 +245,17 @@
     },
     {
         "name": "giggsey/libphonenumber-for-php",
-        "version": "8.12.9",
-        "version_normalized": "8.12.9.0",
+        "version": "8.12.10",
+        "version_normalized": "8.12.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-            "reference": "674b79ae3362409d08e550cb196d982485a76225"
+            "reference": "befffd590d1e2333bbb6d712541ccccf5fc08f1f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/674b79ae3362409d08e550cb196d982485a76225",
-            "reference": "674b79ae3362409d08e550cb196d982485a76225",
+            "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/befffd590d1e2333bbb6d712541ccccf5fc08f1f",
+            "reference": "befffd590d1e2333bbb6d712541ccccf5fc08f1f",
             "shasum": ""
         },
         "require": {
@@ -271,7 +272,7 @@
             "phpunit/phpunit": "^4.8.36|^5.0",
             "symfony/console": "^2.8|^3.0"
         },
-        "time": "2020-08-31T09:51:44+00:00",
+        "time": "2020-09-22T07:23:22+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
