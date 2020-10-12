@@ -123,6 +123,7 @@ trait Images {
 		$width          = $args['min'];
 		$original_ratio = $image->width > 0 ? $image->height / $image->width : 0;
 		$resize_height  = 0;
+		$webp_quality   = Core_Functionality::$webp_quality;
 
 		// Object fitting.
 		if ( 'cover' === $args['fit'] ) {
@@ -139,7 +140,7 @@ trait Images {
 			$height        = $args['ratio'] ? round( $width * $args['ratio'] ) : round( $width * $original_ratio );
 			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ') }} ' . $width . 'w ' . $height . 'h' );
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ')|towebp(70) }} ' . $width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ')|towebp(' . $webp_quality . ') }} ' . $width . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $width;
 			$data['height'] = $height;
@@ -153,7 +154,7 @@ trait Images {
 			$height        = $args['ratio'] ? round( $image->width * $args['ratio'] ) : $image->height;
 			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ') }} ' . $image->width . 'w ' . $height . 'h' );
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ')|towebp(70) }} ' . $image->width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ')|towebp(' . $webp_quality . ') }} ' . $image->width . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $image->width;
 			$data['height'] = $height;
