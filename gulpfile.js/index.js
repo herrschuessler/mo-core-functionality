@@ -1,5 +1,7 @@
 'use strict';
 
+process.traceDeprecation = true;
+
 const gulp = require( 'gulp' );
 const requireDir = require( 'require-dir' );
 
