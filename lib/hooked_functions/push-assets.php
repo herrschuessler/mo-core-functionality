@@ -61,8 +61,9 @@ function push_scripts() {
 function push_styles() {
 	global $wp_styles;
 	foreach ( $wp_styles->queue as $handle ) {
-		$url = get_dep_url( $wp_styles->registered[ $handle ] );
-		if ( $url && ! headers_sent() ) {
+		$push = (bool) apply_filters( 'mo_core_push_style', true, $handle );
+		$url  = get_dep_url( $wp_styles->registered[ $handle ] );
+		if ( $push && $url && ! headers_sent() ) {
 			header( 'Link: <' . $url . '>; rel=preload; as=style', false );
 		}
 	}

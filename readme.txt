@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.5.1
 Requires PHP: 7.2.0
-Stable tag: 1.25.1
+Stable tag: 1.25.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.25.2 =
+* Add `mo_core_push_style` filter
 
 = 1.25.1 =
 * Update Timber to 1.18.2
