@@ -94,7 +94,7 @@ trait Images {
 				{% endif %}
 				{% if copyright %}
 				<footer class="media-image__footer">
-				<small class="copyright">
+				<small class="copyright" aria-hidden="true">
 				{% if copyright_link %}
 					<a class="copyright__link" href="{{ copyright_link|e("esc_url") }}">{{ copyright }}</a>
 				{% else %}
