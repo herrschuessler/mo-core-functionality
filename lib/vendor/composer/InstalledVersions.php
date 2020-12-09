@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '394cdd1696e92897dc6c96bf5c60c893e4c16c9c',
+    'reference' => '17a1fb85ec62371825d70f1f541bae9ca318e83e',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
@@ -53,12 +53,12 @@ private static $installed = array (
     ),
     'giggsey/libphonenumber-for-php' => 
     array (
-      'pretty_version' => '8.12.11',
-      'version' => '8.12.11.0',
+      'pretty_version' => '8.12.14',
+      'version' => '8.12.14.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a3e8c9c832b3c40d69b477b2a96b252d03fbf274',
+      'reference' => 'c42a963110b08b8a4a419c35566bf9d3456ba479',
     ),
     'giggsey/locale' => 
     array (
@@ -76,7 +76,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '394cdd1696e92897dc6c96bf5c60c893e4c16c9c',
+      'reference' => '17a1fb85ec62371825d70f1f541bae9ca318e83e',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -121,12 +121,12 @@ private static $installed = array (
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v2.14.0',
-      'version' => '2.14.0.0',
+      'pretty_version' => 'v2.14.1',
+      'version' => '2.14.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd495243dade48c39b6a5261c26cdbd8c5703f6a0',
+      'reference' => '5eb9ac5dfdd20c3f59495c22841adc5da980d312',
     ),
     'upstatement/routes' => 
     array (

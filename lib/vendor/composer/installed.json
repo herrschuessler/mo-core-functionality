@@ -249,17 +249,17 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.12.11",
-            "version_normalized": "8.12.11.0",
+            "version": "8.12.14",
+            "version_normalized": "8.12.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "a3e8c9c832b3c40d69b477b2a96b252d03fbf274"
+                "reference": "c42a963110b08b8a4a419c35566bf9d3456ba479"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/a3e8c9c832b3c40d69b477b2a96b252d03fbf274",
-                "reference": "a3e8c9c832b3c40d69b477b2a96b252d03fbf274",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/c42a963110b08b8a4a419c35566bf9d3456ba479",
+                "reference": "c42a963110b08b8a4a419c35566bf9d3456ba479",
                 "shasum": ""
             },
             "require": {
@@ -273,10 +273,10 @@
                 "pear/versioncontrol_git": "^0.5",
                 "phing/phing": "^2.7",
                 "php-coveralls/php-coveralls": "^1.0|^2.0",
-                "phpunit/phpunit": "^4.8.36|^5.0",
-                "symfony/console": "^2.8|^3.0"
+                "symfony/console": "^2.8|^3.0",
+                "symfony/phpunit-bridge": "^4.2 || ^5"
             },
-            "time": "2020-10-09T15:01:50+00:00",
+            "time": "2020-12-02T10:54:10+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -316,6 +316,11 @@
                 "phonenumber",
                 "validation"
             ],
+            "support": {
+                "irc": "irc://irc.appliedirc.com/lobby",
+                "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
+                "source": "https://github.com/giggsey/libphonenumber-for-php"
+            },
             "install-path": "../giggsey/libphonenumber-for-php"
         },
         {
@@ -605,17 +610,17 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.14.0",
-            "version_normalized": "2.14.0.0",
+            "version": "v2.14.1",
+            "version_normalized": "2.14.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "d495243dade48c39b6a5261c26cdbd8c5703f6a0"
+                "reference": "5eb9ac5dfdd20c3f59495c22841adc5da980d312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d495243dade48c39b6a5261c26cdbd8c5703f6a0",
-                "reference": "d495243dade48c39b6a5261c26cdbd8c5703f6a0",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5eb9ac5dfdd20c3f59495c22841adc5da980d312",
+                "reference": "5eb9ac5dfdd20c3f59495c22841adc5da980d312",
                 "shasum": ""
             },
             "require": {
@@ -627,7 +632,7 @@
                 "psr/container": "^1.0",
                 "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
-            "time": "2020-10-21T12:35:06+00:00",
+            "time": "2020-10-27T19:25:29+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -671,7 +676,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v2.14.0"
+                "source": "https://github.com/twigphp/Twig/tree/v2.14.1"
             },
             "funding": [
                 {
@@ -740,5 +745,6 @@
             "install-path": "../upstatement/routes"
         }
     ],
-    "dev": true
+    "dev": true,
+    "dev-package-names": []
 }
