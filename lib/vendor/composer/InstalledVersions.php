@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '17a1fb85ec62371825d70f1f541bae9ca318e83e',
+    'reference' => '643d592e480bb1c8b4266488bef3fcd8ecf6bee9',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
@@ -44,21 +44,21 @@ private static $installed = array (
     ),
     'composer/installers' => 
     array (
-      'pretty_version' => 'v1.9.0',
-      'version' => '1.9.0.0',
+      'pretty_version' => 'v1.10.0',
+      'version' => '1.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b93bcf0fa1fccb0b7d176b0967d969691cd74cca',
+      'reference' => '1a0357fccad9d1cc1ea0c9a05b8847fbccccb78d',
     ),
     'giggsey/libphonenumber-for-php' => 
     array (
-      'pretty_version' => '8.12.14',
-      'version' => '8.12.14.0',
+      'pretty_version' => '8.12.17',
+      'version' => '8.12.17.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c42a963110b08b8a4a419c35566bf9d3456ba479',
+      'reference' => 'd914436bd646e9d645e7f8ac6644bf7e33a023d4',
     ),
     'giggsey/locale' => 
     array (
@@ -76,7 +76,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '17a1fb85ec62371825d70f1f541bae9ca318e83e',
+      'reference' => '643d592e480bb1c8b4266488bef3fcd8ecf6bee9',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -94,21 +94,21 @@ private static $installed = array (
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.20.0',
-      'version' => '1.20.0.0',
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f4ba089a5b6366e453971d3aad5fe8e897b37f41',
+      'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
     ),
     'symfony/polyfill-mbstring' => 
     array (
-      'pretty_version' => 'v1.20.0',
-      'version' => '1.20.0.0',
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '39d483bdf39be819deabf04ec872eb0b2410b531',
+      'reference' => 'f377a3dd1fde44d37b9831d68dc8dea3ffd28e13',
     ),
     'timber/timber' => 
     array (
@@ -121,12 +121,12 @@ private static $installed = array (
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v2.14.1',
-      'version' => '2.14.1.0',
+      'pretty_version' => 'v2.14.3',
+      'version' => '2.14.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5eb9ac5dfdd20c3f59495c22841adc5da980d312',
+      'reference' => '8bc568d460d88b25c00c046256ec14a787ea60d9',
     ),
     'upstatement/routes' => 
     array (

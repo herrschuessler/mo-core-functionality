@@ -1,13 +1,16 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.6.0
+Tested up to: 5.6.1
 Requires PHP: 7.2.0
-Stable tag: 1.25.5
+Stable tag: 1.25.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+= 1.25.6 =
+* Add basetheme parameter to the_svg_icon(), the_svg_img(), get_css_asset() and get_js_asset() functions
+
 = 1.25.5 =
 * Update dependencies
 

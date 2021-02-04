@@ -1,10 +1,10 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.25.5",
+  "version": "1.25.6",
   "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
-    "node": "12.0.0",
-    "npm": "6.0.0"
+    "node": "^14.0.0",
+    "npm": "^7.0.0"
   },
   "scripts": {
     "dev": "NODE_ENV=development gulp",
