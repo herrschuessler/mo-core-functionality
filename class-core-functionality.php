@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.25.6
+ * Version:           1.25.7
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -67,7 +67,7 @@ final class Core_Functionality {
 	use Helpers;
 	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.25.6';
+	const PLUGIN_VERSION = '1.25.7';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -110,6 +110,8 @@ final class Core_Functionality {
 		// Get image quality from wp-config.
 		if ( defined( 'MO_WEBP_QUALITY' ) && is_int( MO_WEBP_QUALITY ) && ( 0 <= MO_WEBP_QUALITY ) && ( MO_WEBP_QUALITY <= 100 ) ) {
 			self::$webp_quality = MO_WEBP_QUALITY;
+		} elseif ( defined( 'MO_WEBP_QUALITY' ) && is_int( MO_WEBP_QUALITY ) && ( -1 === MO_WEBP_QUALITY ) ) {
+			self::$webp_quality = false;
 		}
 
 		// Init Timber.

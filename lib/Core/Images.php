@@ -110,7 +110,9 @@ trait Images {
 
 		// Handle bitmap images.
 		// Add webp if server supports it and image is a jpeg.
-		if ( function_exists( 'imagewebp' ) && 'image/jpeg' === $image->post_mime_type ) {
+		$webp_quality = Core_Functionality::$webp_quality;
+
+		if ( function_exists( 'imagewebp' ) && 'image/jpeg' === $image->post_mime_type && is_int( $webp_quality ) ) {
 			$data['sizes_webp'] = [];
 		} else {
 			$data['sizes_webp'] = false;
@@ -123,7 +125,6 @@ trait Images {
 		$width          = $args['min'];
 		$original_ratio = $image->width > 0 ? $image->height / $image->width : 0;
 		$resize_height  = 0;
-		$webp_quality   = Core_Functionality::$webp_quality;
 
 		// Object fitting.
 		if ( 'cover' === $args['fit'] ) {

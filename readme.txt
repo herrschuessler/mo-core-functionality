@@ -3,11 +3,15 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.6.1
 Requires PHP: 7.2.0
-Stable tag: 1.25.6
+Stable tag: 1.25.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.25.7 =
+* Add option to disable WebP images by setting `MO_WEBP_QUALITY` to `-1`
+
 = 1.25.6 =
 * Add basetheme parameter to the_svg_icon(), the_svg_img(), get_css_asset() and get_js_asset() functions
 
@@ -233,4 +237,4 @@ On the image, there's a YouTube-style play button. When the user clicks the imag
 
 ### Image quality settings
 
-The default WebP image quality of 85 can be changed by setting the constant `MO_WEBP_QUALITY` to any integer value between 0 and 100.
+The default WebP image quality of 85 can be changed by setting the constant `MO_WEBP_QUALITY` to any integer value between 0 and 100. WebP images can be disabled altogether by setting `MO_WEBP_QUALITY` to `-1`.
