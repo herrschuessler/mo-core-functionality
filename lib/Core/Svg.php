@@ -22,14 +22,18 @@ trait Svg {
 	 * @param string       $desc The description (optional).
 	 * @param string       $role The aria-role (defaults to 'presentation').
 	 * @param string       $set The icon set, i.e. the filename of the SVG sprite map (without extension).
+	 * @param bool         $basetheme Set to false if the sprite should load from a child theme.
 	 */
-	public function the_svg_icon( $icon, $classes = null, $title = null, $desc = null, $role = 'presentation', $set = 'ui' ) {
+	public function the_svg_icon( $icon, $classes = null, $title = null, $desc = null, $role = 'presentation', $set = 'ui', $basetheme = true ) {
 
 		if ( ! is_string( $icon ) || empty( $icon ) || ! is_string( $set ) ) {
 			return false;
 		}
 
-		$data['icon'] = filter_var( get_stylesheet_directory_uri() . '/assets/svg-sprite/' . $set . '.svg?v=' . rawurlencode( wp_get_theme()['Version'] ) . '#' . $icon, FILTER_SANITIZE_URL );
+		$path  = $basetheme ? get_template_directory_uri() : get_stylesheet_directory_uri();
+		$theme = $basetheme ? wp_get_theme( get_template() ) : wp_get_theme();
+
+		$data['icon'] = filter_var( $path . '/assets/svg-sprite/' . $set . '.svg?v=' . rawurlencode( $theme['Version'] ) . '#' . $icon, FILTER_SANITIZE_URL );
 
 		// The CSS classes.
 		$classes = is_array( $classes ) ? join( ' ', $classes ) : $classes;
@@ -83,13 +87,15 @@ trait Svg {
 	 * @param string       $alt The alt text (optional).
 	 * @param string       $role The aria-role (defaults to 'presentation').
 	 */
-	public function the_svg_img( $icon, $classes = null, $alt = null, $role = 'presentation' ) {
+	public function the_svg_img( $icon, $classes = null, $alt = null, $role = 'presentation', $basetheme = true ) {
 
 		if ( ! is_string( $icon ) || empty( $icon ) ) {
 			return false;
 		}
 
-		$data['src'] = filter_var( get_stylesheet_directory_uri() . '/assets/images/' . $icon . '.svg', FILTER_SANITIZE_URL );
+		$path = $basetheme ? get_template_directory_uri() : get_stylesheet_directory_uri();
+
+		$data['src'] = filter_var( $path . '/assets/images/' . $icon . '.svg', FILTER_SANITIZE_URL );
 
 		// The CSS classes.
 		$classes = is_array( $classes ) ? join( ' ', $classes ) : $classes;
