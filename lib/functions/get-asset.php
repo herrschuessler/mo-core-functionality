@@ -22,7 +22,7 @@ use \Mo\Core\Core_Functionality as Core;
  *
  * @param array $file The file name.
  * @param bool  $version Wether to append version.
- * @param bool  $basetheme Set to false if the sprite should load from a child theme.
+ * @param bool  $basetheme Set to false if the asset should load from a child theme.
  */
 function get_css_asset( $file = null, $version = true, $basetheme = true ) {
 
@@ -56,7 +56,7 @@ function get_css_asset( $file = null, $version = true, $basetheme = true ) {
  *
  * @param array $file The file name.
  * @param bool  $version Wether to append version.
- * @param bool  $basetheme Set to false if the sprite should load from a child theme.
+ * @param bool  $basetheme Set to false if the asset should load from a child theme.
  */
 function get_js_asset( $file = null, $version = true, $basetheme = true ) {
 
@@ -87,6 +87,8 @@ function get_js_asset( $file = null, $version = true, $basetheme = true ) {
 
 /**
  * Get JS public_path.
+ *
+ * @todo This always retuns the path to the parent theme. Need to adapt it for child themes.
  */
 function get_js_public_path() {
 
