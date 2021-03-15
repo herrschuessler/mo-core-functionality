@@ -94,12 +94,14 @@ final class Twig_Extensions {
 		$str      = implode( ' ', $classes );
 		$search   = [
 			'current-menu-ancestor',
+			'current-page-ancestor',
 			'current-menu-parent',
 			'current-menu-item',
 			'menu-item-',
 			'menu-item',
 		];
 		$replace  = [
+			$modifier . '__item--current-ancestor',
 			$modifier . '__item--current-ancestor',
 			$modifier . '__item--current-parent',
 			$modifier . '__item--current',
