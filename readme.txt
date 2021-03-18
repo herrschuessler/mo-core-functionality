@@ -3,11 +3,15 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.6.1
 Requires PHP: 7.2.0
-Stable tag: 1.25.7
+Stable tag: 1.25.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.25.8 =
+* Add type check in tel_link functions
+* Update dependencies
 
 = 1.25.7 =
 * Add option to disable WebP images by setting `MO_WEBP_QUALITY` to `-1`

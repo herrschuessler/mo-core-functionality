@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '643d592e480bb1c8b4266488bef3fcd8ecf6bee9',
+    'reference' => '00b52e4e3b02b3785bd1e569ec8d2c07e2f84292',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
@@ -40,12 +40,12 @@
     ),
     'giggsey/libphonenumber-for-php' => 
     array (
-      'pretty_version' => '8.12.17',
-      'version' => '8.12.17.0',
+      'pretty_version' => '8.12.20',
+      'version' => '8.12.20.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd914436bd646e9d645e7f8ac6644bf7e33a023d4',
+      'reference' => '743585979ef96f2be123518c0a58083cf678bd47',
     ),
     'giggsey/locale' => 
     array (
@@ -63,7 +63,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '643d592e480bb1c8b4266488bef3fcd8ecf6bee9',
+      'reference' => '00b52e4e3b02b3785bd1e569ec8d2c07e2f84292',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -81,8 +81,8 @@
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.22.0',
-      'version' => '1.22.0.0',
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
       'aliases' => 
       array (
       ),
@@ -90,12 +90,12 @@
     ),
     'symfony/polyfill-mbstring' => 
     array (
-      'pretty_version' => 'v1.22.0',
-      'version' => '1.22.0.0',
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f377a3dd1fde44d37b9831d68dc8dea3ffd28e13',
+      'reference' => '5232de97ee3b75b0360528dae24e73db49566ab1',
     ),
     'timber/timber' => 
     array (
@@ -108,12 +108,12 @@
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v2.14.3',
-      'version' => '2.14.3.0',
+      'pretty_version' => 'v2.14.4',
+      'version' => '2.14.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8bc568d460d88b25c00c046256ec14a787ea60d9',
+      'reference' => '0b4ba691fb99ec7952d25deb36c0a83061b93bbf',
     ),
     'upstatement/routes' => 
     array (
