@@ -149,7 +149,7 @@ final class Twig_Extensions {
 			} catch ( \libphonenumber\NumberParseException $e ) {
 			}
       // phpcs:enable
-			if ( $phone_util->isValidNumber( $tel_object ) ) {
+			if ( is_a( $tel_object, 'libphonenumber\PhoneNumber' ) && $phone_util->isValidNumber( $tel_object ) ) {
 				$tel_string = $phone_util->format( $tel_object, \libphonenumber\PhoneNumberFormat::E164 );
 			}
 		}
