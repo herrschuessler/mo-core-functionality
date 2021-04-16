@@ -33,7 +33,7 @@ trait Svg {
 		$path  = $basetheme ? get_template_directory_uri() : get_stylesheet_directory_uri();
 		$theme = $basetheme ? wp_get_theme( get_template() ) : wp_get_theme();
 
-		$data['icon'] = filter_var( $path . '/assets/svg-sprite/' . $set . '.svg?v=' . rawurlencode( $theme['Version'] ) . '#' . $icon, FILTER_SANITIZE_URL );
+		$data['icon'] = $path . filter_var( '/assets/svg-sprite/' . $set . '.svg?v=' . rawurlencode( $theme['Version'] ) . '#' . $icon, FILTER_SANITIZE_URL );
 
 		// The CSS classes.
 		$classes = is_array( $classes ) ? join( ' ', $classes ) : $classes;
