@@ -86,6 +86,7 @@ trait Svg {
 	 * @param string/array $classes CSS class names (optional).
 	 * @param string       $alt The alt text (optional).
 	 * @param string       $role The aria-role (defaults to 'presentation').
+	 * @param bool         $basetheme Set to false if the image should load from a child theme.
 	 */
 	public function the_svg_img( $icon, $classes = null, $alt = null, $role = 'presentation', $basetheme = true ) {
 
@@ -132,10 +133,12 @@ trait Svg {
 		}
 
 		// Parse SVG ans strip namespace declaration.
+		// phpcs:ignore WordPress.WP.AlternativeFunctions
 		$svg = file_get_contents( $image->file_loc );
 		if ( $svg ) {
 			$svg = new \SimpleXMLElement( $svg );
 			$dom = dom_import_simplexml( $svg );
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			return $dom->ownerDocument->saveXML( $dom->ownerDocument->documentElement );
 		}
 		return false;

@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.6.1
+Tested up to: 5.7.1
 Requires PHP: 7.2.0
-Stable tag: 1.25.8
+Stable tag: 1.25.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.25.9 =
+* Allow umlaut URLs in SVG paths
+* Update dependencies
 
 = 1.25.8 =
 * Add type check in tel_link functions
