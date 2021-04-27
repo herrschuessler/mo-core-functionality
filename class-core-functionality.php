@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.26.0
+ * Version:           1.27.0
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -65,9 +65,10 @@ require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/twig-social-links.php'
 final class Core_Functionality {
 
 	use Helpers;
+	use Video_Embed;
 	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.26.0';
+	const PLUGIN_VERSION = '1.27.0';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -125,7 +126,9 @@ final class Core_Functionality {
 		\add_filter( 'script_loader_tag', [ $this, 'async_theme_scripts' ], 10, 2 );
 		\add_filter( 'site_status_tests', [ $this, 'add_env_test' ] );
 		\add_action( 'init', [ $this, 'load_textdomain' ] );
+		\add_action( 'init', [ $this, 'add_video_embed_endpoint' ] );
 		\add_action( 'init', [ $this, 'add_youtube_embed_endpoint' ] );
+		\add_action( 'template_redirect', [ $this, 'load_video_embed_template' ] );
 		\add_action( 'template_redirect', [ $this, 'load_youtube_embed_template' ] );
 
 		// Admin hooks.

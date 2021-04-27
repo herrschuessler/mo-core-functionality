@@ -219,6 +219,7 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
         'Mo\\Core\\Images' => __DIR__ . '/../../..' . '/lib/Core/Images.php',
         'Mo\\Core\\Svg' => __DIR__ . '/../../..' . '/lib/Core/Svg.php',
         'Mo\\Core\\Twig_Extensions' => __DIR__ . '/../../..' . '/lib/Core/Twig_Extensions.php',
+        'Mo\\Core\\Video_Embed' => __DIR__ . '/../../..' . '/lib/Core/Video_Embed.php',
         'Mo\\Core\\Youtube_Embed' => __DIR__ . '/../../..' . '/lib/Core/Youtube_Embed.php',
         'Routes' => __DIR__ . '/..' . '/upstatement/routes/Routes.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',

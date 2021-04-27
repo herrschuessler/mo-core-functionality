@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.7.1
 Requires PHP: 7.2.0
-Stable tag: 1.26.0
+Stable tag: 1.27.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.27.0 =
+* Add video_embed() Twig function.
 
 = 1.26.0 =
 * Allow passing of link array to the_image_sizes()
@@ -231,7 +234,7 @@ $args = [
 	'classes' => null, // CSS class names
 	'style'   => null, // Inline style
 	'fit'     => false, // object-fitting, can also be 'cover' or 'contain'
-	'link'    => false, // Wrap image in link
+	'link'    => false, // A link URL to wrap the image with. Can be a string with a URL or an array with 'url', 'tabindex' and 'target'.
 ];
 ```
 

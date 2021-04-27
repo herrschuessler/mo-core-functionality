@@ -128,6 +128,7 @@ return array(
     'Mo\\Core\\Images' => $baseDir . '/lib/Core/Images.php',
     'Mo\\Core\\Svg' => $baseDir . '/lib/Core/Svg.php',
     'Mo\\Core\\Twig_Extensions' => $baseDir . '/lib/Core/Twig_Extensions.php',
+    'Mo\\Core\\Video_Embed' => $baseDir . '/lib/Core/Video_Embed.php',
     'Mo\\Core\\Youtube_Embed' => $baseDir . '/lib/Core/Youtube_Embed.php',
     'Routes' => $vendorDir . '/upstatement/routes/Routes.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
