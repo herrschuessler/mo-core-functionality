@@ -26,7 +26,7 @@ trait Images {
 	 *     @type mixed      $classes The CSS classes (optional).
 	 *     @type mixed      $style The CSS style attribute (optional).
 	 *     @type mixed      $fit Wether to use object-fitting (can be false, 'cover', 'contain) (optional).
-	 *     @type mixed      $link A link URL to wrap the image with (optional).
+	 *     @type mixed      $link A link URL to wrap the image with (optional). Can be a string with a URL or an array with 'url', 'tabindex' and 'target'.
 	 * }
 	 */
 	public function the_image_sizes( $image, $args = [] ) {
@@ -53,11 +53,29 @@ trait Images {
 		$data['image']          = $image;
 		$data['class']          = $args['classes'] ? esc_attr( $args['classes'] ) : '';
 		$data['style']          = $args['style'] ? esc_attr( $args['style'] ) : false;
-		$data['link']           = $args['link'] ? esc_attr( $args['link'] ) : false;
 		$data['fit']            = '';
 		$data['copyright']      = get_field( 'copyright', $image );
 		$data['copyright_link'] = get_field( 'copyright_link', $image );
 		$data['sizes_source']   = [];
+
+		// Parse link.
+		$data['link'] = false;
+
+		if ( is_string( $args['link'] ) ) {
+			// The link arg can be a simple string – treat it as link URL.
+			$data['link'] = esc_url( $args['link'] );
+		} elseif ( is_array( $args['link'] ) ) {
+			// The link arg can be an array with further link options.
+			if ( isset( $args['link']['url'] ) ) {
+				$data['link'] = esc_url( $args['link']['url'] );
+			}
+			if ( isset( $args['link']['tabindex'] ) ) {
+				$data['link_tabindex'] = esc_attr( $args['link']['tabindex'] );
+			}
+			if ( isset( $args['link']['target'] ) ) {
+				$data['link_target'] = esc_attr( $args['link']['target'] );
+			}
+		}
 
 		// Handle SVGs.
 		if ( 'image/svg+xml' === $image->post_mime_type ) {
@@ -75,7 +93,7 @@ trait Images {
 			return \Timber::compile_string(
 				'
 				{% if link is not empty %}
-				<a class="media-image__link" href="{{ link|e("esc_url") }}">
+				<a class="media-image__link" href="{{ link }}"{% if link_target %} target="{{ link_target }}"{% endif %}{% if link_tabindex %} tabindex="{{ link_tabindex }}"{% endif %}>
 				{% endif %}
 				<img
 				class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
@@ -171,7 +189,7 @@ trait Images {
 		return \Timber::compile_string(
 			'
 			{% if link is not empty %}
-			<a class="media-image__link" href="{{ link|e("esc_url") }}">
+			<a class="media-image__link" href="{{ link }}"{% if link_target %} target="{{ link_target }}"{% endif %}{% if link_tabindex %} tabindex="{{ link_tabindex }}"{% endif %}>
 			{% endif %}
 			<picture>
 			{% if sizes_webp is not empty %}
