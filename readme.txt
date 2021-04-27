@@ -3,11 +3,15 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.7.1
 Requires PHP: 7.2.0
-Stable tag: 1.25.9
+Stable tag: 1.26.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.26.0 =
+* Allow passing of link array to the_image_sizes()
+* Update dependencies
 
 = 1.25.9 =
 * Allow umlaut URLs in SVG paths
