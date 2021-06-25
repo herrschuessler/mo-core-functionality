@@ -27,6 +27,7 @@ trait Images {
 	 *     @type mixed      $style The CSS style attribute (optional).
 	 *     @type mixed      $fit Wether to use object-fitting (can be false, 'cover', 'contain) (optional).
 	 *     @type mixed      $link A link URL to wrap the image with (optional). Can be a string with a URL or an array with 'url', 'tabindex' and 'target'.
+	 *     @type string     $crop cropping method, one of: 'default', 'center', 'top', 'bottom', 'left', 'right', 'top-center', 'bottom-center'.
 	 * }
 	 */
 	public function the_image_sizes( $image, $args = [] ) {
@@ -43,9 +44,12 @@ trait Images {
 			'style'   => null,
 			'fit'     => false,
 			'link'    => false,
+			'crop'    => 'default',
 		];
 
 		$args = wp_parse_args( $args, $defaults );
+
+		$allowed_crop_positions = [ 'default', 'center', 'top', 'bottom', 'left', 'right', 'top-center', 'bottom-center' ];
 
 		// Parse ratio to float or null.
 		$args['ratio'] = is_numeric( $args['ratio'] ) && $args['ratio'] > 0 ? floatval( $args['ratio'] ) : null;
@@ -57,6 +61,7 @@ trait Images {
 		$data['copyright']      = get_field( 'copyright', $image );
 		$data['copyright_link'] = get_field( 'copyright_link', $image );
 		$data['sizes_source']   = [];
+		$data['crop']           = in_array( $args['crop'], $allowed_crop_positions, true ) ? $args['crop'] : 'default';
 
 		// Parse link.
 		$data['link'] = false;
@@ -157,9 +162,9 @@ trait Images {
 		while ( $width <= $args['max'] && $width <= $image->width ) {
 			$resize_height = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
 			$height        = $args['ratio'] ? round( $width * $args['ratio'] ) : round( $width * $original_ratio );
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ') }} ' . $width . 'w ' . $height . 'h' );
+			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $width . 'w ' . $height . 'h' );
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ')|towebp(' . $webp_quality . ') }} ' . $width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\')|towebp(' . $webp_quality . ') }} ' . $width . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $width;
 			$data['height'] = $height;
@@ -171,9 +176,9 @@ trait Images {
 		if ( ( $width - $args['steps'] ) < $image->width && ( $width - $args['steps'] ) < $args['max'] ) {
 			$resize_height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
 			$height        = $args['ratio'] ? round( $image->width * $args['ratio'] ) : $image->height;
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ') }} ' . $image->width . 'w ' . $height . 'h' );
+			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width . 'w ' . $height . 'h' );
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ')|towebp(' . $webp_quality . ') }} ' . $image->width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\')|towebp(' . $webp_quality . ') }} ' . $image->width . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $image->width;
 			$data['height'] = $height;
