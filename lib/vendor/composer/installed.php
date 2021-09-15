@@ -6,46 +6,37 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'fe2fe2d141c368456d407d09a923ca631a1c4ed4',
+    'reference' => 'f67f7f55e84a0f35962f65033ccfd3d0b4a856c1',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
   array (
     'altorouter/altorouter' => 
     array (
-      'pretty_version' => 'v1.2.0',
-      'version' => '1.2.0.0',
+      'pretty_version' => '2.0.1',
+      'version' => '2.0.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '39c50092470128c12284d332bb57f306bb5b58e4',
-    ),
-    'asm89/twig-cache-extension' => 
-    array (
-      'pretty_version' => '1.4.0',
-      'version' => '1.4.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '13787226956ec766f4770722082288097aebaaf3',
+      'reference' => '127f6e96998708a31ef32252985bea82e3b03888',
     ),
     'composer/installers' => 
     array (
-      'pretty_version' => 'v1.11.0',
-      'version' => '1.11.0.0',
+      'pretty_version' => 'v1.12.0',
+      'version' => '1.12.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ae03311f45dfe194412081526be2e003960df74b',
+      'reference' => 'd20a64ed3c94748397ff5973488761b22f6d3f19',
     ),
     'giggsey/libphonenumber-for-php' => 
     array (
-      'pretty_version' => '8.12.31',
-      'version' => '8.12.31.0',
+      'pretty_version' => '8.12.32',
+      'version' => '8.12.32.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2d79a2443df5a693286510a24a308a0625a8132c',
+      'reference' => 'b13fcfd3ebfef44486fc0bd1f830737047205ae3',
     ),
     'giggsey/locale' => 
     array (
@@ -63,7 +54,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'fe2fe2d141c368456d407d09a923ca631a1c4ed4',
+      'reference' => 'f67f7f55e84a0f35962f65033ccfd3d0b4a856c1',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -99,12 +90,21 @@
     ),
     'timber/timber' => 
     array (
-      'pretty_version' => '1.18.2',
-      'version' => '1.18.2.0',
+      'pretty_version' => '1.19.0',
+      'version' => '1.19.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '18766d1af8650ca919534cc497e7f0e8d82423a3',
+      'reference' => '8dcb41667c8315b7051cdaffb328dfa59668e832',
+    ),
+    'twig/cache-extension' => 
+    array (
+      'pretty_version' => 'v1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2c243643f59132194458bd03c745b079bbb12e78',
     ),
     'twig/twig' => 
     array (
@@ -117,12 +117,12 @@
     ),
     'upstatement/routes' => 
     array (
-      'pretty_version' => '0.5',
-      'version' => '0.5.0.0',
+      'pretty_version' => '0.8',
+      'version' => '0.8.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3267d28be0a73f197087d58384e1a358d85671b6',
+      'reference' => '9294660710ba5cab48a62002210f74889c511701',
     ),
   ),
 );

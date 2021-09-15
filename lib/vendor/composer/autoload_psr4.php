@@ -14,5 +14,5 @@ return array(
     'Mo\\Core\\' => array($baseDir . '/lib/Core'),
     'Giggsey\\Locale\\' => array($vendorDir . '/giggsey/locale/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
-    '' => array($vendorDir . '/asm89/twig-cache-extension/lib'),
+    '' => array($vendorDir . '/twig/cache-extension/lib'),
 );

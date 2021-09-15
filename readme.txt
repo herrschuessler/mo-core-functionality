@@ -3,11 +3,15 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 5.8
 Requires PHP: 7.2.0
-Stable tag: 1.28.1
+Stable tag: 1.28.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.28.2 =
+* Update dependencies
+* Update Timber to 1.19.0
 
 = 1.28.1 =
 * Update dependencies
