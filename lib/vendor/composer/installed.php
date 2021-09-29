@@ -6,19 +6,19 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f67f7f55e84a0f35962f65033ccfd3d0b4a856c1',
+    'reference' => 'df6f5d5a140cf2332e45f62695f144871363d906',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
   array (
     'altorouter/altorouter' => 
     array (
-      'pretty_version' => '2.0.1',
-      'version' => '2.0.1.0',
+      'pretty_version' => '2.0.2',
+      'version' => '2.0.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '127f6e96998708a31ef32252985bea82e3b03888',
+      'reference' => 'f6fede4f94ced7c22ba63a9b8af0bf2dc38e3cb2',
     ),
     'composer/installers' => 
     array (
@@ -31,12 +31,12 @@
     ),
     'giggsey/libphonenumber-for-php' => 
     array (
-      'pretty_version' => '8.12.32',
-      'version' => '8.12.32.0',
+      'pretty_version' => '8.12.33',
+      'version' => '8.12.33.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b13fcfd3ebfef44486fc0bd1f830737047205ae3',
+      'reference' => '554116cea0dec3cdf0ca1deb045df59b3a6385b0',
     ),
     'giggsey/locale' => 
     array (
@@ -54,7 +54,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f67f7f55e84a0f35962f65033ccfd3d0b4a856c1',
+      'reference' => 'df6f5d5a140cf2332e45f62695f144871363d906',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -108,12 +108,12 @@
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v2.14.6',
-      'version' => '2.14.6.0',
+      'pretty_version' => 'v2.14.7',
+      'version' => '2.14.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '27e5cf2b05e3744accf39d4c68a3235d9966d260',
+      'reference' => '8e202327ee1ed863629de9b18a5ec70ac614d88f',
     ),
     'upstatement/routes' => 
     array (
