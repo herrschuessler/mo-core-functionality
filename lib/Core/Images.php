@@ -148,6 +148,7 @@ trait Images {
 		$width          = $args['min'];
 		$original_ratio = $image->width > 0 ? $image->height / $image->width : 0;
 		$resize_height  = 0;
+		$fallback       = '';
 
 		// Object fitting.
 		if ( 'cover' === $args['fit'] ) {
@@ -169,6 +170,7 @@ trait Images {
 			$data['width']  = $width;
 			$data['height'] = $height;
 			$width          = $width + $args['steps'];
+			$fallback       = '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }}';
 		}
 
 		// If last size was smaller than original image dimensions and original image is smaller
@@ -182,10 +184,11 @@ trait Images {
 			}
 			$data['width']  = $image->width;
 			$data['height'] = $height;
+			$fallback       = '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }}';
 		}
 
 		// Compile image sources.
-		$data['fallback']     = \Timber::compile_string( end( $data['sizes_source'] ), $data );
+		$data['fallback']     = \Timber::compile_string( $fallback, $data );
 		$data['sizes_source'] = \Timber::compile_string( implode( ', ', $data['sizes_source'] ), $data );
 		if ( $data['sizes_webp'] ) {
 			$data['sizes_webp'] = \Timber::compile_string( implode( ', ', $data['sizes_webp'] ), $data );
