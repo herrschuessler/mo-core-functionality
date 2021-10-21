@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '1d175419891e2a6693e6c052ed80e49427dc4c7c',
+    'reference' => 'd7c74dc85ca3dd483fa2aa7abd42554d7238befb',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
@@ -47,6 +47,15 @@
       ),
       'reference' => 'f28e0fa55e842afe034a7671df79757731467031',
     ),
+    'johnbillion/extended-cpts' => 
+    array (
+      'pretty_version' => '4.5.2',
+      'version' => '4.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '59ce9f4e0422512eec6f698ccba4a6a81b018fdb',
+    ),
     'mo/core-functionality' => 
     array (
       'pretty_version' => 'dev-master',
@@ -54,7 +63,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '1d175419891e2a6693e6c052ed80e49427dc4c7c',
+      'reference' => 'd7c74dc85ca3dd483fa2aa7abd42554d7238befb',
     ),
     'roundcube/plugin-installer' => 
     array (

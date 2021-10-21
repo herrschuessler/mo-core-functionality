@@ -40,8 +40,8 @@ trait Youtube_Embed {
 		return \Timber::compile_string(
 			'
 			{% apply spaceless %}
-			<figure class="mo-embed mo-embed--youtube" style="position:relative;height:0;padding-bottom:56.25%;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreenå>
-				<iframe style="position:absolute;top:0;left:0;width:100%!important;height:100%!important;border:0;" src="{{ src }}"></iframe>
+			<figure class="mo-embed mo-embed--youtube" style="position:relative;height:0;padding-bottom:56.25%;">
+				<iframe style="position:absolute;top:0;left:0;width:100%!important;height:100%!important;border:0;" src="{{ src }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</figure>
 			{% endapply %}
 			',

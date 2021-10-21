@@ -22,8 +22,9 @@ use \Mo\Core\Core_Functionality as Core;
  *
  * @param array $file The file name.
  * @param bool  $version Wether to append version.
+ * @param bool  $basetheme Set to false if the asset should load from a child theme.
  */
-function get_css_asset( $file = null, $version = true ) {
+function get_css_asset( $file = null, $version = true, $basetheme = true ) {
 
 	if ( ! is_string( $file ) ) {
 		return false;
@@ -31,7 +32,9 @@ function get_css_asset( $file = null, $version = true ) {
 
 	// Use minified style if not in dev mode.
 	$folder = Core::is_dev() ? 'dev/' : 'dist/';
-	$path   = get_stylesheet_directory_uri() . '/assets/css/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
+	$path   = $basetheme ? get_template_directory_uri() : get_stylesheet_directory_uri();
+	$path   = $path . '/assets/css/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
+	$theme  = $basetheme ? wp_get_theme( get_template() ) : wp_get_theme();
 
 	// Append version.
 	if ( $version ) {
@@ -40,7 +43,7 @@ function get_css_asset( $file = null, $version = true ) {
 			$version = esc_attr( $version );
 		} else {
 			// If $version is not a string, use theme version number as asset version.
-			$version = wp_get_theme()['Version'];
+			$version = $theme['Version'];
 		}
 		$path .= '?ver=' . $version;
 	}
@@ -53,8 +56,9 @@ function get_css_asset( $file = null, $version = true ) {
  *
  * @param array $file The file name.
  * @param bool  $version Wether to append version.
+ * @param bool  $basetheme Set to false if the asset should load from a child theme.
  */
-function get_js_asset( $file = null, $version = true ) {
+function get_js_asset( $file = null, $version = true, $basetheme = true ) {
 
 	if ( ! is_string( $file ) ) {
 		return false;
@@ -62,7 +66,9 @@ function get_js_asset( $file = null, $version = true ) {
 
 	// Use minified script if not in dev mode.
 	$folder = Core::is_dev() ? 'dev/' : 'dist/';
-	$path   = get_stylesheet_directory_uri() . '/assets/js/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
+	$path   = $basetheme ? get_template_directory_uri() : get_stylesheet_directory_uri();
+	$path   = $path . '/assets/js/' . $folder . trim( filter_var( $file, FILTER_SANITIZE_ENCODED ) );
+	$theme  = $basetheme ? wp_get_theme( get_template() ) : wp_get_theme();
 
 	// Append version.
 	if ( $version ) {
@@ -71,7 +77,7 @@ function get_js_asset( $file = null, $version = true ) {
 			$version = esc_attr( $version );
 		} else {
 			// If $version is not a string, use theme version number as asset version.
-			$version = wp_get_theme()['Version'];
+			$version = $theme['Version'];
 		}
 		$path .= '?ver=' . $version;
 	}
@@ -81,12 +87,14 @@ function get_js_asset( $file = null, $version = true ) {
 
 /**
  * Get JS public_path.
+ *
+ * @todo This always retuns the path to the parent theme. Need to adapt it for child themes.
  */
 function get_js_public_path() {
 
 	// use minified script if not in dev mode.
 	$folder = Core::is_dev() ? 'dev/' : 'dist/';
-	$path   = get_stylesheet_directory_uri() . '/assets/js/' . $folder;
+	$path   = get_template_directory_uri() . '/assets/js/' . $folder;
 
 	return $path;
 }

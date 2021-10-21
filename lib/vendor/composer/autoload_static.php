@@ -9,6 +9,7 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'a2c48002d05f7782d8b603bd2bcb5252' => __DIR__ . '/..' . '/johnbillion/extended-cpts/extended-cpts.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -33,6 +34,10 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
         'G' => 
         array (
             'Giggsey\\Locale\\' => 15,
+        ),
+        'E' => 
+        array (
+            'ExtCPTs\\Tests\\' => 14,
         ),
         'C' => 
         array (
@@ -68,6 +73,10 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
         'Giggsey\\Locale\\' => 
         array (
             0 => __DIR__ . '/..' . '/giggsey/locale/src',
+        ),
+        'ExtCPTs\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/johnbillion/extended-cpts/tests/phpunit',
         ),
         'Composer\\Installers\\' => 
         array (
@@ -204,6 +213,7 @@ class ComposerStaticInitd08324aed85d301de0e99cf41ce499ab
         'Giggsey\\Locale\\Locale' => __DIR__ . '/..' . '/giggsey/locale/src/Locale.php',
         'Mo\\Core\\Helpers' => __DIR__ . '/../../..' . '/lib/Core/Helpers.php',
         'Mo\\Core\\Images' => __DIR__ . '/../../..' . '/lib/Core/Images.php',
+        'Mo\\Core\\PostType' => __DIR__ . '/../../..' . '/lib/Core/PostType.php',
         'Mo\\Core\\Svg' => __DIR__ . '/../../..' . '/lib/Core/Svg.php',
         'Mo\\Core\\Twig_Extensions' => __DIR__ . '/../../..' . '/lib/Core/Twig_Extensions.php',
         'Mo\\Core\\Video_Embed' => __DIR__ . '/../../..' . '/lib/Core/Video_Embed.php',
