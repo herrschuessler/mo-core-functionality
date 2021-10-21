@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'df6f5d5a140cf2332e45f62695f144871363d906',
+    'reference' => '1d175419891e2a6693e6c052ed80e49427dc4c7c',
     'name' => 'mo/core-functionality',
   ),
   'versions' => 
@@ -44,12 +44,12 @@ private static $installed = array (
     ),
     'giggsey/libphonenumber-for-php' => 
     array (
-      'pretty_version' => '8.12.33',
-      'version' => '8.12.33.0',
+      'pretty_version' => '8.12.35',
+      'version' => '8.12.35.0',
       'aliases' => 
       array (
       ),
-      'reference' => '554116cea0dec3cdf0ca1deb045df59b3a6385b0',
+      'reference' => '7853af278d8866328b3df98ae998dbf5d4a5c907',
     ),
     'giggsey/locale' => 
     array (
@@ -67,7 +67,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'df6f5d5a140cf2332e45f62695f144871363d906',
+      'reference' => '1d175419891e2a6693e6c052ed80e49427dc4c7c',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -103,12 +103,12 @@ private static $installed = array (
     ),
     'timber/timber' => 
     array (
-      'pretty_version' => '1.19.0',
-      'version' => '1.19.0.0',
+      'pretty_version' => '1.19.1',
+      'version' => '1.19.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8dcb41667c8315b7051cdaffb328dfa59668e832',
+      'reference' => '3e213fbd3587eb36adec2d5a081824c4722a0acf',
     ),
     'twig/cache-extension' => 
     array (
@@ -130,12 +130,12 @@ private static $installed = array (
     ),
     'upstatement/routes' => 
     array (
-      'pretty_version' => '0.8',
-      'version' => '0.8.0.0',
+      'pretty_version' => '0.8.1',
+      'version' => '0.8.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '9294660710ba5cab48a62002210f74889c511701',
+      'reference' => '02eb866668f5478d794547aa79e73dd92a989ad9',
     ),
   ),
 );
