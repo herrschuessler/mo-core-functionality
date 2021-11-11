@@ -119,7 +119,7 @@ abstract class PostType {
 			/* translators: Post type plural name */
 			'all_items'                => sprintf( _x( 'Alle %s', 'Custom Post Type', 'mo-admin' ), $post_type_labels['plural'] ),
 			/* translators: Post type plural name */
-			'archives'                 => sprintf( _x( 'Listenseite %s', 'Custom Post Type', 'mo-admin' ), $post_type_labels['plural'] ),
+			'archives'                 => isset( $post_type_labels['archives'] ) ? $post_type_labels['archives'] : sprintf( _x( 'Listenseite %s', 'Custom Post Type', 'mo-admin' ), $post_type_labels['plural'] ),
 			'attributes'               => _x( 'Attribute', 'Custom Post Type Category', 'mo-admin' ),
 			'insert_into_item'         => _x( 'In Inhalt einfügen', 'Custom Post Type Category', 'mo-admin' ),
 			'uploaded_to_this_item'    => _x( 'Zu diesem Inhalt hochgeladen', 'Custom Post Type Category', 'mo-admin' ),
