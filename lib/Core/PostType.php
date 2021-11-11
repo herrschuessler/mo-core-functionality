@@ -152,7 +152,7 @@ abstract class PostType {
 	 *
 	 * @return string Post type name.
 	 */
-	abstract protected function get_name() : string;
+	abstract public function get_name() : string;
 
 	/**
 	 * Get post type args.
