@@ -15,4 +15,11 @@
         <exclude-pattern>*/lib/Core/*\.(php)$</exclude-pattern>
     </rule>
 
+    <rule ref="WordPress-Extra">
+        <exclude name="WordPress.Arrays.ArrayDeclarationSpacing"/>
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+    </rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
 </ruleset>

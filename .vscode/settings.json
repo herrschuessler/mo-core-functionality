@@ -1,7 +1,0 @@
-{
-    "phpcs.enable": true,
-    "phpcs.standard": "WordPress",
-    "phpcbf.enable": true,
-    "phpcbf.onsave": true,
-    "phpcbf.standard": "WordPress"
-  }
