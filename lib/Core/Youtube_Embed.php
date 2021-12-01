@@ -57,6 +57,38 @@ trait Youtube_Embed {
 	}
 
 	/**
+	 * Add shortcode.
+	 */
+	public function add_youtube_embed_shortcode() {
+		add_shortcode(
+			'mo_youtube_embed',
+			[ $this, 'youtube_embed_shortcode_callback' ]
+		);
+	}
+
+	/**
+	 * Add shortcode callback.
+	 *
+	 * @param array $atts The shortcode parameters.
+	 */
+	public function youtube_embed_shortcode_callback( $atts ) {
+		$atts = shortcode_atts(
+			[
+				'youtube_id' => false,
+				'image_id'   => false,
+			],
+			$atts,
+			'mo_youtube_embed'
+		);
+
+		if ( ! $atts['youtube_id'] ) {
+			return __( 'YouTube-ID fehlt', 'mo-core' );
+		}
+
+		return $this->the_youtube_embed( $atts['youtube_id'], $atts['image_id'] );
+	}
+
+	/**
 	 * Load template.
 	 */
 	public function load_youtube_embed_template() {
