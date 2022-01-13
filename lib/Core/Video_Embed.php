@@ -32,15 +32,47 @@ trait Video_Embed {
 			return false;
 		}
 
+		if ( ! empty( $text ) ) {
+			$data['text'] = $text;
+		}
+
+		// Try to let Borlabs Content Blocker handle things.
+		if ( shortcode_exists( 'borlabs-cookie' ) ) {
+			$data['src'] = $embed_url;
+
+			if ( ! empty( $image_id ) ) {
+				$thumbnail = wp_get_attachment_image_src( $image_id, 'large' );
+				if ( isset( $thumbnail[0] ) ) {
+					$data['thumbnail'] = $thumbnail[0];
+				}
+			}
+
+			return \Timber::compile_string(
+				'
+				{% apply spaceless|the_content %}
+				<figure class="wp-block-embed is-type-video wp-embed-aspect-16-9 wp-has-aspect-ratio">
+					<div class="wp-block-embed__wrapper">
+						[borlabs-cookie type="content-blocker"{% if thumbnail %} thumbnail="{{ thumbnail }}"{% endif %}]
+						<iframe src="{{ src }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						[/borlabs-cookie]
+						</div>
+					{% if text %}
+						<figcaption class="mo-embed__caption">
+							<span class="mo-embed__caption-inner">{{ text }}</span>
+						</figcaption>
+					{% endif %}
+				</figure>
+				{% endapply %}
+				',
+				$data
+			);
+		}
+
 		// We need to replace %2F in rawurlencoded string as it leads to a 404 (possibly WP core issue?).
 		$data['src'] = get_home_url( null, self::$video_embed_endpoint . '/' . str_replace( '%2F', '!2F', rawurlencode( $embed_url ) ) );
 
 		if ( ! empty( $image_id ) ) {
 			$data['src'] .= '/' . rawurlencode( $image_id );
-		}
-
-		if ( ! empty( $text ) ) {
-			$data['text'] = $text;
 		}
 
 		return \Timber::compile_string(
