@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.8.1
+Tested up to: 5.8.3
 Requires PHP: 7.2.0
-Stable tag: 1.30.0
+Stable tag: 1.30.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.30.1 =
+* Update dependencies
+* Add Borlabs content blocker compatibility to video_embed
 
 = 1.30.0 =
 * Add mo_youtube_embed shortcode

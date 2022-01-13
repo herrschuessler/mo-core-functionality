@@ -121,6 +121,7 @@ return array(
     'Routes' => $vendorDir . '/upstatement/routes/Routes.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
+    'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'Timber\\Admin' => $vendorDir . '/timber/timber/lib/Admin.php',
     'Timber\\Archives' => $vendorDir . '/timber/timber/lib/Archives.php',
     'Timber\\Cache\\Cleaner' => $vendorDir . '/timber/timber/lib/Cache/Cleaner.php',

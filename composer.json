@@ -4,7 +4,10 @@
   "license": "GPL-2.0-or-later",
   "config": {
     "vendor-dir": "lib/vendor",
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "composer/installers": true
+    }
   },
   "require": {
     "timber/timber": "^1.10",
