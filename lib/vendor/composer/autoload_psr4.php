@@ -14,7 +14,9 @@ return array(
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Mo\\Core\\' => array($baseDir . '/lib/Core'),
     'Giggsey\\Locale\\' => array($vendorDir . '/giggsey/locale/src'),
-    'ExtCPTs\\Tests\\' => array($vendorDir . '/johnbillion/extended-cpts/tests/phpunit'),
+    'ExtCPTs\\Tests\\' => array($vendorDir . '/johnbillion/extended-cpts/tests/integration'),
+    'ExtCPTs\\' => array($vendorDir . '/johnbillion/extended-cpts/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
+    'Args\\' => array($vendorDir . '/johnbillion/args/src'),
     '' => array($vendorDir . '/twig/cache-extension/lib'),
 );
