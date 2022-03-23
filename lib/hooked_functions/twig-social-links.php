@@ -45,6 +45,10 @@ function social_links( $data ) {
 	}
 
 	$data['social_links'] = apply_filters( 'mo_social_links', $social_links );
+
+	// Add to global namespace.
+	$data['global']['social_links'] = $data['social_links'];
+
 	return $data;
 }
 
