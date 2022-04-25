@@ -1,13 +1,16 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.9.2
+Tested up to: 5.9.3
 Requires PHP: 7.4.0
-Stable tag: 1.30.3
+Stable tag: 1.31.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.31.0 =
+* Set unique password protected cookie name to allow multiple instances on dev server to user their own cookie
 
 = 1.30.3 =
 * Add social_links Twig var to global namespace

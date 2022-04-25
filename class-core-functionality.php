@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.30.3
+ * Version:           1.31.0
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -51,6 +51,7 @@ require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/acf.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/cleanup.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/grant-editor-menu-cap.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/grant-editor-privacy-cap.php';
+require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/password-protected.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/push-assets.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/set-dev-color-scheme.php';
 require_once \Mo\Core\PLUGIN_PATH . 'lib/hooked_functions/set-dev-title-icon.php';
@@ -68,7 +69,7 @@ final class Core_Functionality {
 	use Video_Embed;
 	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.30.3';
+	const PLUGIN_VERSION = '1.31.0';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
