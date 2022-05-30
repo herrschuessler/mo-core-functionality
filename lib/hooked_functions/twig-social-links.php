@@ -51,6 +51,12 @@ function social_links( $data ) {
 										case 'www.linkedin.com':
 											$social_links['linkedin'] = $url;
 											break;
+										case 'www.instagram.com':
+											$social_links['instagram'] = $url;
+											break;
+										case 'www.youtube.com':
+											$social_links['youtube'] = $url;
+											break;
 									}
 								}
 							}
