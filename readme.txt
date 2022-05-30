@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.0.0
-Tested up to: 5.9.3
+Tested up to: 6.0.0
 Requires PHP: 7.4.0
-Stable tag: 1.31.1
+Stable tag: 1.31.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.31.2 =
+* Update dependencies
+* Adapt twig social_links variable to Yoast updates
 
 = 1.31.1 =
 * Update dependencies
