@@ -39,6 +39,23 @@ function social_links( $data ) {
 					case 'twitter_site':
 						$social_links[ explode( '_', $profile )[0] ] = 'https://twitter.com/' . $value . '/';
 						break;
+					case 'other_social_urls':
+						if ( is_array( $value ) ) {
+							foreach ( $value as $url ) {
+								$url_fragments = wp_parse_url( $url );
+								if ( $url_fragments ) {
+									switch ( $url_fragments['host'] ) {
+										case 'www.xing.com':
+											$social_links['xing'] = $url;
+											break;
+										case 'www.linkedin.com':
+											$social_links['linkedin'] = $url;
+											break;
+									}
+								}
+							}
+						}
+						break;
 				}
 			}
 		}
