@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.0.0
 Tested up to: 6.0.0
 Requires PHP: 7.4.0
-Stable tag: 1.31.4
+Stable tag: 1.32.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.32.0 =
+* Add fix for svg-sprite loaded from external domain
 
 = 1.31.4 =
 * Implement PR#41 from Upstatement/routes

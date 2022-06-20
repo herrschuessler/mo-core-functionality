@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.31.4
+ * Version:           1.32.0
  * Requires at least: 5.0.0
  * Requires PHP:      7.2
  * Author:            MONTAGMORGENS GmbH
@@ -69,7 +69,7 @@ final class Core_Functionality {
 	use Video_Embed;
 	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.31.4';
+	const PLUGIN_VERSION = '1.32.0';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
@@ -84,6 +84,14 @@ final class Core_Functionality {
 	 * @var int The WebP image quality (0-100).
 	 */
 	public static $webp_quality = 85;
+
+	/**
+	 * The path inside the theme directory at which the SVG files of the used icon sets are supposed to be found.
+	 *
+	 * @var string Icon set path.
+	 * @todo Add filter hook for path.
+	 */
+	public static $icon_set_path = '/assets/svg-sprite/';
 
 	/**
 	 * The plugin singleton.
@@ -207,12 +215,29 @@ final class Core_Functionality {
 	}
 
 	/**
-	 * Enqueue plugin assets if shortcode is present.
+	 * Enqueue plugin assets.
 	 */
 	public function enqueue_assets() {
 
 		// Enqueue plugin scripts.
-		\wp_enqueue_script( 'mo-images', \plugins_url( '/assets/js/images.js', __FILE__ ), null, self::PLUGIN_VERSION, true );
+		\wp_enqueue_script( 'mo-core-images', \plugins_url( '/assets/js/images.js', __FILE__ ), null, self::PLUGIN_VERSION, true );
+
+		/**
+		 * Handle icon sets which are loaded from a content URL that has deviates from the domain of the site URL.
+		 *
+		 * External domains are not compatable with `<use href="..."/>`, so we need
+		 * fetch the SVG data manually and insert it into the HTML.
+		 */
+		if ( wp_parse_url( get_template_directory_uri(), PHP_URL_HOST ) !== wp_parse_url( get_site_url(), PHP_URL_HOST ) ) {
+			wp_enqueue_script( 'mo-core-external-svg-sprite', \plugins_url( '/assets/js/external-svg-sprite.js', __FILE__ ), null, self::PLUGIN_VERSION, true );
+			wp_localize_script(
+				'mo-core-external-svg-sprite',
+				'MoCoreExternalSvgSprite',
+				[
+					'iconSetBaseUrl' => get_template_directory_uri() . self::$icon_set_path,
+				]
+			);
+		}
 	}
 
 	/**
@@ -222,7 +247,7 @@ final class Core_Functionality {
 	 * @param string $handle The script's registered handle.
 	 */
 	public function async_theme_scripts( $tag, $handle ) {
-		$scripts_to_defer = [ 'mo-images' ];
+		$scripts_to_defer = [ 'mo-core-images' ];
 		foreach ( $scripts_to_defer as $defer_script ) {
 			if ( $defer_script === $handle ) {
 				return str_replace( ' src', ' async src', $tag );
