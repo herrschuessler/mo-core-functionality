@@ -49,6 +49,7 @@ function social_links( $data ) {
 											$social_links['xing'] = $url;
 											break;
 										case 'www.linkedin.com':
+										case 'de.linkedin.com':
 											$social_links['linkedin'] = $url;
 											break;
 										case 'www.instagram.com':
