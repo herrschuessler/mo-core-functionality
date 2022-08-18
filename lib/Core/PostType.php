@@ -81,13 +81,24 @@ abstract class PostType {
 			'init',
 			function() use ( $post_type_name, $post_type_args, $post_type_labels ) {
 				if ( function_exists( 'register_extended_post_type' ) ) {
+
+					// Register post type.
 					register_extended_post_type(
 						$post_type_name,
 						$post_type_args,
 						$post_type_labels
 					);
+
+					// Add taxonomies.
+					$taxonomies = $this->get_taxonomies();
+					if ( is_array( $taxonomies ) && ! empty( $taxonomies ) ) {
+						foreach ( $taxonomies as $taxonomy ) {
+							add_filter( 'mo_core/register_taxonomy/' . sanitize_title( $taxonomy ) . '/post_types', [ $this, 'add_taxonomy' ], 10, 1 );
+						}
+					}
 				}
-			}
+			},
+			10
 		);
 	}
 
@@ -181,5 +192,27 @@ abstract class PostType {
 	 * @return array Admin filters setting.
 	 */
 	abstract protected function get_admin_filters() : array;
-}
 
+	/**
+	 * Get taxonomies.
+	 *
+	 * @return array Taxonomies names.
+	 */
+	protected function get_taxonomies() {
+		return [];
+	}
+
+	/**
+	 * Add taxonomy callback.
+	 * Hooked into 'mo_core/register_taxonomy/{$taxonomy}/post_types.
+	 *
+	 * @param array $post_types Post types.
+	 *
+	 * @return array Post types.
+	 */
+	public function add_taxonomy( $post_types ) {
+		array_push( $post_types, $this->get_name() );
+		return $post_types;
+	}
+
+}
