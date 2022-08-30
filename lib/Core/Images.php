@@ -163,9 +163,10 @@ trait Images {
 		while ( $width <= $args['max'] && $width <= $image->width ) {
 			$resize_height = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
 			$height        = $args['ratio'] ? round( $width * $args['ratio'] ) : round( $width * $original_ratio );
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $width . 'w ' . $height . 'h' );
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\')|towebp(' . $webp_quality . ') }} ' . $width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|towebp(' . $webp_quality . ')|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $width . 'w ' . $height . 'h' );
+			} else {
+				array_push( $data['sizes_source'], '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $width . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $width;
 			$data['height'] = $height;
@@ -178,9 +179,10 @@ trait Images {
 		if ( ( $width - $args['steps'] ) < $image->width && ( $width - $args['steps'] ) < $args['max'] ) {
 			$resize_height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
 			$height        = $args['ratio'] ? round( $image->width * $args['ratio'] ) : $image->height;
-			array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width . 'w ' . $height . 'h' );
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\')|towebp(' . $webp_quality . ') }} ' . $image->width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|towebp(' . $webp_quality . ')|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width . 'w ' . $height . 'h' );
+			} else {
+				array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $image->width;
 			$data['height'] = $height;
@@ -203,7 +205,9 @@ trait Images {
 			{% if sizes_webp is not empty %}
 				<source data-srcset="{{ sizes_webp }}" type="image/webp">
 			{% endif %}
-			<source data-srcset="{{ sizes_source }}" type="image/jpeg">
+			{% if sizes_source is not empty %}
+				<source data-srcset="{{ sizes_source }}" type="image/jpeg">
+			{% endif %}
 			<img
 			class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
 			{% if style is not empty %}
