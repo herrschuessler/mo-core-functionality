@@ -169,8 +169,8 @@ trait Images {
 			}
 			$data['width']  = $width;
 			$data['height'] = $height;
-			$width          = $width + $args['steps'];
 			$fallback       = '{{ image.src|resize(' . $width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }}';
+			$width          = $width + $args['steps'];
 		}
 
 		// If last size was smaller than original image dimensions and original image is smaller
