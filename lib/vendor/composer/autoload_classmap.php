@@ -105,6 +105,7 @@ return array(
     'Composer\\Installers\\MajimaInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MajimaInstaller.php',
     'Composer\\Installers\\MakoInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MakoInstaller.php',
     'Composer\\Installers\\MantisBTInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MantisBTInstaller.php',
+    'Composer\\Installers\\MatomoInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MatomoInstaller.php',
     'Composer\\Installers\\MauticInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MauticInstaller.php',
     'Composer\\Installers\\MayaInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MayaInstaller.php',
     'Composer\\Installers\\MediaWikiInstaller' => $vendorDir . '/composer/installers/src/Composer/Installers/MediaWikiInstaller.php',
