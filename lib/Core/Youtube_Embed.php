@@ -31,7 +31,13 @@ trait Youtube_Embed {
 			return false;
 		}
 
-		$data['src'] = get_home_url( null, self::$youtube_embed_endpoint . '/' . rawurlencode( $youtube_id ) );
+		// Try to let Borlabs Content Blocker handle things.
+		if ( shortcode_exists( 'borlabs-cookie' ) ) {
+			$data['src'] = 'https://www.youtube-nocookie.com/embed/' . rawurlencode( $youtube_id );
+		} else {
+
+			$data['src'] = get_home_url( null, self::$youtube_embed_endpoint . '/' . rawurlencode( $youtube_id ) );
+		}
 
 		if ( ! empty( $image_id ) ) {
 			$data['src'] .= '/' . rawurlencode( $image_id );
@@ -39,10 +45,12 @@ trait Youtube_Embed {
 
 		return \Timber::compile_string(
 			'
-			{% apply spaceless %}
+			{% apply spaceless|the_content %}
 			<figure class="mo-embed mo-embed--youtube" style="position:relative;height:0;padding-bottom:56.25%;">
-				<iframe style="position:absolute;top:0;left:0;width:100%!important;height:100%!important;border:0;" src="{{ src }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</figure>
+				[borlabs-cookie id="youtube" type="content-blocker"]
+					<iframe style="position:absolute;top:0;left:0;width:100%!important;height:100%!important;border:0;" src="{{ src }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				[/borlabs-cookie]
+				</figure>
 			{% endapply %}
 			',
 			$data
