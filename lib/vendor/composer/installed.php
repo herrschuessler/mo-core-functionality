@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../../',
         'aliases' => array(),
-        'reference' => 'dee7f397ff949b0395c319616aa5f5499a380258',
+        'reference' => 'f2a9c7c7f7adfc00efec9f6d1c3266a11778b12f',
         'name' => 'mo/core-functionality',
         'dev' => true,
     ),
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'giggsey/libphonenumber-for-php' => array(
-            'pretty_version' => '8.12.54',
-            'version' => '8.12.54.0',
+            'pretty_version' => '8.12.55',
+            'version' => '8.12.55.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../giggsey/libphonenumber-for-php',
             'aliases' => array(),
-            'reference' => 'd0bad134ca7206d36784c2c5ec531ba4513efde7',
+            'reference' => 'a4f21baace2038d4d47206aec15209365b629e86',
             'dev_requirement' => false,
         ),
         'giggsey/locale' => array(
@@ -70,7 +70,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../../',
             'aliases' => array(),
-            'reference' => 'dee7f397ff949b0395c319616aa5f5499a380258',
+            'reference' => 'f2a9c7c7f7adfc00efec9f6d1c3266a11778b12f',
             'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(

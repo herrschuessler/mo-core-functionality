@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
-Requires at least: 5.0.0
-Tested up to: 6.0.1
+Requires at least: 5.8.0
+Tested up to: 6.0.2
 Requires PHP: 7.4.0
-Stable tag: 1.34.0
+Stable tag: 1.35.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.35.0 =
+* Implement Borlabs Cookie in youtube_embed function
+* Update dependencies
 
 = 1.34.0 =
 * Do not generate JPG image sizes if WebP is supported
