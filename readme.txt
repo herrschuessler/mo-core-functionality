@@ -3,11 +3,15 @@ Contributors: herrschuessler
 Requires at least: 5.8.0
 Tested up to: 6.0.2
 Requires PHP: 7.4.0
-Stable tag: 1.35.0
+Stable tag: 1.36.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.36.0 =
+* Implement custom post type archive
+* Update Timber to 1.21.0 and update other dependencies
 
 = 1.35.0 =
 * Implement Borlabs Cookie in youtube_embed function

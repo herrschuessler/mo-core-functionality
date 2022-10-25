@@ -6,7 +6,8 @@
  * @package    Mo\Core
  * @author     Christoph Schüßler <schuessler@montagmorgens.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.txt GNU/GPLv2
- * @since      1.29.0
+ * @since      3.29.0
+ * @phpcs:disable WordPress.Files.FileName
  */
 
 namespace Mo\Core;
@@ -27,9 +28,27 @@ abstract class PostType {
 	 * Constuctor.
 	 */
 	private function __construct() {
+		$post_type_args = $this->get_args();
+
+		// Add permastruct of custom archive page.
+		if ( isset( $post_type_args['has_custom_archive'] ) && true === $post_type_args['has_custom_archive'] ) {
+			add_action( 'acf/init', [ $this, 'add_custom_archive_options_page' ] );
+			add_action( 'acf/init', [ $this, 'add_custom_archive_options_field_group' ] );
+			$post_type_args['has_archive'] = false;
+			unset( $post_type_args['has_custom_archive'] );
+
+			$archive_page        = get_option( 'options_' . $this->get_name() . '_archive_page' );
+			$archive_permastruct = get_page_uri( $archive_page );
+			if ( $archive_permastruct ) {
+				$post_type_args['rewrite'] = [
+					'permastruct' => '/' . $archive_permastruct . '/%' . $this->get_name() . '%',
+				];
+			}
+		}
+
 		$this->register(
 			$this->get_name(),
-			$this->get_args(),
+			$post_type_args,
 			$this->get_labels(),
 		);
 
@@ -213,6 +232,90 @@ abstract class PostType {
 	public function add_taxonomy( $post_types ) {
 		array_push( $post_types, $this->get_name() );
 		return $post_types;
+	}
+
+
+	/**
+	 * Add options page.
+	 */
+	public function add_custom_archive_options_page() {
+		if ( function_exists( 'acf_add_options_sub_page' ) ) {
+			acf_add_options_sub_page(
+				[
+					/* translators: Plural post type name */
+					'page_title'      => sprintf( __( '%s-Listenseite', 'mo-admin' ), $this->get_labels()['plural'] ),
+					'menu_title'      => __( 'Listenseite', 'mo-admin' ),
+					'menu_slug'       => $this->get_name() . '-archive',
+					'parent_slug'     => 'edit.php?post_type=' . $this->get_name(),
+					'capability'      => 'edit_posts',
+					'redirect'        => false,
+					'autoload'        => false,
+					'update_button'   => __( 'Speichern', 'mo-admin' ),
+					'updated_message' => __( 'Einstellungen gespeichert', 'mo-admin' ),
+				]
+			);
+		}
+	}
+
+	/**
+	 * Add options field groups.
+	 */
+	public function add_custom_archive_options_field_group() {
+		if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+			acf_add_local_field_group(
+				[
+					'key'                   => 'group_options_' . $this->get_name() . '_archive',
+					/* translators: Plural post type name */
+					'title'                 => sprintf( __( '%s-Listenseite', 'mo-admin' ), $this->get_labels()['plural'] ),
+					'fields'                => [
+						[
+							'key'                 => 'field_options_' . $this->get_name() . '_archive',
+							/* translators: Plural post type name */
+							'label'               => sprintf( __( '%s-Listenseite', 'mo-admin' ), $this->get_labels()['plural'] ),
+							'name'                => $this->get_name() . '_archive_page',
+							'type'                => 'post_object',
+							/* translators: Plural post type name */
+							'instructions'        => sprintf( __( 'Wählen Sie eine Seite aus, die als Listenseite dieses Inhaltstyps verwendet werden soll. Die Permalinks des Inhaltstyps sind dann relativ zum Permalink dieser Seite. Diese Seite sollte den Block zur Darstellung der %s-Liste enthalten.', 'mo-admin' ), $this->get_labels()['plural'] ),
+							'required'            => 0,
+							'conditional_logic'   => 0,
+							'wrapper'             => [
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							],
+							'wpml_cf_preferences' => 2,
+							'post_type'           => [
+								0 => 'page',
+							],
+							'taxonomy'            => '',
+							'allow_null'          => 1,
+							'multiple'            => 0,
+							'return_format'       => 'object',
+							'ui'                  => 1,
+						],
+					],
+					'location'              => [
+						[
+							[
+								'param'    => 'options_page',
+								'operator' => '==',
+								'value'    => $this->get_name() . '-archive',
+							],
+						],
+					],
+					'menu_order'            => 0,
+					'position'              => 'normal',
+					'style'                 => 'seamless',
+					'label_placement'       => 'left',
+					'instruction_placement' => 'field',
+					'hide_on_screen'        => '',
+					'active'                => true,
+					'description'           => '',
+					'show_in_rest'          => 0,
+				]
+			);
+		}
 	}
 
 }
