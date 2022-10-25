@@ -213,16 +213,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.12.55",
+            "version": "8.12.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "a4f21baace2038d4d47206aec15209365b629e86"
+                "reference": "033a7285fd1102c13c4415e300734b7ce7ca0ae0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/a4f21baace2038d4d47206aec15209365b629e86",
-                "reference": "a4f21baace2038d4d47206aec15209365b629e86",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/033a7285fd1102c13c4415e300734b7ce7ca0ae0",
+                "reference": "033a7285fd1102c13c4415e300734b7ce7ca0ae0",
                 "shasum": ""
             },
             "require": {
@@ -282,20 +282,20 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php"
             },
-            "time": "2022-09-09T12:56:05+00:00"
+            "time": "2022-10-14T07:52:28+00:00"
         },
         {
             "name": "giggsey/locale",
-            "version": "2.2",
+            "version": "2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/Locale.git",
-                "reference": "9c1dca769253f6a3e81f9a5c167f53b6a54ab635"
+                "reference": "5f035523740be40d40ac768a123c9bcc1ae12f56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/Locale/zipball/9c1dca769253f6a3e81f9a5c167f53b6a54ab635",
-                "reference": "9c1dca769253f6a3e81f9a5c167f53b6a54ab635",
+                "url": "https://api.github.com/repos/giggsey/Locale/zipball/5f035523740be40d40ac768a123c9bcc1ae12f56",
+                "reference": "5f035523740be40d40ac768a123c9bcc1ae12f56",
                 "shasum": ""
             },
             "require": {
@@ -309,10 +309,10 @@
                 "phing/phing": "^2.7",
                 "php-coveralls/php-coveralls": "^2.0",
                 "phpunit/phpunit": "^8.5|^9.5",
-                "symfony/console": "^5.0",
-                "symfony/filesystem": "^5.0",
-                "symfony/finder": "^5.0",
-                "symfony/process": "^5.0"
+                "symfony/console": "^5.0|^6.0",
+                "symfony/filesystem": "^5.0|^6.0",
+                "symfony/finder": "^5.0|^6.0",
+                "symfony/process": "^5.0|^6.0"
             },
             "type": "library",
             "autoload": {
@@ -334,9 +334,9 @@
             "description": "Locale functions required by libphonenumber-for-php",
             "support": {
                 "issues": "https://github.com/giggsey/Locale/issues",
-                "source": "https://github.com/giggsey/Locale/tree/2.2"
+                "source": "https://github.com/giggsey/Locale/tree/2.3"
             },
-            "time": "2022-04-06T07:33:59+00:00"
+            "time": "2022-10-19T20:03:30+00:00"
         },
         {
             "name": "johnbillion/args",
@@ -717,34 +717,29 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.20.0",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "3ac8c7629656009b9e0d6d9e4ccda202aad3b8e0"
+                "reference": "342007fffa62b89c7d0c345914ac61482e4fe939"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/3ac8c7629656009b9e0d6d9e4ccda202aad3b8e0",
-                "reference": "3ac8c7629656009b9e0d6d9e4ccda202aad3b8e0",
+                "url": "https://api.github.com/repos/timber/timber/zipball/342007fffa62b89c7d0c345914ac61482e4fe939",
+                "reference": "342007fffa62b89c7d0c345914ac61482e4fe939",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0",
-                "php": ">=5.3.0 || 7.*",
+                "php": ">=7.2.5 || ^8.0",
                 "twig/cache-extension": "^1.5",
-                "twig/twig": "^1.41 || ^2.10",
-                "upstatement/routes": "0.9.*"
+                "twig/twig": "^1.44 || ^2.10",
+                "upstatement/routes": "^0.9"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "johnpbloch/wordpress": "*",
-                "phpunit/phpunit": "5.7.21 || 6.*",
-                "squizlabs/php_codesniffer": "3.*",
-                "wp-coding-standards/wpcs": "^2.0",
-                "wpackagist-plugin/advanced-custom-fields": "5.*",
-                "wpackagist-plugin/co-authors-plus": "3.2.* || 3.4.*",
-                "yoast/phpunit-polyfills": "^1.0"
+                "wpackagist-plugin/advanced-custom-fields": "^5.0",
+                "wpackagist-plugin/co-authors-plus": "^3.2 || ^3.4",
+                "yoast/wp-test-utils": "^1.0"
             },
             "suggest": {
                 "satooshi/php-coveralls": "1.0.* for code coverage"
@@ -784,7 +779,7 @@
                 "issues": "https://github.com/timber/timber/issues",
                 "source": "https://github.com/timber/timber"
             },
-            "time": "2022-06-22T19:42:09+00:00"
+            "time": "2022-10-12T02:12:15+00:00"
         },
         {
             "name": "twig/cache-extension",
@@ -860,16 +855,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.15.2",
+            "version": "v2.15.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3e43405a9a8b578809426339cc3780e16fba0c52"
+                "reference": "ab402673db8746cb3a4c46f3869d6253699f614a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3e43405a9a8b578809426339cc3780e16fba0c52",
-                "reference": "3e43405a9a8b578809426339cc3780e16fba0c52",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ab402673db8746cb3a4c46f3869d6253699f614a",
+                "reference": "ab402673db8746cb3a4c46f3869d6253699f614a",
                 "shasum": ""
             },
             "require": {
@@ -924,7 +919,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v2.15.2"
+                "source": "https://github.com/twigphp/Twig/tree/v2.15.3"
             },
             "funding": [
                 {
@@ -936,7 +931,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-12T06:43:37+00:00"
+            "time": "2022-09-28T08:40:08+00:00"
         },
         {
             "name": "upstatement/routes",
