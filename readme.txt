@@ -3,11 +3,15 @@ Contributors: herrschuessler
 Requires at least: 5.8.0
 Tested up to: 6.1.0
 Requires PHP: 8.0.0
-Stable tag: 1.36.0
+Stable tag: 1.36.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.36.1 =
+* Update dependencies
+* Update Timber to 1.22.1
 
 = 1.36.0 =
 * Implement custom post type archive

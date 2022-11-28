@@ -4,11 +4,10 @@ const config = require( '../config' );
 const cssnano = require( 'cssnano' );
 const gulp = require( 'gulp' );
 const handleErrors = require( '../lib/handleErrors' );
-const merge = require( 'merge' );
 const path = require( 'path' );
 const postcss = require( 'gulp-postcss' );
 const postcssImport = require( "postcss-import" );
-const sass = require( 'gulp-sass' );
+const sass = require( 'gulp-sass' )( require( 'sass' ) );
 const touch = require( 'gulp-touch-fd' );
 
 const paths = {

@@ -1,17 +1,20 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "rules": {
     "strict": 0,
     "no-console": 0
   },
   "parserOptions": {
+    "requireConfigFile": false,
     "sourceType": "module",
     "allowImportExportEverywhere": true,
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended"
+  ],
   "globals": {
     "console": true,
     "window": true,
