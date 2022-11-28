@@ -13,7 +13,7 @@
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
  * Version:           1.36.0
  * Requires at least: 5.8.0
- * Requires PHP:      7.4
+ * Requires PHP:      8.0
  * Author:            MONTAGMORGENS GmbH
  * Author URI:        https://www.montagmorgens.com/
  * License:           GNU General Public License v.2
