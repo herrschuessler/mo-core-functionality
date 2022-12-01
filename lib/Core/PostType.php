@@ -51,6 +51,8 @@ abstract class PostType {
 					'permastruct' => '/' . $archive_permastruct . '/%' . $this->get_name() . '%',
 				];
 
+				// Make sure the custom archive supports pagination parameters.
+				add_action( 'init', [ $this, 'add_custom_archive_paged_permastruct' ] );
 				$this->post_type_archive_permastruct = $archive_permastruct;
 			}
 		}
@@ -346,4 +348,18 @@ abstract class PostType {
 		}
 	}
 
+	/**
+	 * Fix rewrite rules for paged archive.
+	 */
+	public function add_custom_archive_paged_permastruct() {
+		global $wp_rewrite;
+		$pagination_base = $wp_rewrite->pagination_base;
+		$rewrite_base    = $this->get_archive_permastruct();
+
+		if ( $rewrite_base ) {
+			// Rule for paged journal archive.
+			$rewrite_rule = '(' . $rewrite_base . '/)' . $pagination_base . '/?([0-9]{1,})\/?$';
+			add_rewrite_rule( $rewrite_rule, 'index.php?pagename=$matches[1]&paged=$matches[2]', 'top' );
+		}
+	}
 }
