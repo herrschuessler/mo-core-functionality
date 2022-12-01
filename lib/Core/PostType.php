@@ -25,6 +25,13 @@ abstract class PostType {
 	protected static $instances = [];
 
 	/**
+	 * The post type archive permastruct.
+	 *
+	 * @var bool/string Post type archive permastruct.
+	 */
+	protected $post_type_archive_permastruct = false;
+
+	/**
 	 * Constuctor.
 	 */
 	private function __construct() {
@@ -43,6 +50,8 @@ abstract class PostType {
 				$post_type_args['rewrite'] = [
 					'permastruct' => '/' . $archive_permastruct . '/%' . $this->get_name() . '%',
 				];
+
+				$this->post_type_archive_permastruct = $archive_permastruct;
 			}
 		}
 
@@ -219,6 +228,15 @@ abstract class PostType {
 	 */
 	protected function get_taxonomies() {
 		return [];
+	}
+
+	/**
+	 * Get post type archive permastruct.
+	 *
+	 * @return string/bool Post type name.
+	 */
+	public function get_archive_permastruct() {
+		return $this->post_type_archive_permastruct;
 	}
 
 	/**
