@@ -25,6 +25,13 @@ abstract class PostType {
 	protected static $instances = [];
 
 	/**
+	 * The post type archive page.
+	 *
+	 * @var bool/int Post type archive page id.
+	 */
+	protected $post_type_archive_page = false;
+
+	/**
 	 * The post type archive permastruct.
 	 *
 	 * @var bool/string Post type archive permastruct.
@@ -44,8 +51,8 @@ abstract class PostType {
 			$post_type_args['has_archive'] = false;
 			unset( $post_type_args['has_custom_archive'] );
 
-			$archive_page        = get_option( 'options_' . $this->get_name() . '_archive_page' );
-			$archive_permastruct = get_page_uri( $archive_page );
+			$this->post_type_archive_page = get_option( 'options_' . $this->get_name() . '_archive_page' );
+			$archive_permastruct          = get_page_uri( $this->post_type_archive_page );
 			if ( $archive_permastruct ) {
 				$post_type_args['rewrite'] = [
 					'permastruct' => '/' . $archive_permastruct . '/%' . $this->get_name() . '%',
@@ -53,6 +60,9 @@ abstract class PostType {
 
 				// Make sure the custom archive supports pagination parameters.
 				add_action( 'init', [ $this, 'add_custom_archive_paged_permastruct' ] );
+
+				add_filter( 'wpseo_breadcrumb_links', [ $this, 'add_custom_archive_breadcrumb_links' ], PHP_INT_MAX );
+
 				$this->post_type_archive_permastruct = $archive_permastruct;
 			}
 		}
@@ -362,4 +372,32 @@ abstract class PostType {
 			add_rewrite_rule( $rewrite_rule, 'index.php?pagename=$matches[1]&paged=$matches[2]', 'top' );
 		}
 	}
+
+	/**
+	 * Add custom post type archive to Yoast SEO breadcrumb path.
+	 *
+	 * @param array $links The Breadcrumb array.
+	 */
+	public function add_custom_archive_breadcrumb_links( $links ) {
+
+		if ( is_singular( $this->get_name() ) ) {
+			$ancestors   = get_post_ancestors( $this->post_type_archive_page );
+			$ancestors[] = $this->post_type_archive_page;
+			$pages       = [];
+
+			foreach ( $ancestors as $ancestor ) {
+				$pages[] = [
+					'url'  => get_permalink( $ancestor ),
+					'text' => get_the_title( $ancestor ), // @todo  Get Yoast SEO breadcrumb title.
+					'id'   => $ancestor,
+				];
+			}
+
+			$links = array_merge( $links, $pages );
+		}
+
+		return $links;
+
+	}
+
 }
