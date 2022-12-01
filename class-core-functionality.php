@@ -138,6 +138,7 @@ final class Core_Functionality {
 		\add_action( 'init', [ $this, 'add_video_embed_endpoint' ] );
 		\add_action( 'init', [ $this, 'add_youtube_embed_endpoint' ] );
 		\add_action( 'init', [ $this, 'add_youtube_embed_shortcode' ] );
+		\add_action( 'admin_init', [ $this, 'maybe_flush_rewrite_rules' ] );
 		\add_action( 'template_redirect', [ $this, 'load_video_embed_template' ] );
 		\add_action( 'template_redirect', [ $this, 'load_youtube_embed_template' ] );
 
@@ -355,6 +356,16 @@ final class Core_Functionality {
 		// Delete transient for specific post type.
 		if ( $post_type ) {
 			delete_transient( 'mocore_all_' . $post_type );
+		}
+	}
+
+	/**
+	 * Flush rewrite rules on demand.
+	 */
+	public function maybe_flush_rewrite_rules() {
+		if ( ! get_option( 'mo_core_permalinks_flushed' ) ) {
+			flush_rewrite_rules( false );
+			update_option( 'mo_core_permalinks_flushed', 1 );
 		}
 	}
 

@@ -333,6 +333,16 @@ abstract class PostType {
 					'show_in_rest'          => 0,
 				]
 			);
+
+			add_filter(
+				'acf/update_value/key=field_options_' . $this->get_name() . '_archive',
+				function( $value, $post_id, $field, $original ) {
+					update_option( 'mo_core_permalinks_flushed', 0 );
+					return $value;
+				},
+				10,
+				4
+			);
 		}
 	}
 
