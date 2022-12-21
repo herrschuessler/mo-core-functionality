@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MONTAGMORGENS Core Functionality
  * Description:       Dieses Plugin stellt die benötigten Funktionen für alle MONTAGMORGENS-WordPress-Themes zur Verfügung.
- * Version:           1.36.2
+ * Version:           1.36.3
  * Requires at least: 5.8.0
  * Requires PHP:      8.0
  * Author:            MONTAGMORGENS GmbH
@@ -69,7 +69,7 @@ final class Core_Functionality {
 	use Video_Embed;
 	use Youtube_Embed;
 
-	const PLUGIN_VERSION = '1.36.2';
+	const PLUGIN_VERSION = '1.36.3';
 
 	/**
 	 * The plugin slug is an identifier used in the $plugins array in the all_plugins filter hook.
