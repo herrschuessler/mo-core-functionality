@@ -48,6 +48,8 @@ abstract class PostType {
 		if ( isset( $post_type_args['has_custom_archive'] ) && true === $post_type_args['has_custom_archive'] ) {
 			add_action( 'acf/init', [ $this, 'add_custom_archive_options_page' ] );
 			add_action( 'acf/init', [ $this, 'add_custom_archive_options_field_group' ] );
+			add_action( 'display_post_states', [ $this, 'display_custom_archive_post_state' ], 10, 2 );
+
 			$post_type_args['has_archive'] = false;
 			unset( $post_type_args['has_custom_archive'] );
 
@@ -264,7 +266,6 @@ abstract class PostType {
 		return $post_types;
 	}
 
-
 	/**
 	 * Add options page.
 	 */
@@ -397,7 +398,22 @@ abstract class PostType {
 		}
 
 		return $links;
-
 	}
 
+	/**
+	 * Add a post display state for custom archive page in the page list table.
+	 *
+	 * @param array   $post_states An array of post display states.
+	 * @param WP_Post $post        The current post object.
+	 */
+	public function display_custom_archive_post_state( $post_states, $post ) {
+		$custom_archive_page_id = (int) get_option( 'options_' . $this->get_name() . '_archive_page' );
+
+		if ( isset( $custom_archive_page_id ) && $custom_archive_page_id === $post->ID ) {
+			/* translators: Post type plural name */
+			$post_states[ $this->get_name() . '_archive_page' ] = sprintf( _x( 'Listenseite %s', 'Custom Post Type', 'mo-admin' ), $this->get_labels()['plural'] );
+		}
+
+		return $post_states;
+	}
 }
