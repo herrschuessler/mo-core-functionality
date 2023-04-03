@@ -23,6 +23,13 @@ function set_dev_color_scheme( $color_scheme ) {
 	if ( Core::is_dev() ) {
 		return 'ectoplasm';
 	}
+
+	if ( function_exists( 'wp_get_environment_type' ) ) {
+		if ( wp_get_environment_type() === 'staging' ) {
+			return 'coffee';
+		}
+	}
+
 	return 'fresh';
 }
 
