@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.8.0
-Tested up to: 6.1.0
+Tested up to: 6.2.0
 Requires PHP: 8.0.0
-Stable tag: 1.36.4
+Stable tag: 1.37.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.37.0 =
+* Set coffee admin color scheme for staging sites
+* Update dependencies
 
 = 1.36.4 =
 * Add a post display state for custom archive page in the page list table

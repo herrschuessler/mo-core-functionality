@@ -213,17 +213,17 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.13.3",
-            "version_normalized": "8.13.3.0",
+            "version": "8.13.8",
+            "version_normalized": "8.13.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "f40e7696c207ec37465a9e841dd9d3b0a8e9c781"
+                "reference": "2d3f07bb56daa44b9a2f5ff72e41db762f9573d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/f40e7696c207ec37465a9e841dd9d3b0a8e9c781",
-                "reference": "f40e7696c207ec37465a9e841dd9d3b0a8e9c781",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/2d3f07bb56daa44b9a2f5ff72e41db762f9573d1",
+                "reference": "2d3f07bb56daa44b9a2f5ff72e41db762f9573d1",
                 "shasum": ""
             },
             "require": {
@@ -240,7 +240,7 @@
                 "symfony/console": "^2.8|^3.0|^v4.4|^v5.2",
                 "symfony/phpunit-bridge": "^4.2 || ^5"
             },
-            "time": "2022-12-22T08:56:17+00:00",
+            "time": "2023-03-27T15:36:27+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -345,17 +345,17 @@
         },
         {
             "name": "johnbillion/args",
-            "version": "1.6.0",
-            "version_normalized": "1.6.0.0",
+            "version": "1.7.0",
+            "version_normalized": "1.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnbillion/args.git",
-                "reference": "0a94706015471d72d6c227ff494a002a6275b28b"
+                "reference": "0bb94c0ef52fcd323714b7f0ce03ac4f6cedec27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/args/zipball/0a94706015471d72d6c227ff494a002a6275b28b",
-                "reference": "0a94706015471d72d6c227ff494a002a6275b28b",
+                "url": "https://api.github.com/repos/johnbillion/args/zipball/0bb94c0ef52fcd323714b7f0ce03ac4f6cedec27",
+                "reference": "0bb94c0ef52fcd323714b7f0ce03ac4f6cedec27",
                 "shasum": ""
             },
             "require": {
@@ -372,9 +372,9 @@
                 "phpstan/phpstan-strict-rules": "^1.1",
                 "phpunit/phpunit": "^9.0",
                 "roots/wordpress-core-installer": "^1.0.0",
-                "roots/wordpress-full": "~6.1.0"
+                "roots/wordpress-full": "~6.2.0"
             },
-            "time": "2022-11-10T14:09:31+00:00",
+            "time": "2023-03-29T21:14:43+00:00",
             "type": "library",
             "extra": {
                 "args-shapes": [
@@ -448,7 +448,7 @@
             "description": "I don't want to get into an argument about this.",
             "support": {
                 "issues": "https://github.com/johnbillion/args/issues",
-                "source": "https://github.com/johnbillion/args/tree/1.6.0"
+                "source": "https://github.com/johnbillion/args/tree/1.7.0"
             },
             "funding": [
                 {
