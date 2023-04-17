@@ -7,6 +7,7 @@
  * @author     Christoph Schüßler <schuessler@montagmorgens.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.txt GNU/GPLv2
  * @since      1.23.0
+ * @phpcs:disable WordPress.Files.FileName
  */
 
 namespace Mo\Core;
