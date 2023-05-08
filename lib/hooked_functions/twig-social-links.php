@@ -58,6 +58,9 @@ function social_links( $data ) {
 										case 'www.youtube.com':
 											$social_links['youtube'] = $url;
 											break;
+										case 'mastodon.social':
+											$social_links['mastodon'] = $url;
+											break;
 									}
 								}
 							}
