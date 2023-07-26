@@ -1,6 +1,6 @@
 {
   "name": "mo-core-functionality",
-  "version": "1.37.2",
+  "version": "1.37.3",
   "description": "MONTAGMORGENS WordPress Core Functionality Plugin",
   "engines": {
     "node": "^18.0.0",
@@ -26,12 +26,12 @@
     "babel-loader": "^9.1.0",
     "browser-sync": "^2.26.13",
     "core-js": "^3.8.1",
-    "cssnano": "^5.0.1",
-    "cssnano-preset-advanced": "^5.0.0",
+    "cssnano": "^6.0.1",
+    "cssnano-preset-advanced": "^6.0.1",
     "del": "^6.0.0",
     "eslint": "^8.28.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-webpack-plugin": "^3.2.0",
+    "eslint-webpack-plugin": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
     "gulp-filter": "^7.0.0",
