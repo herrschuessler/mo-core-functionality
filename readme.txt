@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.8.0
 Tested up to: 6.2.0
 Requires PHP: 8.0.0
-Stable tag: 1.37.3
+Stable tag: 1.38.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.38.0 =
+* Use libphonenumber-for-php-lite instead of libphonenumber-for-php
 
 = 1.37.3 =
 * Update dependencies

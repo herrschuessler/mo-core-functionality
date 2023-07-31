@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../../',
         'aliases' => array(),
-        'reference' => 'fc84322718d6c3a957cab95537310e5db719eab7',
+        'reference' => 'e78a161098550534446a8658f554a52573731c50',
         'name' => 'mo/core-functionality',
         'dev' => true,
     ),
@@ -28,22 +28,13 @@
             'reference' => 'c29dc4b93137acb82734f672c37e029dfbd95b35',
             'dev_requirement' => false,
         ),
-        'giggsey/libphonenumber-for-php' => array(
+        'giggsey/libphonenumber-for-php-lite' => array(
             'pretty_version' => '8.13.17',
             'version' => '8.13.17.0',
             'type' => 'library',
-            'install_path' => __DIR__ . '/../giggsey/libphonenumber-for-php',
+            'install_path' => __DIR__ . '/../giggsey/libphonenumber-for-php-lite',
             'aliases' => array(),
-            'reference' => 'dee92bfa0782fd5899fe6b295dea40cdb0607476',
-            'dev_requirement' => false,
-        ),
-        'giggsey/locale' => array(
-            'pretty_version' => '2.4',
-            'version' => '2.4.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../giggsey/locale',
-            'aliases' => array(),
-            'reference' => 'a6b33dfc9e8949b7e28133c4628b29cd9f1850bb',
+            'reference' => 'eb3dc1d776d377e60b026326f23273e4cbae3b12',
             'dev_requirement' => false,
         ),
         'johnbillion/args' => array(
@@ -70,7 +61,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../../',
             'aliases' => array(),
-            'reference' => 'fc84322718d6c3a957cab95537310e5db719eab7',
+            'reference' => 'e78a161098550534446a8658f554a52573731c50',
             'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(
