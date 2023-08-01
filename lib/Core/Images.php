@@ -83,6 +83,15 @@ trait Images {
 			}
 		}
 
+		// Object fitting.
+		if ( 'cover' === $args['fit'] ) {
+			$data['class'] .= ' cover-img';
+			$data['fit']    = ' data-parent-fit="cover"';
+		} elseif ( 'contain' === $args['fit'] ) {
+			$data['class'] .= ' contain-img';
+			$data['fit']    = ' data-parent-fit="contain"';
+		}
+
 		// Handle SVGs.
 		if ( 'image/svg+xml' === $image->post_mime_type ) {
 
@@ -150,15 +159,6 @@ trait Images {
 		$original_ratio = $image->width > 0 ? $image->height / $image->width : 0;
 		$resize_height  = 0;
 		$fallback       = '';
-
-		// Object fitting.
-		if ( 'cover' === $args['fit'] ) {
-			$data['class'] .= ' cover-img';
-			$data['fit']    = ' data-parent-fit="cover"';
-		} elseif ( 'contain' === $args['fit'] ) {
-			$data['class'] .= ' contain-img';
-			$data['fit']    = ' data-parent-fit="contain"';
-		}
 
 		// Add image sizes.
 		while ( $width <= $args['max'] && $width <= $image->width ) {
