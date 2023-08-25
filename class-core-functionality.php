@@ -142,11 +142,6 @@ final class Core_Functionality {
 		\add_action( 'template_redirect', [ $this, 'load_video_embed_template' ] );
 		\add_action( 'template_redirect', [ $this, 'load_youtube_embed_template' ] );
 
-		// Admin hooks.
-		if ( is_admin() ) {
-			\add_filter( 'plugin_action_links_' . $this->slug, [ $this, 'plugin_action_links' ], 10, 4 );
-		}
-
 		// Whitelabel hooks.
 		if ( defined( 'MO_CORE_WHITELABEL' ) && MO_CORE_WHITELABEL === true ) {
 			\add_action( 'all_plugins', [ $this, 'filter_plugin_info' ] );
@@ -166,21 +161,6 @@ final class Core_Functionality {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( 'mo-core', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	}
-
-	/**
-	 * Return the plugin action links.  This will only be called if the plugin
-	 * is active.
-	 *
-	 * @param array  $actions associative array of action names to anchor tags.
-	 * @param string $plugin_file plugin file name.
-	 * @param array  $plugin_data associative array of plugin data from the plugin file headers.
-	 * @param string $context plugin status context, ie 'all', 'active', 'inactive', 'recently_active'.
-	 *
-	 * @return array associative array of plugin action links.
-	 */
-	public function plugin_action_links( $actions, $plugin_file, $plugin_data, $context ) {
-		return array_merge( [ 'documentation' => '<a href="' . plugin_dir_url( __FILE__ ) . 'doc/namespaces/Mo.Core.html">' . __( 'Documentation' ) . '</a>' ], $actions );
 	}
 
 	/**
