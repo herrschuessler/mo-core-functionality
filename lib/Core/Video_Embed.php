@@ -113,7 +113,7 @@ trait Video_Embed {
 			$endpoint  = explode( '/', $endpoint );
 			$embed_url = rawurldecode( str_replace( '!2F', '%2F', ( $endpoint[0] ) ) );
 			$image_id  = isset( $endpoint[1] ) ? (int) rawurldecode( $endpoint[1] ) : false;
-			$image     = new \Timber\Image( $image_id );
+			$image     = \Timber::get_image( $image_id );
 
 			// Get Timber context.
 			$data              = \Timber::context();

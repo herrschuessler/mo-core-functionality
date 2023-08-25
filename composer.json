@@ -10,7 +10,7 @@
     }
   },
   "require": {
-    "timber/timber": "^1.10",
+    "timber/timber": "2.0.0-rc.1",
     "giggsey/libphonenumber-for-php-lite": "^8.13",
     "johnbillion/extended-cpts": "^5.0"
   },

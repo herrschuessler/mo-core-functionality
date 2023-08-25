@@ -66,18 +66,18 @@ final class Twig_Extensions {
 	 * @return object The Twig instance.
 	 */
 	public function add_twig_functions( $twig ) {
-		$twig->addFunction( new \Timber\Twig_Function( 'attach_style', '\Mo\Core\attach_style' ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'contain_image_sizes', [ $this, 'the_contain_image_sizes' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'cover_image_sizes', [ $this, 'the_cover_image_sizes' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'debug', [ $this, 'debug' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'image_sizes', [ $this, 'the_image_sizes' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'svg_icon', [ $this, 'the_svg_icon' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'svg_img', [ $this, 'the_svg_img' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'youtube_embed', [ $this, 'the_youtube_embed' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'video_embed', [ $this, 'the_video_embed' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'get_all_posts', '\Mo\Core\Core_Functionality::get_all_posts' ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'get_image_placeholder_height', [ $this, 'get_image_placeholder_height' ] ) );
-		$twig->addFunction( new \Timber\Twig_Function( 'get_svg_content', [ $this, 'get_svg_content' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'attach_style', '\Mo\Core\attach_style' ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'contain_image_sizes', [ $this, 'the_contain_image_sizes' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'cover_image_sizes', [ $this, 'the_cover_image_sizes' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'debug', [ $this, 'debug' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'image_sizes', [ $this, 'the_image_sizes' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'svg_icon', [ $this, 'the_svg_icon' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'svg_img', [ $this, 'the_svg_img' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'youtube_embed', [ $this, 'the_youtube_embed' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'video_embed', [ $this, 'the_video_embed' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'get_all_posts', '\Mo\Core\Core_Functionality::get_all_posts' ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'get_image_placeholder_height', [ $this, 'get_image_placeholder_height' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'get_svg_content', [ $this, 'get_svg_content' ] ) );
 
 		return $twig;
 	}

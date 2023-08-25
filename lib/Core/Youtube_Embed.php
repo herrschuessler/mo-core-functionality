@@ -108,7 +108,7 @@ trait Youtube_Embed {
 			$endpoint   = explode( '/', $endpoint );
 			$youtube_id = $endpoint[0];
 			$image_id   = isset( $endpoint[1] ) ? (int) $endpoint[1] : false;
-			$image      = new \Timber\Image( $image_id );
+			$image      = \Timber::get_image( $image_id );
 
 			// Get Timber context.
 			$data                  = \Timber::context();

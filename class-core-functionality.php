@@ -125,7 +125,7 @@ final class Core_Functionality {
 		}
 
 		// Init Timber.
-		new \Timber\Timber();
+		\Timber\Timber::init();
 
 		// Init Twig Extensions.
 		new \Mo\Core\Twig_Extensions();
