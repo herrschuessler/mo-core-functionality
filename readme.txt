@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.8.0
 Tested up to: 6.2.0
 Requires PHP: 8.0.0
-Stable tag: 2.0.0-rc1
+Stable tag: 2.0.0-rc2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 2.0.0-rc2 =
+* Replace deprecated timber_context filter
 
 = 2.0.0-rc1 =
 * Upgrade to Timber 2.0.0.rc.1

@@ -79,4 +79,4 @@ function social_links( $data ) {
 	return $data;
 }
 
-add_filter( 'timber_context', 'Mo\Core\Twig\social_links' );
+add_filter( 'timber/context', 'Mo\Core\Twig\social_links' );
