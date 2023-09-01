@@ -28,7 +28,7 @@ trait Images {
 	 *     @type mixed      $style The CSS style attribute (optional).
 	 *     @type mixed      $fit Wether to use object-fitting (can be false, 'cover', 'contain) (optional).
 	 *     @type mixed      $link A link URL to wrap the image with (optional). Can be a string with a URL or an array with 'url', 'tabindex' and 'target'.
-	 *     @type string     $crop cropping method, one of: 'default', 'center', 'top', 'bottom', 'left', 'right', 'top-center', 'bottom-center'.
+	 *     @type string     $crop cropping method, one of: 'default', 'center', 'top', 'bottom', 'left', 'right'.
 	 * }
 	 */
 	public function the_image_sizes( $image, $args = [] ) {
@@ -45,12 +45,12 @@ trait Images {
 			'style'   => null,
 			'fit'     => false,
 			'link'    => false,
-			'crop'    => 'default',
+			'crop'    => 'center',
 		];
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$allowed_crop_positions = [ 'default', 'center', 'top', 'bottom', 'left', 'right', 'top-center', 'bottom-center' ];
+		$allowed_crop_positions = [ 'default', 'center', 'top', 'bottom', 'left', 'right' ];
 
 		// Parse ratio to float or null.
 		$args['ratio'] = is_numeric( $args['ratio'] ) && $args['ratio'] > 0 ? floatval( $args['ratio'] ) : null;
@@ -62,7 +62,7 @@ trait Images {
 		$data['copyright']      = get_field( 'copyright', $image );
 		$data['copyright_link'] = get_field( 'copyright_link', $image );
 		$data['sizes_source']   = [];
-		$data['crop']           = in_array( $args['crop'], $allowed_crop_positions, true ) ? $args['crop'] : 'default';
+		$data['crop']           = in_array( $args['crop'], $allowed_crop_positions, true ) ? $args['crop'] : 'center';
 
 		// Parse link.
 		$data['link'] = false;

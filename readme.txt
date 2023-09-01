@@ -3,11 +3,14 @@ Contributors: herrschuessler
 Requires at least: 5.8.0
 Tested up to: 6.2.0
 Requires PHP: 8.0.0
-Stable tag: 2.0.0-rc2
+Stable tag: 2.0.0-rc3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 2.0.0-rc3 =
+* Set center as default image cropping position
 
 = 2.0.0-rc2 =
 * Replace deprecated timber_context filter
