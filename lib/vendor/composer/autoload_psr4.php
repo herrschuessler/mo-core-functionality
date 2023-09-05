@@ -10,7 +10,6 @@ return array(
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Timber\\' => array($vendorDir . '/timber/timber/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
-    'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Mo\\Core\\' => array($baseDir . '/lib/Core'),
