@@ -141,6 +141,7 @@ final class Core_Functionality {
 		\add_action( 'admin_init', [ $this, 'maybe_flush_rewrite_rules' ] );
 		\add_action( 'template_redirect', [ $this, 'load_video_embed_template' ] );
 		\add_action( 'template_redirect', [ $this, 'load_youtube_embed_template' ] );
+		\add_filter( 'timber/locations', [ $this, 'filter_timber_locations' ], 12 );
 
 		// Whitelabel hooks.
 		if ( defined( 'MO_CORE_WHITELABEL' ) && MO_CORE_WHITELABEL === true ) {
@@ -347,6 +348,18 @@ final class Core_Functionality {
 			flush_rewrite_rules( false );
 			update_option( 'mo_core_permalinks_flushed', 1 );
 		}
+	}
+
+	/**
+	 * Add plugin views path as last template search location
+	 *
+	 * @param array $locations The template locations.
+	 */
+	public function filter_timber_locations( $locations ) {
+		$views_path                  = \Mo\Core\PLUGIN_PATH . 'views/';
+		$locations['mo_core_images'] = [$views_path . 'images/'];
+
+		return $locations;
 	}
 
 }

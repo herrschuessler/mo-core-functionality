@@ -105,40 +105,7 @@ trait Images {
 					$data['height'] = $args['ratio'] ? round( $view_box[2] * $args['ratio'] ) : $view_box[3];
 				}
 			}
-			return \Timber::compile_string(
-				'
-				{% if link is not empty %}
-				<a class="media-image__link" href="{{ link }}"{% if link_target %} target="{{ link_target }}"{% endif %}{% if link_tabindex %} tabindex="{{ link_tabindex }}"{% endif %}>
-				{% endif %}
-				<img
-				class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
-				{% if style is not empty %}
-				style="{{ style }}"
-				{% endif %}
-				alt="{{ image.alt }}"
-				src="{{ image.src }}"
-				{% if width and height %}
-				width="{{ width }}"
-				height="{{ height }}"
-				{% endif %}
-				{{ fit }}>
-				{% if link is not empty %}
-				</a>
-				{% endif %}
-				{% if copyright %}
-				<footer class="media-image__footer">
-				<small class="copyright" aria-hidden="true">
-				{% if copyright_link %}
-					<a class="copyright__link" href="{{ copyright_link|e("esc_url") }}">{{ copyright }}</a>
-				{% else %}
-					{{ copyright }}
-				{% endif %}
-				</small>
-				</footer>
-				{% endif %}
-			',
-				$data
-			);
+			return \Timber::compile( apply_filters( 'mo_core/images_templates', [ '@mo_core_images/svg.twig' ] ), $data );
 		}
 
 		// Handle bitmap images.
@@ -197,48 +164,7 @@ trait Images {
 			$data['sizes_webp'] = \Timber::compile_string( implode( ', ', $data['sizes_webp'] ), $data );
 		}
 
-		return \Timber::compile_string(
-			'
-			{% if link is not empty %}
-			<a class="media-image__link" href="{{ link }}"{% if link_target %} target="{{ link_target }}"{% endif %}{% if link_tabindex %} tabindex="{{ link_tabindex }}"{% endif %}>
-			{% endif %}
-			<picture>
-			{% if sizes_webp is not empty %}
-				<source data-srcset="{{ sizes_webp }}" type="image/webp">
-			{% endif %}
-			{% if sizes_source is not empty %}
-				<source data-srcset="{{ sizes_source }}" type="image/jpeg">
-			{% endif %}
-			<img
-			class="{% if class is not empty %}{{ class }} {% endif %}lazyload js-lazyload"
-			{% if style is not empty %}
-			style="{{ style }}"
-			{% endif %}
-			alt="{{ image.alt }}"
-			src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-			data-src="{{ fallback }}"
-			data-sizes="auto"
-			width="{{ width }}"
-			height="{{ height }}"
-			{{ fit }}>
-			</picture>
-			{% if link is not empty %}
-			</a>
-			{% endif %}
-			{% if copyright %}
-			<footer class="media-image__footer">
-			<small class="copyright">
-			{% if copyright_link %}
-				<a class="copyright__link" href="{{ copyright_link|e("esc_url") }}">{{ copyright }}</a>
-			{% else %}
-				{{ copyright }}
-			{% endif %}
-			</small>
-			</footer>
-			{% endif %}
-		',
-			$data
-		);
+		return \Timber::compile( apply_filters( 'mo_core/images_templates', [ '@mo_core_images/image.twig' ] ), $data );
 	}
 
 	/**
