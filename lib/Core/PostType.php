@@ -45,20 +45,26 @@ abstract class PostType {
 		$post_type_args = $this->get_args();
 
 		// Add permastruct of custom archive page.
-		if ( isset( $post_type_args['has_custom_archive'] ) && true === $post_type_args['has_custom_archive'] ) {
+		if ( isset( $post_type_args['has_custom_archive'] ) && ( true === $post_type_args['has_custom_archive'] || is_array( $post_type_args['has_custom_archive'] ) ) ) {
 			add_action( 'acf/init', [ $this, 'add_custom_archive_options_page' ] );
 			add_action( 'acf/init', [ $this, 'add_custom_archive_options_field_group' ] );
 			add_action( 'display_post_states', [ $this, 'display_custom_archive_post_state' ], 10, 2 );
 
 			$post_type_args['has_archive'] = false;
-			unset( $post_type_args['has_custom_archive'] );
-
-			$this->post_type_archive_page = get_option( 'options_' . $this->get_name() . '_archive_page' );
-			$archive_permastruct          = get_page_uri( $this->post_type_archive_page );
+			$this->post_type_archive_page  = get_option( 'options_' . $this->get_name() . '_archive_page' );
+			$archive_permastruct           = get_page_uri( $this->post_type_archive_page );
 			if ( $archive_permastruct ) {
-				$post_type_args['rewrite'] = [
-					'permastruct' => '/' . $archive_permastruct . '/%' . $this->get_name() . '%',
-				];
+
+				if ( isset( $post_type_args['has_custom_archive']['slug'] ) && is_string( $post_type_args['has_custom_archive']['slug'] ) ) {
+
+					$post_type_args['rewrite'] = [
+						'permastruct' => '/' . $archive_permastruct . $post_type_args['has_custom_archive']['slug'],
+					];
+				} else {
+					$post_type_args['rewrite'] = [
+						'permastruct' => '/' . $archive_permastruct . '/%' . $this->get_name() . '%',
+					];
+				}
 
 				// Make sure the custom archive supports pagination parameters.
 				add_action( 'init', [ $this, 'add_custom_archive_paged_permastruct' ] );
@@ -67,6 +73,8 @@ abstract class PostType {
 
 				$this->post_type_archive_permastruct = $archive_permastruct;
 			}
+
+			unset( $post_type_args['has_custom_archive'] );
 		}
 
 		$this->register(
