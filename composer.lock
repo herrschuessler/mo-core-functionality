@@ -153,16 +153,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php-lite",
-            "version": "8.13.19",
+            "version": "8.13.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php-lite.git",
-                "reference": "0b3da3adc17bf3231816bb94651fa8858d89f89c"
+                "reference": "3f7ad61d13d07ca8fd5ae4fa5a871de23c42fecc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/0b3da3adc17bf3231816bb94651fa8858d89f89c",
-                "reference": "0b3da3adc17bf3231816bb94651fa8858d89f89c",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/3f7ad61d13d07ca8fd5ae4fa5a871de23c42fecc",
+                "reference": "3f7ad61d13d07ca8fd5ae4fa5a871de23c42fecc",
                 "shasum": ""
             },
             "require": {
@@ -231,20 +231,20 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php-lite/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php-lite"
             },
-            "time": "2023-08-22T13:57:50+00:00"
+            "time": "2023-10-31T08:11:15+00:00"
         },
         {
             "name": "johnbillion/args",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnbillion/args.git",
-                "reference": "8fa173a4d830ef2ce2f22679d3d09eb03bea95a9"
+                "reference": "78dd8408f61960784982fb55efd8b1bc88d4584c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/args/zipball/8fa173a4d830ef2ce2f22679d3d09eb03bea95a9",
-                "reference": "8fa173a4d830ef2ce2f22679d3d09eb03bea95a9",
+                "url": "https://api.github.com/repos/johnbillion/args/zipball/78dd8408f61960784982fb55efd8b1bc88d4584c",
+                "reference": "78dd8408f61960784982fb55efd8b1bc88d4584c",
                 "shasum": ""
             },
             "require": {
@@ -261,7 +261,7 @@
                 "phpstan/phpstan-strict-rules": "^1.1",
                 "phpunit/phpunit": "^9.0",
                 "roots/wordpress-core-installer": "^1.0.0",
-                "roots/wordpress-full": "~6.3.0"
+                "roots/wordpress-full": "~6.4.0"
             },
             "type": "library",
             "extra": {
@@ -324,7 +324,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -335,7 +335,7 @@
             "description": "I don't want to get into an argument about this.",
             "support": {
                 "issues": "https://github.com/johnbillion/args/issues",
-                "source": "https://github.com/johnbillion/args/tree/1.8.0"
+                "source": "https://github.com/johnbillion/args/tree/1.9.0"
             },
             "funding": [
                 {
@@ -343,7 +343,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-08T22:06:15+00:00"
+            "time": "2023-11-07T23:51:42+00:00"
         },
         {
             "name": "johnbillion/extended-cpts",
