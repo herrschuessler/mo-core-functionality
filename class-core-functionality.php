@@ -25,6 +25,8 @@
 
 namespace Mo\Core;
 
+use Timber;
+
 // Don't call this file directly.
 defined( 'ABSPATH' ) || die();
 
@@ -286,13 +288,16 @@ final class Core_Functionality {
 	 * Get all posts of a specific $post_type (with transient caching) as Timber\Post.
 	 *
 	 * @param string|bool $post_type The post type.
-	 * @param string      $post_class The post class. Default is \Timber\Post.
+	 * @param bool        $post_class Deprecated.
 	 */
-	public static function get_all_posts( $post_type = false, $post_class = '\Timber\Post' ) {
+	public static function get_all_posts( $post_type = false, $post_class = false ) {
+		if ( count( func_get_args() ) > 1 ) {
+			trigger_error( '$post_class is deprecated and will be removed in a future release', E_USER_DEPRECATED ); //phpcs:ignore
+		}
 
-		if ( is_string( $post_type ) && is_string( $post_class ) ) {
+		if ( is_string( $post_type ) ) {
 
-			$ids = get_transient( 'mocore_all_' . $post_type );
+			$ids = get_transient( 'mo_core_all_' . $post_type );
 			if ( ! $ids ) {
 				$query = new \WP_Query(
 					[
@@ -303,17 +308,16 @@ final class Core_Functionality {
 					]
 				);
 				$ids   = $query->posts;
-				set_transient( 'mocore_all_' . $post_type, $ids, MONTH_IN_SECONDS );
+				set_transient( 'mo_core_all_' . $post_type, $ids, MONTH_IN_SECONDS );
 			}
 
-			$posts = new \Timber\PostQuery(
+			$posts = Timber::get_posts(
 				[
 					'post_type' => $post_type,
 					'post__in'  => $ids,
 					'orderby'   => 'menu_order',
 					'order'     => 'ASC',
-				],
-				$post_class
+				]
 			);
 
 			return $posts;
@@ -336,7 +340,7 @@ final class Core_Functionality {
 
 		// Delete transient for specific post type.
 		if ( $post_type ) {
-			delete_transient( 'mocore_all_' . $post_type );
+			delete_transient( 'mo_core_all_' . $post_type );
 		}
 	}
 
