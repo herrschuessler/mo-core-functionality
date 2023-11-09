@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../../',
         'aliases' => array(),
-        'reference' => '0cc03777c0334429297361d110d1b76d60136c1e',
+        'reference' => 'a0f35a46840b7b11e3a393388fc2a12d9e94dcdf',
         'name' => 'mo/core-functionality',
         'dev' => true,
     ),
@@ -52,7 +52,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../../',
             'aliases' => array(),
-            'reference' => '0cc03777c0334429297361d110d1b76d60136c1e',
+            'reference' => 'a0f35a46840b7b11e3a393388fc2a12d9e94dcdf',
             'dev_requirement' => false,
         ),
         'symfony/polyfill-ctype' => array(
@@ -83,12 +83,12 @@
             'dev_requirement' => false,
         ),
         'timber/timber' => array(
-            'pretty_version' => '2.0.0-rc.1',
-            'version' => '2.0.0.0-RC1',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../timber/timber',
             'aliases' => array(),
-            'reference' => 'f56f062cd56a706a24848915bb554615bc215542',
+            'reference' => 'ee467c650e51d042a04d9107f35239cbc566d4d7',
             'dev_requirement' => false,
         ),
         'twig/twig' => array(
