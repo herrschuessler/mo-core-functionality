@@ -150,17 +150,17 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php-lite",
-            "version": "8.13.24",
-            "version_normalized": "8.13.24.0",
+            "version": "8.13.26",
+            "version_normalized": "8.13.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php-lite.git",
-                "reference": "3f7ad61d13d07ca8fd5ae4fa5a871de23c42fecc"
+                "reference": "11720751b8d216c941ce698ed3a52410d6db55a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/3f7ad61d13d07ca8fd5ae4fa5a871de23c42fecc",
-                "reference": "3f7ad61d13d07ca8fd5ae4fa5a871de23c42fecc",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/11720751b8d216c941ce698ed3a52410d6db55a7",
+                "reference": "11720751b8d216c941ce698ed3a52410d6db55a7",
                 "shasum": ""
             },
             "require": {
@@ -187,7 +187,7 @@
             "suggest": {
                 "giggsey/libphonenumber-for-php": "Use libphonenumber-for-php for geocoding, carriers, timezones and matching"
             },
-            "time": "2023-10-31T08:11:15+00:00",
+            "time": "2023-11-23T07:57:30+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -350,17 +350,17 @@
         },
         {
             "name": "johnbillion/extended-cpts",
-            "version": "5.0.5",
-            "version_normalized": "5.0.5.0",
+            "version": "5.0.6",
+            "version_normalized": "5.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnbillion/extended-cpts.git",
-                "reference": "612a5f1c25a911d8d8b7a0fb2aa5b9ebed95607d"
+                "reference": "992bf43115fe81a07888bc2537432fb083c4e9f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnbillion/extended-cpts/zipball/612a5f1c25a911d8d8b7a0fb2aa5b9ebed95607d",
-                "reference": "612a5f1c25a911d8d8b7a0fb2aa5b9ebed95607d",
+                "url": "https://api.github.com/repos/johnbillion/extended-cpts/zipball/992bf43115fe81a07888bc2537432fb083c4e9f4",
+                "reference": "992bf43115fe81a07888bc2537432fb083c4e9f4",
                 "shasum": ""
             },
             "require": {
@@ -371,27 +371,20 @@
                 "automattic/phpcs-neutron-standard": "1.7.0",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
                 "johnbillion/falsey-assertequals-detector": "*",
-                "lucatume/wp-browser": "^3.0",
+                "johnbillion/plugin-infrastructure": "dev-trunk",
+                "lucatume/wp-browser": "^3.0.21",
                 "phpcompatibility/phpcompatibility-wp": "^2",
                 "phpstan/phpstan": "^1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9",
                 "roots/wordpress-core-installer": "^1.0.0",
-                "roots/wordpress-full": "~6.1.0",
+                "roots/wordpress-full": "*",
                 "szepeviktor/phpstan-wordpress": "1.1.6",
-                "vlucas/phpdotenv": "^3",
-                "wp-cli/core-command": "^2",
-                "wp-cli/db-command": "^2",
                 "wp-coding-standards/wpcs": "2.3.0"
             },
-            "suggest": {
-                "seravo/wp-custom-bulk-actions": "Custom Bulk Actions",
-                "wpackagist-plugin/rewrite-testing": "Rewrite Rule Testing"
-            },
-            "time": "2023-08-21T00:09:00+00:00",
+            "time": "2023-11-17T01:34:02+00:00",
             "type": "library",
             "extra": {
-                "wordpress-install-dir": "tests/wordpress"
+                "wordpress-install-dir": "vendor/wordpress/wordpress"
             },
             "installation-source": "dist",
             "autoload": {
@@ -417,7 +410,7 @@
             "homepage": "https://github.com/johnbillion/extended-cpts/",
             "support": {
                 "issues": "https://github.com/johnbillion/extended-cpts/issues",
-                "source": "https://github.com/johnbillion/extended-cpts/tree/5.0.5"
+                "source": "https://github.com/johnbillion/extended-cpts/tree/5.0.6"
             },
             "funding": [
                 {
@@ -772,29 +765,30 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.7.1",
-            "version_normalized": "3.7.1.0",
+            "version": "v3.8.0",
+            "version_normalized": "3.8.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "a0ce373a0ca3bf6c64b9e3e2124aca502ba39554"
+                "reference": "9d15f0ac07f44dc4217883ec6ae02fd555c6f71d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a0ce373a0ca3bf6c64b9e3e2124aca502ba39554",
-                "reference": "a0ce373a0ca3bf6c64b9e3e2124aca502ba39554",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9d15f0ac07f44dc4217883ec6ae02fd555c6f71d",
+                "reference": "9d15f0ac07f44dc4217883ec6ae02fd555c6f71d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-mbstring": "^1.3"
+                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-php80": "^1.22"
             },
             "require-dev": {
                 "psr/container": "^1.0|^2.0",
-                "symfony/phpunit-bridge": "^5.4.9|^6.3"
+                "symfony/phpunit-bridge": "^5.4.9|^6.3|^7.0"
             },
-            "time": "2023-08-28T11:09:02+00:00",
+            "time": "2023-11-21T18:54:41+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -830,7 +824,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.7.1"
+                "source": "https://github.com/twigphp/Twig/tree/v3.8.0"
             },
             "funding": [
                 {

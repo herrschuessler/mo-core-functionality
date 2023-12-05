@@ -1,7 +1,7 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.8.0
-Tested up to: 6.3.0
+Tested up to: 6.4.1
 Requires PHP: 8.0.0
 Stable tag: 2.0.0
 License: GPLv2 or later
