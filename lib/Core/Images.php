@@ -33,7 +33,7 @@ trait Images {
 	 */
 	public function the_image_sizes( $image, $args = [] ) {
 
-		if ( empty( $image ) || gettype( $image ) !== 'object' || get_class( $image ) !== 'Timber\Image' || ! is_array( $args ) ) {
+		if ( empty( $image ) || gettype( $image ) !== 'object' || ! in_array( get_class( $image ), [ 'Timber\Image', 'Timber\ExternalImage' ], true ) || ! is_array( $args ) ) {
 			return false;
 		}
 		$defaults = [
@@ -93,7 +93,7 @@ trait Images {
 		}
 
 		// Handle SVGs.
-		if ( 'image/svg+xml' === $image->post_mime_type ) {
+		if ( isset( $image->post_mime_type ) && 'image/svg+xml' === $image->post_mime_type ) {
 
 			// Parse SVG width and height from viewbox attribute.
 			$svg = file_get_contents( $image->file_loc );
@@ -112,7 +112,7 @@ trait Images {
 		// Add webp if server supports it and image is a jpeg.
 		$webp_quality = Core_Functionality::$webp_quality;
 
-		if ( function_exists( 'imagewebp' ) && 'image/jpeg' === $image->post_mime_type && is_int( $webp_quality ) ) {
+		if ( function_exists( 'imagewebp' ) && isset( $image->post_mime_type ) && 'image/jpeg' === $image->post_mime_type && is_int( $webp_quality ) ) {
 			$data['sizes_webp'] = [];
 		} else {
 			$data['sizes_webp'] = false;
@@ -123,12 +123,12 @@ trait Images {
 			'h' => $args['ratio'] ? round( $args['max'] * $args['ratio'] ) : 0,
 		];
 		$width          = $args['min'];
-		$original_ratio = $image->width > 0 ? $image->height / $image->width : 0;
+		$original_ratio = $image->width() > 0 ? $image->height() / $image->width() : 0;
 		$resize_height  = 0;
 		$fallback       = '';
 
 		// Add image sizes.
-		while ( $width <= $args['max'] && $width <= $image->width ) {
+		while ( $width <= $args['max'] && $width <= $image->width() ) {
 			$resize_height = $args['ratio'] ? round( $width * $args['ratio'] ) : 0;
 			$height        = $args['ratio'] ? round( $width * $args['ratio'] ) : round( $width * $original_ratio );
 			if ( is_array( $data['sizes_webp'] ) ) {
@@ -144,17 +144,17 @@ trait Images {
 
 		// If last size was smaller than original image dimensions and original image is smaller
 		// than max requested size, add original image.
-		if ( ( $width - $args['steps'] ) < $image->width && ( $width - $args['steps'] ) < $args['max'] ) {
-			$resize_height = $args['ratio'] ? round( $image->width * $args['ratio'] ) : 0;
-			$height        = $args['ratio'] ? round( $image->width * $args['ratio'] ) : $image->height;
+		if ( ( $width - $args['steps'] ) < $image->width() && ( $width - $args['steps'] ) < $args['max'] ) {
+			$resize_height = $args['ratio'] ? round( $image->width() * $args['ratio'] ) : 0;
+			$height        = $args['ratio'] ? round( $image->width() * $args['ratio'] ) : $image->height;
 			if ( is_array( $data['sizes_webp'] ) ) {
-				array_push( $data['sizes_webp'], '{{ image.src|towebp(' . $webp_quality . ')|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_webp'], '{{ image.src|towebp(' . $webp_quality . ')|resize(' . $image->width() . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width() . 'w ' . $height . 'h' );
 			} else {
-				array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width . 'w ' . $height . 'h' );
+				array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width() . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width() . 'w ' . $height . 'h' );
 			}
 			$data['width']  = $image->width;
 			$data['height'] = $height;
-			$fallback       = '{{ image.src|resize(' . $image->width . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }}';
+			$fallback       = '{{ image.src|resize(' . $image->width() . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }}';
 		}
 
 		// Compile image sources.
@@ -214,7 +214,7 @@ trait Images {
 				}
 			}
 		} else {
-			return ( $image->height / $image->width * 100 ) . '%';
+			return ( $image->height() / $image->width() * 100 ) . '%';
 		}
 		return false;
 	}
