@@ -1,13 +1,17 @@
 === MONTAGMORGENS Core Functionality ===
 Contributors: herrschuessler
 Requires at least: 5.8.0
-Tested up to: 6.4.1
+Tested up to: 6.4.2
 Requires PHP: 8.0.0
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 2.0.1 =
+* Handle Timber/ExternalImage in the_image_sizes()
+* Update dependencies
 
 = 2.0.0 =
 * Allow custom permastruct for posts with custom archive
