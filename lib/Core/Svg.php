@@ -129,13 +129,19 @@ trait Svg {
 	 * @param Timber\Image $image The image object.
 	 */
 	public function get_svg_content( $image ) {
-		if ( empty( $image ) || gettype( $image ) !== 'object' || get_class( $image ) !== 'Timber\Image' || 'image/svg+xml' !== $image->post_mime_type ) {
+		if ( empty( $image ) || gettype( $image ) !== 'object' || ! in_array( get_class( $image ), [ 'Timber\Image', 'Timber\ExternalImage' ], true ) ) {
 			return false;
 		}
 
-		// Parse SVG ans strip namespace declaration.
+		$file_loc = $image->file_loc();
+
+		if ( 'image/svg+xml' !== mime_content_type( $file_loc ) ) {
+			return false;
+		}
+
+		// Parse SVG and strip namespace declaration.
 		// phpcs:ignore WordPress.WP.AlternativeFunctions
-		$svg = file_get_contents( $image->file_loc );
+		$svg = file_get_contents( $file_loc );
 		if ( $svg ) {
 			$svg = new \SimpleXMLElement( $svg );
 			$dom = dom_import_simplexml( $svg );
