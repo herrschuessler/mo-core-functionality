@@ -146,13 +146,13 @@ trait Images {
 		// than max requested size, add original image.
 		if ( ( $width - $args['steps'] ) < $image->width() && ( $width - $args['steps'] ) < $args['max'] ) {
 			$resize_height = $args['ratio'] ? round( $image->width() * $args['ratio'] ) : 0;
-			$height        = $args['ratio'] ? round( $image->width() * $args['ratio'] ) : $image->height;
+			$height        = $args['ratio'] ? round( $image->width() * $args['ratio'] ) : $image->height();
 			if ( is_array( $data['sizes_webp'] ) ) {
 				array_push( $data['sizes_webp'], '{{ image.src|towebp(' . $webp_quality . ')|resize(' . $image->width() . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width() . 'w ' . $height . 'h' );
 			} else {
 				array_push( $data['sizes_source'], '{{ image.src|resize(' . $image->width() . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }} ' . $image->width() . 'w ' . $height . 'h' );
 			}
-			$data['width']  = $image->width;
+			$data['width']  = $image->width();
 			$data['height'] = $height;
 			$fallback       = '{{ image.src|resize(' . $image->width() . ', ' . $resize_height . ', \'' . $data['crop'] . '\') }}';
 		}
