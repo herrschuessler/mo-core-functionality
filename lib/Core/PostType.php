@@ -69,7 +69,7 @@ abstract class PostType {
 				// Make sure the custom archive supports pagination parameters.
 				add_action( 'init', [ $this, 'add_custom_archive_paged_permastruct' ] );
 
-				add_filter( 'wpseo_breadcrumb_links', [ $this, 'add_custom_archive_breadcrumb_links' ], PHP_INT_MAX );
+				add_filter( 'wpseo_breadcrumb_links', [ $this, 'add_custom_archive_breadcrumb_links' ], PHP_INT_MAX - 10 );
 
 				$this->post_type_archive_permastruct = $archive_permastruct;
 			}
@@ -388,11 +388,11 @@ abstract class PostType {
 	 * @param array $links The Breadcrumb array.
 	 */
 	public function add_custom_archive_breadcrumb_links( $links ) {
-
 		if ( is_singular( $this->get_name() ) ) {
 			$ancestors   = get_post_ancestors( $this->post_type_archive_page );
 			$ancestors[] = $this->post_type_archive_page;
 			$pages       = [];
+			$last        = array_pop( $links );
 
 			foreach ( $ancestors as $ancestor ) {
 				$pages[] = [
@@ -402,7 +402,7 @@ abstract class PostType {
 				];
 			}
 
-			$links = array_merge( $links, $pages );
+			$links = array_merge( $links, $pages, [$last] );
 		}
 
 		return $links;
