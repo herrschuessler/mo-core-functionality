@@ -70,6 +70,7 @@ final class Twig_Extensions {
 		$twig->addFunction( new \Twig\TwigFunction( 'contain_image_sizes', [ $this, 'the_contain_image_sizes' ] ) );
 		$twig->addFunction( new \Twig\TwigFunction( 'cover_image_sizes', [ $this, 'the_cover_image_sizes' ] ) );
 		$twig->addFunction( new \Twig\TwigFunction( 'debug', [ $this, 'debug' ] ) );
+		$twig->addFunction( new \Twig\TwigFunction( 'error_log', [ $this, 'error_log' ] ) );
 		$twig->addFunction( new \Twig\TwigFunction( 'image_sizes', [ $this, 'the_image_sizes' ] ) );
 		$twig->addFunction( new \Twig\TwigFunction( 'svg_icon', [ $this, 'the_svg_icon' ] ) );
 		$twig->addFunction( new \Twig\TwigFunction( 'svg_img', [ $this, 'the_svg_img' ] ) );

@@ -67,6 +67,17 @@ trait Helpers {
 			echo '</pre>';
 		}
 	}
+	/**
+	 * Logs debug data to error log.
+	 *
+	 * @param mixed $var The variable to be inspected.
+	 */
+	public static function error_log( $var ) : void {
+		ob_start();
+		var_dump( $var ); // phpcs:disable
+		$result = ob_get_clean();
+		error_log( $result );
+	}
 
 	/**
 	 * Prints message to WP Admin.
